@@ -7,7 +7,7 @@
 
         <meta name="author" content="http://ticdwem.com/">
         <meta name="owner" content="ticdwem">
-        <meta name="description" content="" />
+        <meta name="description" content=""/>
         <meta name="keywords" content="">
         <meta name="robots" content="index, follow">
 
@@ -25,7 +25,7 @@
           <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
           <script type="text/javascript" src="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.6/src/jquery.ez-plus.js"></script>
           <script src="https://kit.fontawesome.com/1849e1867b.js" crossorigin="anonymous"></script>
-          <script src="views/js/parallax.js"></script>  
+          <!-- <script src="views/js/parallax.js"></script>   -->
           <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
           <!-- <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script> -->
     </head>
