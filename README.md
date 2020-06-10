@@ -1,2 +1,0 @@
-# bienestarYnuevaImagen
-repositorio para consultorio
