@@ -1,4 +1,5 @@
-            <aside id="lateral">
+           
+           <aside id="lateral">
                 <div id="login" class="block_aside">
                     <h3>Entrar a la web</h3>
                     <form action="#" method="post">
@@ -11,7 +12,7 @@
                     <ul>
                         <li><a href="#">Mis Pedidos</a></li>
                         <li><a href="#">Gestionar Pedidos</a></li>
-                        <li><a href="#">GEstionar Categoria</a></li>
+                        <li><a href="#">Gestionar Categoria</a></li>
                     </ul>
                   
                 </div>

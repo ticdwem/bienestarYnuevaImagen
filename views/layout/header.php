@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf8">
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-        <title>SALUD Y BIENESTAR</title>
+        <title>Bienestar y Nueva Imagen</title>
 
         <meta name="author" content="http://ticdwem.com/">
         <meta name="owner" content="ticdwem">
