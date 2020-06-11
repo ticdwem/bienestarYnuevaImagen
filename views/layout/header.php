@@ -36,7 +36,7 @@
                 <div id="logo">
                     <img src="#" alt="">
                     <a href="index.php">
-                       SALUD Y BIENESTAR 
+                       Bienestar Y Nueva Imagen 
                     </a>                  
                 </div>
 
