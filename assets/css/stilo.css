@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500&display=swap');
+
+figure{
+	top: -45px;
+	left: 0px;
+	height: 130px;
+}
+
+figure img{
+	top: 0px;
+	left: 0px;
+	width: 20%;
+	height: auto;
+}
+
+figure figcaption{
+	top: -97px;
+	left: 20%;
+	width: 80%;
+	height: auto;
+	position: relative;
+	border-bottom: 1px solid green;
+}
+figure figcaption h2 p{
+	color: black;
+	position: relative;
+	top: 0px;
+	left: 25%;
+	font-family: 'Frank Ruhl Libre', serif;
+	font-size: 1.3em;
+	font-weight: bolder;
+	text-shadow: 2px 3px 8px rgba(56,79,89,0.72);
+	width: 60%;
+}
+
+.card-body .texcto{
+	position: absolute;
+	top: 120px;
+	left: 25%;
+}
+.card-body .texcto p{
+	top: 12px;
+	color: #876868;
+	position: relative;
+}
+
+/* genero */
+form .form-row .genero{
+	border: 1px solid #CED4DA;
+	/* border: 1px solid red; */
+	width: 0%;
+	position: relative;
+	height: 38px;
+	top: 32px;
+	left:0px;
+	border-radius: 5px;
+}
+form .form-row #intputSexo{
+	position: absolute;
+	top: -100%;
+	left: 0%;
+}
+form .form-row .genero .radio-Sexo{
+	position: relative;
+	/* top: 15%; */
+	left: 25%;
+	vertical-align: middle;
+}
