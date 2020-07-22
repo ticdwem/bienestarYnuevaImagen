@@ -2,8 +2,10 @@
 session_start();
 require_once 'autoload.php';
 require_once 'config/db.php';
+require_once 'config/modeloBase.php';
 require_once 'config/parameters.php';
 require_once 'helpers/utls.php';
+require_once 'helpers/validacion.php';
 require_once 'views/layout/header.php';
 require_once 'views/layout/sidebar.php';
 
