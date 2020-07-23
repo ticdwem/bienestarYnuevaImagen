@@ -12,6 +12,5 @@ class UsuarioController{
     }
     /*funcion para guardar el usuario*/
     public function save() {
-
-        
+    }
 }
