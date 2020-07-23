@@ -41,7 +41,10 @@
 					</div>
 					<div class="form-group col-md-4">
 						<label for="inpuFechaNac">Fecha Nacimiento</label>
-						<input type="text" class="form-control" id="inpuFechaNac">
+						<input type="text" onchange="javascript:calcularEdad()" class="form-control" id="dateInicio">
+						<!-- <span class="input-group-addon" >
+                        	<input type="button"  value="Calcular"  onclick="javascript:calcularEdad();" />
+                        </span> -->
 					</div>
 					<div class="form-group col-md-4">
 						<label for="inpuEdad">Edad</label>
@@ -83,20 +86,15 @@
 				<div class="form-row " id="form-row-sexo">
 					<div class="form-group col-md-4">
 						<label for="inpuEstado">Estado</label>
-						<select class="form-control" name="select">
-						  <option value="value1" selected>Estado 1</option> 
-						  <option value="value2">Estado 2</option>
-						  <option value="value3">Estado 3</option>
+						<select class="form-control" id="inpuEstado" name="inpuEstado">
+						<?php while ($estado = $nombreE->fetch_object()):?>
+							<option value="<?= $estado->id?>"><?= $estado->estado?></option> 							
+						<?php endwhile; ?>
 						</select>
 					</div>
 					<div class="form-group col-md-4">
 						<label for="inpuMunicipio">Municipio</label>
-					    <select class="form-control" id="inpuMunicipio" name="select">
-					      <option>1</option>
-					      <option>2</option>
-					      <option>3</option>
-					      <option>4</option>
-					      <option>5</option>
+					    <select class="form-control" id="inpuMunicipio" name="inpuMunicipio">
 					    </select>
 					</div>
 					<div class="form-group col-md-4">
@@ -148,12 +146,12 @@
 					<div class="form-group col-md-4">
 						<label for="selectMedicamento">Algún Medicamento Que Toma Actualmente</label>
 						<select class="form-control" id="selectMedicamento" name="select">
-					      <option>Si</option>
-					      <option selected>No</option>
+					      <option value="1">Si</option>
+					      <option value="2" selected>No</option>
 					    </select>
 					</div>
 
-					<div class="form-group col-md-4">
+					<div class="form-group col-md-4" id="medicamento">
 						<label for="inputNombreMedicamento">Nombre Medicamento</label>
 						<input type="text" class="form-control" id="inputNombreMedicamento">
 					</div>
