@@ -70,3 +70,13 @@ form .form-row .genero .radio-Sexo{
 #medicamento{
 	display: none;
 }
+
+/* ocultar otro enfermedad padescan y padecimiento actual */
+.indique{
+	visibility: hidden;
+}
+
+#anteriorMedicamento{
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
