@@ -36,4 +36,22 @@ class PacienteController{
         }
     }
 
+    public function getCorreoExistent($email){
+        $correo = Validacion::validarEmail($email);
+
+        if($correo != '0'){
+            $mail = new Usuario();
+            $mail->setEmail($correo);
+            $resultado = $mail->getEmailExis();
+            if($resultado->num_rows>0){
+                echo 1;
+            }else{
+                echo 0;
+            }
+
+        }else{
+            echo 2;
+        }
+    }
+
 }
