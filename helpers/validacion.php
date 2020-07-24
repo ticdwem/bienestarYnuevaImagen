@@ -124,7 +124,7 @@ class Validacion
 
 	}
 
-	public function validarEmail($email)
+	public static function validarEmail($email)
 	{
 		if(!$email == ""){
 		 if(preg_match("/^[a-zA-Z0-9\._-]+@[a-zA-Z0-9-]{2,}[.][a-zA-Z]{2,4}[.][a-zA-Z]{2,4}$/", $email)||preg_match("/^[a-zA-Z0-9\._-]+@[a-zA-Z0-9-]{2,}[.][a-zA-Z]{2,4}$/", $email)){
