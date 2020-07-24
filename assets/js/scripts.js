@@ -125,3 +125,60 @@ console.log(formatear);
       }
       return false;
     }
+
+/*validacion*/
+function expRegular(texto,contenido){
+
+  var letras_latinas;
+  var ercorreo;
+  var phonearray;   
+  var mesaje;
+  var pass;
+  var varif;  
+
+  switch (texto) {
+    case "nombre":
+     letras_latinas = /^[a-zA-ZáéíóúàèìòùÀÈÌÒÙÁÉÍÓÚñÑüÜ/-_-\s]+$/;
+     varif = letras_latinas;
+    break;
+    
+    case "email":
+     ercorreo=/^[^@\s]+@[^@\.\s]+(\.[^@\.\s]+)+$/;
+     varif = ercorreo;
+    break;
+    
+    case "phone":
+     phonearray = /^[0-9]+$/;
+     varif =   phonearray;
+    break; 
+    
+    case "messagge":
+    case "dir":
+     mesaje = /^[0-9a-zA-ZáéíóúàèìòùÀÈÌÒÙÁÉÍÓÚñÑüÜ_;,.()¿$?\s]+$/;
+     varif= mesaje; 
+    break;
+    
+    case "pass":
+    pass = /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/;
+    varif =   pass;
+    /*La contraseña debe tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula y al menos una mayúscula.
+NO puede tener otros símbolos.
+Ejemplo:
+w3Unpocodet0d0 */
+    break; 
+
+  }
+  if (!(varif.test(contenido))) {
+       return 0;
+    }else{
+       return texto;
+    }
+
+}
+
+function getAbsolutePath() {
+    var loc = window.location;
+    //var pathName = loc.pathname.substring(0, loc.pathname.lastIndexOf('/') + 1);
+    var pathName = loc.pathname.substring(0, 16);
+    return loc.href.substring(0, loc.href.length - ((loc.pathname + loc.search + loc.hash).length - pathName.length));    
+}
