@@ -4,12 +4,31 @@ require_once $_SERVER['DOCUMENT_ROOT']."\config\modeloBase.php";
 
 class Usuario extends ModeloBase{
 
+    private $email;
 	private $idEstado;
-    
+
     public function __construct() {
         parent::__construct();
     }
+    /**
+     * @return mixed
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
 
+    /**
+     * @param mixed $email
+     *
+     * @return self
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
     /**
      * @return mixed
      */
@@ -41,6 +60,15 @@ class Usuario extends ModeloBase{
 
         return $query;
     }
+
+    public function getEmailExis(){
+        $validar = "SELECT cl.correoCliente FROM cliente cl WHERE cl.correoCliente = '{$this->getEmail()}'";
+        $query = $this->db->query($validar);
+
+        return $query;
+    }
+
+    
 
     
 }
