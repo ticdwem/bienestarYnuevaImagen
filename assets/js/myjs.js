@@ -50,7 +50,7 @@ $(document).ready(function(){
 			var mail = new FormData();
 			mail.append("correo",emailer);
 	 	$.ajax({
-				url: "views/layout/ajax.php",
+				url: getAbsolutePath()+"views/layout/ajax.php",
 				method:"POST",
 				data:mail,
 				cache:false,
