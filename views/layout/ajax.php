@@ -26,8 +26,11 @@ public function setDato($archivo)
 		$query = $this->getDato();
 		$sent = new PacienteController();
 		$sent->getMunicipio($query);
-
-		//echo $sent;
+	}
+	public function verifCorreo(){
+		$query = $this->getDato();
+		$sent = new PacienteController();
+		$sent->getCorreoExistent($query);
 	}
 
 
@@ -42,4 +45,9 @@ if(isset($_POST["idEstado"])){
 	$sent -> setDato($_POST["idEstado"]);
 	$sent -> selectMun();
 }
-?>
+
+if(isset($_POST["correo"])){
+	$sent = new Ajax();
+	$sent -> setDato($_POST["correo"]);
+	$sent -> verifCorreo();
+}
