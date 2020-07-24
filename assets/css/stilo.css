@@ -67,6 +67,17 @@ form .form-row .genero .radio-Sexo{
 	vertical-align: middle;
 }
 
+form .idPaciente{
+	width: 100%;
+	height: auto;	
+}
+form .idPaciente #idPaciente{
+	width: 14%;
+	position: relative;
+	top: 0px;
+	left: 86%;
+}
+
 #medicamento{
 	display: none;
 }
