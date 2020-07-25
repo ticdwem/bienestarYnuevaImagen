@@ -5,27 +5,29 @@
 			<figcaption>
 				<h2 class="font-weight-light"><p>Hoja Clinica</p></h2> 
 			</figcaption> 
-			<div class="numeroPaciente">012020070001</div>			
 		</figure>
 		<div class="texcto">	
 			<p class="lead">ESTE FORMATO DEBE SER LLENADO POR EL PACIENTE</p>
 		</div>
 		<div style="height: auto">
-			<form>	
+			<form action="<?=base_url?>Paciente/save" method="POST">	
+				<div class="idPaciente">
+				<input type="text" class="form-control" id="idPaciente" value="012020070001" readonly="true">	
+				</div>	
 			<div class="page-header"><small>DATOS PERSONALES</small></div>
 			<hr>			
 				<div class="form-row">
 					<div class="form-group col-md-4">
 						<label for="intputname">Nombre</label>
-						<input type="text" class="form-control" id="intputname">
+						<input type="text" class="form-control" id="intputname" name="intputname">
 					</div>
 					<div class="form-group col-md-4">
 						<label for="inputAppat">Apellido Paterno</label>
-						<input type="text" class="form-control" id="inputAppat">
+						<input type="text" class="form-control" id="inputAppat" name="inputAppat">
 					</div>
 					<div class="form-group col-md-4">
 						<label for="inputApmat">Apellido Materno</label>
-						<input type="text" class="form-control" id="inputApmat">
+						<input type="text" class="form-control" id="inputApmat" name="inputApmat">
 					</div>
 				</div>
 				<div class="form-row ">
@@ -42,28 +44,29 @@
 					</div>
 					<div class="form-group col-md-4">
 						<label for="inpuFechaNac">Fecha Nacimiento</label>
-						<input type="text" onchange="javascript:calcularEdad()" class="form-control" id="dateInicio" placeholder="dd/mm/yyyy">
+						<input type="text" onchange="javascript:calcularEdad()" class="form-control" id="dateInicio" name="dateInicio" placeholder="dd/mm/yyyy">
 						<!-- <span class="input-group-addon" >
                         	<input type="button"  value="Calcular"  onclick="javascript:calcularEdad();" />
                         </span> -->
 					</div>
 					<div class="form-group col-md-4">
 						<label for="inpuEdad">Edad</label>
-						<input type="text" class="form-control" id="inpuEdad" readonly>
+						<input type="text" class="form-control" id="inpuEdad" name="inpuEdad" readonly>
 					</div>
 				</div>
 				<div class="form-row">
 					<div class="form-group col-md-4">
 						<label for="inpuEstatura">Estatura Aprox.</label>
-						<input type="text" class="form-control" id="inpuEstatura">
+						<input type="text" class="form-control" id="inpuEstatura" name="inpuEstatura">
 					</div>
 					<div class="form-group col-md-4">
 						<label for="inpuOcupacion">Ocupacion</label>
-						<input type="text" class="form-control" id="inpuOcupacion">
+						<input type="text" class="form-control" id="inpuOcupacion" name="inpuOcupacion">
 					</div>
 					<div class="form-group col-md-4">
 						<label for="inpuEstadoCivil">Estado Civil</label>
 						<select class="form-control" id="inpuEstadoCivil" name="inpuEstadoCivil">
+							<option value="">ESCOGE UNA OPCION</option> 	
 							<option value="CASADO">CASADO</option> 	
 							<option value="DIVORCIADO">DIVORCIADO</option> 	
 							<option value="SOLTERO">SOLTERO</option> 	
@@ -78,16 +81,16 @@
 				<div class="form-row ">
 					<div class="form-group col-md-4">
 						<label for="inpuCelular">Celular</label>
-						<input type="text" class="form-control" id="inpuCelular">
+						<input type="text" class="form-control" id="inpuCelular" name="inpuCelular">
 					</div>
 					<div class="form-group col-md-4">
 						<label for="inpuCorreo">Correo</label>
-						<input type="text" class="form-control" id="inpuCorreo">
+						<input type="text" class="form-control" id="inpuCorreo" name="inpuCorreo">
 						<div id="error" class=""></div>
 					</div>
 					<div class="form-group col-md-4">
 						<label for="inpuRedSocial">Red Social</label>
-						<input type="text" class="form-control" id="inpuRedSocial">
+						<input type="text" class="form-control" id="inpuRedSocial" name="inpuRedSocial">
 					</div>
 				</div>
 				<div class="page-header"><small>DATOS DOMICILIO</small></div>
@@ -96,7 +99,7 @@
 					<div class="form-group col-md-4">
 						<label for="inpuEstado">Estado</label>
 						<select class="form-control" id="inpuEstado" name="inpuEstado">
-						<?php while ($estado = $nombreE->fetch_object()):?>
+						<?php while ($estado = $nombreE->fetch_object()):?>							
 							<option value="<?= $estado->id?>"><?= $estado->estado?></option> 							
 						<?php endwhile; ?>
 						</select>
@@ -108,21 +111,21 @@
 					</div>
 					<div class="form-group col-md-4">
 						<label for="inpuCP">CP.</label>
-						<input type="text" class="form-control" id="inpuCP">
+						<input type="text" class="form-control" id="inpuCP" name="inpuCP">
 					</div>
 				</div>
 				<div class="form-row">
 					<div class="form-group col-md-4">
 						<label for="inpuColonia">Colonia</label>
-						<input type="text" class="form-control" id="inpuColonia">
+						<input type="text" class="form-control" id="inpuColonia" name="inpuColonia">
 					</div>
 					<div class="form-group col-md-4">
 						<label for="inpuCalle">Calle</label>
-						<input type="text" class="form-control" id="inpuCalle">
+						<input type="text" class="form-control" id="inpuCalle" name="inpuCalle">
 					</div>
 					<div class="form-group col-md-4">
 						<label for="inpuNumCasa">Num Casa</label>
-						<input type="text" class="form-control" id="inpuNumCasa">
+						<input type="text" class="form-control" id="inpuNumCasa" name="inpuNumCasa">
 					</div>
 				</div>
 				<div class="page-header"><small>DATOS EMERGENCIA</small></div>
@@ -130,11 +133,11 @@
 				<div class="form-row" >
 					<div class="form-group col-md-4">
 						<label for="inpuTelEmergencia">Tel. Emergencia</label>
-						<input type="text" class="form-control" id="inpuTelEmergencia">
+						<input type="text" class="form-control" id="inpuTelEmergencia" name="inpuTelEmergencia">
 					</div>
 					<div class="form-group col-md-4">
 						<label for="inpuParentesco">Parentesco</label>
-						<input type="text" class="form-control" id="inpuParentesco">
+						<input type="text" class="form-control" id="inpuParentesco" name="inpuParentesco">
 					</div>
 				</div>
 				<div class="page-header"><small>DATOS EXTRA</small></div>
@@ -142,11 +145,11 @@
 				<div class="form-row ">
 					<div class="form-group col-md-4">
 						<label for="inpuTelNombreRecomienda">Nombre Recomienda</label>
-						<input type="text" class="form-control" id="inpuNombreRecomienda">
+						<input type="text" class="form-control" id="inpuNombreRecomienda" name="inpuNombreRecomienda">
 					</div>
 					<div class="form-group col-md-8">
 						<label for="inpuMotivo">Motivo</label>
-						<input type="text" class="form-control" id="inpuMotivo">
+						<input type="text" class="form-control" id="inpuMotivo" name="inpuMotivo">
 					</div>
 				</div>
 				<div class="page-header"><small>DATOS MEDICACION</small></div>
@@ -162,17 +165,13 @@
 
 					<div class="form-group col-md-4" id="medicamento">
 						<label for="inputNombreMedicamento">Nombre Medicamento</label>
-						<input type="text" class="form-control" id="inputNombreMedicamento">
+						<input type="text" class="form-control" id="inputNombreMedicamento" name="inputNombreMedicamento">
 					</div>
 				</div>
 <!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
-				<div class="page-header titulo_padecimiento"><small>FAMILIARES QUE PADESCAN O HAYAN PADECIDO:</small></div>
+				<!-- <div class="page-header titulo_padecimiento"><small>FAMILIARES QUE PADESCAN O HAYAN PADECIDO:</small></div>
 				<hr>
 				<div class="form-row col-md-12" id="parentesco">
-					<!-- <div class="col-md-12">
-						<p>FAMILIARES QUE PADESCAN O HAYAN PADECIDO:</p>
-					</div>
-					<hr> -->
 					<div class="form-row col-md-12">
 						<div class="form-group form-check  col-md-6">
 							<input class="form-check-input parentesco" type="checkbox" value="DIABETES" id="checkDeabetes">
@@ -246,9 +245,9 @@
 							
 						</div>
 					</div>
-				</div>
+				</div> -->
 <!-- ::::::::::::::::::::::::::::::::::::::::padecimientos actuales:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
-				<div class="page-header titulo_padecimiento"><small>PADECIMIENTOS ACTUALES:</small></div>
+				<!-- <div class="page-header titulo_padecimiento"><small>PADECIMIENTOS ACTUALES:</small></div>
 				<hr>
 				<div class="form-row col-md-12" id="actuales">
 					<div class="form-row col-md-12">
@@ -316,9 +315,9 @@
 							
 						</div>
 					</div>
-				</div>
+				</div> -->
 <!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::cirugias::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
-				<div class="page-header titulo_cirugia"><small>¿Le han realizado alguna cirugia actualmente?</small></div>
+				<!-- div class="page-header titulo_cirugia"><small>¿Le han realizado alguna cirugia actualmente?</small></div>
 					<div>
 					  <input type="radio" id="siCheck" name="cirugia" value="1">
 					  <label for="siCheck">SI</label>
@@ -371,9 +370,9 @@
 							<input type="text" class="form-control disableoff" aria-label="Small" aria-describedby="inputGroup-sizing-sm" disabled>
 						</div>
 					</div>
-				</div>
+				</div> -->
 <!-- :::::::::::::::::::::::::::::::::datos mujeres:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
-				<div class="page-header titulo_mujeres"><small>DATOS MUJER</small></div>
+				<!-- <div class="page-header titulo_mujeres"><small>DATOS MUJER</small></div>
 				<hr>
 				<div class="form-row col-md-12" id="mujeres">
 					<div class="form-group col-md-3">
@@ -405,9 +404,9 @@
 					<div class="form-group col-md-4">
 						
 					</div>
-				</div>
+				</div> -->
 <!-- :::::::::::::::::::::::::::::::::tratamiento Anterior:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
-				<div class="page-header titulo_anterior"><small>CONTROL DE PESO ANTERIOR</small></div>
+				<!-- <div class="page-header titulo_anterior"><small>CONTROL DE PESO ANTERIOR</small></div>
 				<hr>
 				<div class="form-row col-md-12" id="anterior">
 					<div class="form-control col-md-5 genero">
@@ -428,8 +427,9 @@
 				<div class="form-row col-md-12" id="anteriorMedicamento">
 					<label for="inputNacidosTermino">¿Que medicamentos consumio durante el tratamiento de control de peso anterior?</label>
 					<input type="text" class="form-control anteriorMedicamento" name="namcidosTermino" id="inputNacidosTermino" disabled>
-				</div>
-				<button class="btn btn-primary" type="submit">Submit form</button>
+				</div> -->
+				<!-- <button class="btn btn-primary" type="submit">Submit form</button> -->
+				<input type="submit" values="enviar" name="enviar">
 			</form>
 		</div>
 	</div>
