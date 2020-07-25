@@ -10,7 +10,7 @@
 			<p class="lead">ESTE FORMATO DEBE SER LLENADO POR EL PACIENTE</p>
 		</div>
 		<div style="height: auto">
-			<form action="<?=base_url?>Paciente/save" method="POST">	
+			<form id="basic-form" action="<?=base_url?>Paciente/save" method="POST" >	
 				<div class="idPaciente">
 				<input type="text" class="form-control" id="idPaciente" value="012020070001" readonly="true">	
 				</div>	
