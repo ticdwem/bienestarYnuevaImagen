@@ -12,7 +12,7 @@ $(document).ready(function(){
 		var selectMun = '';
 			id.append("idEstado",dato);
 	 	$.ajax({
-				url: "views/layout/ajax.php",
+				url: getAbsolutePath()+"views/layout/ajax.php",
 				method:"POST",
 				data:id,
 				cache:false,
