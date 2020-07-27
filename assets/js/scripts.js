@@ -26,7 +26,6 @@ function calcularEdad()
     {
       var fecha = document.getElementById('dateInicio').value;
       var formatear = convertDateFormat(fecha);
-console.log(formatear);
       if(validateFecha(formatear)== true)
       {
         var values=formatear.split("-");
@@ -75,7 +74,6 @@ console.log(formatear);
                 dias=ultimoDiaMes.getDate()-(dia-ahoraDia);
             }
             var nuevaEdad=document.getElementById("inpuEdad").value = edad;
-            console.log(nuevaEdad);
 
           // if(nuevaEdad>=6){
           //      document.getElementById("inpuEdad").removeAttribute("style"); 
@@ -179,6 +177,6 @@ w3Unpocodet0d0 */
 function getAbsolutePath() {
     var loc = window.location;
     //var pathName = loc.pathname.substring(0, loc.pathname.lastIndexOf('/') + 1);
-    var pathName = loc.pathname.substring(0, 16);
+    var pathName = loc.pathname.substring(0, 23);
     return loc.href.substring(0, loc.href.length - ((loc.pathname + loc.search + loc.hash).length - pathName.length));    
 }
