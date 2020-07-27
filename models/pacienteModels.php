@@ -1,6 +1,10 @@
 <?php
 // require_once 'config/modeloBase.php';
+<<<<<<< HEAD
 require_once $_SERVER['DOCUMENT_ROOT']."\bienestarYnuevaImagen\config\modeloBase.php";
+=======
+require_once $_SERVER['DOCUMENT_ROOT']."/cbyni/config/modeloBase.php";
+>>>>>>> e3a0fcc37dfcfe045f680ee9dbca8b4b3338fc0b
 
 class Usuario extends ModeloBase{
     private $idPaciente;
