@@ -2,7 +2,7 @@
 
 #activar rewrite
 RewriteEngine on
-ErrorDocument 404 http://localhost/MasterPHP/poo/error/index
+#ErrorDocument 404 http://localhost:3333/error/
 
 #comprobar las url que no sea un directorio o un fichero
 RewriteCond %{SCRIPT_FILENAME} !-d
