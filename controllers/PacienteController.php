@@ -44,7 +44,6 @@ class PacienteController{
             
             $datos = array('idPaciente' =>$idPaciente ,'Nombre' =>$Nombre ,'Apellido_Pat' =>$Apellido_Pat ,'Apellido_Mat' =>$Apellido_Mat ,'sexo' =>$sexo ,'fecha' =>$fecha ,'edad' =>$edad ,'estatura' =>$estatura ,'ocupacion' =>$ocupacion ,'estado_civil' =>$estado_civil ,'celular' =>$celular ,'correo' =>$correo ,'red_social' =>$red_social ,'estado' =>$estado ,'municipio' =>$municipio ,'codigo_postal' =>$codigo_postal ,'colonia' =>$colonia ,'calle' =>$calle ,'numero_casa' =>$numero_casa ,'tetefono_emergencia' =>$tetefono_emergencia ,'parentesco' =>$parentesco ,'nombre_Recomienda' =>$nombre_Recomienda ,'motivo' =>$motivo ,'select' =>$select ,'medicamento' =>$medicamento);
             foreach ($datos as $dato => $valor) {
-               //echo 'el titulo es = "'.$dato.'" y tiene el valor = '.$valor.' <br>';
                if($valor == false){
                 $_SESSION['formulario'] = array(
                     "error"=> 'El campo '.$dato." es Incorrecto, Llena los campos faltantes",
@@ -83,6 +82,130 @@ class PacienteController{
                 $insertar = $paciente->insertPaciente();
                 if($insertar){
                     echo 'ok';
+                    $datos = array();
+                    if(isset($_POST["deabetes"]) && $_POST["deabetes"][0] != '0'){
+                        $nombreDeabetes = (Validacion::pregmatchletras($_POST["deabetes"][0]) == '0') ? false : true;
+                        $indiqueDeabetes = (Validacion::validarNumero($_POST["deabetes"][1]) == '-1') ? false :  true;
+                        $parentescoDeabetes = (Validacion::pregmatchletras($_POST["deabetes"][2]) == '0') ? false : true ;
+                        if($nombreDeabetes && $indiqueDeabetes  && $parentescoDeabetes ){
+                            array_push($datos,$_POST["deabetes"]);
+                        }else{
+                            echo "hay un datos erroenao<br>";
+                        }
+                    }
+                    if(isset($_POST["hipertension"]) && $_POST["hipertension"][0] != '0'){
+                        $nombreHipertension = (Validacion::pregmatchletras($_POST["hipertension"][0]) == '0') ? false : true ;
+                        $indiqueHipertension = (Validacion::validarNumero($_POST["hipertension"][1]) == '-1') ? false : true ;
+                        $parentescoHipertension = (Validacion::pregmatchletras($_POST["hipertension"][2]) == '0') ? false : true ;
+                        
+                        if($nombreHipertension && $indiqueHipertension && $parentescoHipertension){
+                            array_push($datos,$_POST["hipertension"]);
+                        }else{
+                            echo "hay un datos erroenao<br>";
+                        }
+                    }
+                    if(isset($_POST["cancer"]) && $_POST["cancer"][0] != '0'){
+                        $nombreCancer = (Validacion::pregmatchletras($_POST["cancer"][0]) == '0') ? false :true ;
+                        $indiqueCancer = (Validacion::validarNumero($_POST["cancer"][1]) == '-1') ? false : true ;
+                        $parentescoCancer = (Validacion::pregmatchletras($_POST["cancer"][2]) == '0') ? false :true ;
+                        if($nombreCancer && $indiqueCancer && $parentescoCancer ){
+                            array_push($datos,$_POST["cancer"]);
+                        }else{
+                            echo "hay un datos erroenao<br>";
+                        }
+                    }
+                    if(isset($_POST["otros"]) && !empty($_POST["otros"][0])){
+                        $nombreOtros = (Validacion::pregmatchletras($_POST["otros"][0]) == '0') ? false : true ;
+                        $indiqueOtros = (Validacion::pregmatchletras($_POST["otros"][1]) == '0') ? false : true ;
+                        $parentescOtros = (Validacion::pregmatchletras($_POST["otros"][2]) == '0') ? false : true ;
+                        if($nombreOtros  && $indiqueOtros && $parentescOtros ){
+                            array_push($datos,$_POST["otros"]);
+                        }else{
+                            echo "hay un datos erroenao<br>";
+                        }
+                    }
+                    if(isset($_POST["ninguno"]) && $_POST["ninguno"][0] != '0'){
+                        $nombreNinguno = (Validacion::pregmatchletras($_POST["ninguno"][0]) == '0') ? false : true ;
+                        $indiqueNinguno = (Validacion::validarNumero($_POST["ninguno"][1]) == '-1') ? false : true ;
+                        $parentescNinguno = (Validacion::validarNumero($_POST["ninguno"][2]) == '-1') ? false : true ;
+                        if($nombreNinguno  && $indiqueNinguno && $parentescNinguno ){
+                            array_push($datos,$_POST["ninguno"]);
+                        }else{
+                            echo "hay un datos erroenao<br>";
+                        }
+                    }
+                    $enfermedad = new Usuario();
+                    $enfermedad->setTabla('enfermedadfamiliar');
+                    $enfermedad->setIdPaciente($_POST["idPaciente"]);
+                    $enfermedad->setSelect($datos);
+                    $insertEnf = $enfermedad->insertEnfermedad();
+                    if($insertEnf){
+                        echo 'ok';
+                        $datos = array();
+                        if(isset($_POST["actualDeabetes"]) && $_POST["actualDeabetes"][0] != '0'){
+                            $nombreActualDeabetes = (Validacion::pregmatchletras($_POST["actualDeabetes"][0]) == '0') ? false : true;
+                            $indiqueActualDeabetes = (Validacion::validarNumero($_POST["actualDeabetes"][1]) == '-1') ? false :  true;
+                            $parentescoActualDeabetes = (Validacion::pregmatchletras($_POST["actualDeabetes"][2]) == '0') ? false : true ;
+                            if($nombreActualDeabetes && $indiqueActualDeabetes  && $parentescoActualDeabetes ){
+                                array_push($datos,$_POST["actualDeabetes"]);
+                            }else{
+                                echo "hay un datos erroenao<br>";
+                            }
+                        }
+                        if(isset($_POST["actualHipertension"]) && $_POST["actualHipertension"][0] != '0'){
+                            $nombreActualHipertension = (Validacion::pregmatchletras($_POST["actualHipertension"][0]) == '0') ? false : true ;
+                            $indiqueActualHipertension = (Validacion::validarNumero($_POST["actualHipertension"][1]) == '-1') ? false : true ;
+                            $parentescoActualHipertension = (Validacion::pregmatchletras($_POST["actualHipertension"][2]) == '0') ? false : true ;
+                            
+                            if($nombreActualHipertension && $indiqueActualHipertension && $parentescoActualHipertension){
+                                array_push($datos,$_POST["actualHipertension"]);
+                            }else{
+                                echo "hay un datos erroenao<br>";
+                            }
+                        }
+                        if(isset($_POST["actualCancer"]) && $_POST["actualCancer"][0] != '0'){
+                            $nombreActualCancer = (Validacion::pregmatchletras($_POST["actualCancer"][0]) == '0') ? false :true ;
+                            $indiqueActualCancer = (Validacion::validarNumero($_POST["actualCancer"][1]) == '-1') ? false : true ;
+                            $parentescoActualCancer = (Validacion::pregmatchletras($_POST["actualCancer"][2]) == '0') ? false :true ;
+                            if($nombreActualCancer && $indiqueActualCancer && $parentescoActualCancer ){
+                                array_push($datos,$_POST["actualCancer"]);
+                            }else{
+                                echo "hay un datos erroenao<br>";
+                            }
+                        }
+                        if(isset($_POST["actualOtro"]) && !empty($_POST["actualOtro"][0])){
+                            $nombreActualOtros = (Validacion::pregmatchletras($_POST["actualOtro"][0]) == '0') ? false : true ;
+                            $indiqueActualOtros = (Validacion::pregmatchletras($_POST["actualOtro"][1]) == '0') ? false : true ;
+                            $parentescActualOtros = (Validacion::pregmatchletras($_POST["actualOtro"][2]) == '0') ? false : true ;
+                            if($nombreActualOtros  && $indiqueActualOtros && $parentescActualOtros ){
+                                array_push($datos,$_POST["actualOtro"]);
+                            }else{
+                                echo "hay un datos erroenao<br>";
+                            }
+                        }
+                        if(isset($_POST["actualNinguno"]) && $_POST["actualNinguno"][0] != '0'){
+                            $nombreActualNinguno = (Validacion::pregmatchletras($_POST["actualNinguno"][0]) == '0') ? false : true ;
+                            $indiqueActualNinguno = (Validacion::validarNumero($_POST["actualNinguno"][1]) == '-1') ? false : true ;
+                            $parentescActualNinguno = (Validacion::validarNumero($_POST["actualNinguno"][2]) == '-1') ? false : true ;
+                            if($nombreActualNinguno  && $indiqueActualNinguno && $parentescActualNinguno ){
+                                array_push($datos,$_POST["actualNinguno"]);
+                            }else{
+                                echo "hay un datos erroenao<br>";
+                            }
+                        }
+                        $actual = new Usuario();
+                        $actual->setTabla('antecedentespatologicos');
+                        $actual->setIdPaciente($_POST["idPaciente"]);
+                        $actual->setSelect($datos);
+                        $insertActual = $actual->insertEnfermedad();
+                        if($insertActual){
+                            echo 'ok';
+                        }else{
+                            echo 'nop';
+                        }
+                    }else{
+                        echo 'nop';
+                    }
                 }else{
                     $_SESSION['formulario'] = array(
                         "error"=> 'Lo sentimos hubo un error en la insercción, reporta este error',
@@ -100,26 +223,68 @@ class PacienteController{
     }
 
     public function saveArray(){
-        $ver = "";
-        echo "<pre>";
         $datos = array();
-        if(isset($_POST["deabetes"])){
-            array_push($datos,$_POST["deabetes"]);
+        if(isset($_POST["deabetes"]) && $_POST["deabetes"][0] != '0'){
+            $nombreDeabetes = (Validacion::pregmatchletras($_POST["deabetes"][0]) == '0') ? false : true;
+            $indiqueDeabetes = (Validacion::validarNumero($_POST["deabetes"][1]) == '-1') ? false :  true;
+            $parentescoDeabetes = (Validacion::pregmatchletras($_POST["deabetes"][2]) == '0') ? false : true ;
+            if($nombreDeabetes && $indiqueDeabetes  && $parentescoDeabetes ){
+                array_push($datos,$_POST["deabetes"]);
+            }else{
+                echo "hay un datos erroenao<br>";
+            }
         }
-        if(isset($_POST["hipertension"])){
-            array_push($datos,$_POST["hipertension"]);
+        if(isset($_POST["hipertension"]) && $_POST["hipertension"][0] != '0'){
+            $nombreHipertension = (Validacion::pregmatchletras($_POST["hipertension"][0]) == '0') ? false : true ;
+            $indiqueHipertension = (Validacion::validarNumero($_POST["hipertension"][1]) == '-1') ? false : true ;
+            $parentescoHipertension = (Validacion::pregmatchletras($_POST["hipertension"][2]) == '0') ? false : true ;
+            
+            if($nombreHipertension && $indiqueHipertension && $parentescoHipertension){
+                array_push($datos,$_POST["hipertension"]);
+            }else{
+                echo "hay un datos erroenao<br>";
+            }
         }
-        if(isset($_POST["cancer"])){
-            array_push($datos,$_POST["cancer"]);
+        if(isset($_POST["cancer"]) && $_POST["cancer"][0] != '0'){
+            $nombreCancer = (Validacion::pregmatchletras($_POST["cancer"][0]) == '0') ? false :true ;
+            $indiqueCancer = (Validacion::validarNumero($_POST["cancer"][1]) == '-1') ? false : true ;
+            $parentescoCancer = (Validacion::pregmatchletras($_POST["cancer"][2]) == '0') ? false :true ;
+            if($nombreCancer && $indiqueCancer && $parentescoCancer ){
+                array_push($datos,$_POST["cancer"]);
+            }else{
+                echo "hay un datos erroenao<br>";
+            }
         }
-        if(isset($_POST["otros"])){
-            array_push($datos,$_POST["otros"]);
+        if(isset($_POST["otros"]) && !empty($_POST["otros"][0])){
+            $nombreOtros = (Validacion::pregmatchletras($_POST["otros"][0]) == '0') ? false : true ;
+            $indiqueOtros = (Validacion::pregmatchletras($_POST["otros"][1]) == '0') ? false : true ;
+            $parentescOtros = (Validacion::pregmatchletras($_POST["otros"][2]) == '0') ? false : true ;
+            if($nombreOtros  && $indiqueOtros && $parentescOtros ){
+                array_push($datos,$_POST["otros"]);
+            }else{
+                echo "hay un datos erroenao<br>";
+            }
         }
-        foreach($datos as $nfermedad){
-            echo 'insert into tabla values("012020070002",'.$nfermedad[0].','.$nfermedad[1].','.$nfermedad[2].');<br>';
-            echo '///////////////////////////////////////////////////////////////////////////////////////<br>';
+        if(isset($_POST["ninguno"]) && $_POST["ninguno"][0] != '0'){
+            $nombreNinguno = (Validacion::pregmatchletras($_POST["ninguno"][0]) == '0') ? false : true ;
+            $indiqueNinguno = (Validacion::validarNumero($_POST["ninguno"][1]) == '-1') ? false : true ;
+            $parentescNinguno = (Validacion::validarNumero($_POST["ninguno"][2]) == '-1') ? false : true ;
+            if($nombreNinguno  && $indiqueNinguno && $parentescNinguno ){
+                array_push($datos,$_POST["ninguno"]);
+            }else{
+                echo "hay un datos erroenao<br>";
+            }
         }
-        var_dump($_POST);
+        $enfermedad = new Usuario();
+        $enfermedad->setTabla('enfermedadfamiliar');
+        $enfermedad->setIdPaciente($_POST["idPaciente"]);
+        $enfermedad->setSelect($datos);
+        $insertEnf = $enfermedad->insertEnfermedad();
+        if($insertEnf){
+            echo 'ok';
+        }else{
+            echo 'nop';
+        }
     }
 
     public function getMunicipio($id){
