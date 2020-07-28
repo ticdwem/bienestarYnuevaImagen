@@ -30,8 +30,29 @@ class Usuario extends ModeloBase{
     private $select;
     private $inputNombreMedicamento;
 
+    private $tabla;
+
     public function __construct() {
         parent::__construct();
+    }
+        /**
+     * Get the value of tabla
+     */ 
+    public function getTabla()
+    {
+        return $this->tabla;
+    }
+
+    /**
+     * Set the value of tabla
+     *
+     * @return  self
+     */ 
+    public function setTabla($tabla)
+    {
+        $this->tabla = $tabla;
+
+        return $this;
     }
     
     /**
@@ -564,4 +585,18 @@ class Usuario extends ModeloBase{
         return $result;
     }
 
+    public function insertEnfermedad(){
+        $result = false;
+        foreach($this->getSelect() as $valor){
+            $insertEnfermedad = "INSERT INTO {$this->getTabla()}
+            VALUES (null,'{$this->getIdPaciente()}', '{$valor[0]}', '{$valor[2]}', '{$valor[1]}')";
+            $guardar = $this->db->query($insertEnfermedad);
+
+            if($guardar){
+                $result = true;
+            }
+
+        }
+        return $result;
+    }
 }
