@@ -6,7 +6,7 @@
 class Validacion
 {
 	
-	public function pregmatchletras($valor1){
+	public static function pregmatchletras($valor1){
 
 		$vacio = self::emptySpace($valor1);
 		if($vacio != 1 && preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚäëïöüÄËÏÖÜàèìòùÀÈÌÒÙñÑ\s\']+$/", $valor1)){
@@ -25,12 +25,22 @@ class Validacion
 		}
 	}
 
-	public function validarSelect($selectFrom)
+	public static function validarSelect($selectFrom)
 	{
 		if ($selectFrom == "") {
 			return -1;
 		}else{
 			return $selectFrom;
+		}
+	}
+
+	public static function validarLArgo($texto,$valorLArgo)
+	{
+		$largo = strlen($texto);
+		if ($largo == $valorLArgo) {
+			return $texto;
+		}else{
+			return -1;
 		}
 	}
 
@@ -44,7 +54,7 @@ class Validacion
 		
 	}
 
-	public function emptySpace($space)
+	public static function emptySpace($space)
 	{
 
 		if(!preg_match("/^\s*$/", $space)){
@@ -55,7 +65,7 @@ class Validacion
 
 	}
 
-	public function valFecha($date)
+	public static function valFecha($date)
 	{
 		$date;
 		if($date != "")
@@ -63,7 +73,10 @@ class Validacion
 			$fecha = explode("-", $date);
 
 			if (preg_match("/^[0-9]{4}+$/", $fecha[0])) {
-				if(checkdate($fecha[1], $fecha[2], $fecha[0])){
+				$fecha1 = (self::validarNumero($fecha[1]) == '-1') ? false : $fecha[1] ;
+				$fecha2 = (self::validarNumero($fecha[0]) == '-1') ? false : $fecha[0] ;
+				$fecha3 = (self::validarNumero($fecha[2]) == '-1') ? false : $fecha[2] ;
+				if(checkdate($fecha1, $fecha3, $fecha2)){
 					$checkday = self::addZeroDate($fecha[2]);
 					$checkMonth = self::addZeroDate($fecha[1]);
 					
@@ -73,7 +86,10 @@ class Validacion
 				return 0;
 				}
 			}elseif(preg_match("/^[0-9]{2}+$/", $fecha[0])){
-				if(checkdate($fecha[1], $fecha[0], $fecha[2])){
+				$fecha1 = (self::validarNumero($fecha[1]) == '-1') ? false : $fecha[1] ;
+				$fecha2 = (self::validarNumero($fecha[0]) == '-1') ? false : $fecha[0] ;
+				$fecha3 = (self::validarNumero($fecha[2]) == '-1') ? false : $fecha[2] ;
+				if(checkdate($fecha1, $fecha2, $fecha3)){
 					$checkday = self::addZeroDate($fecha[0]);
 					$checkMonth = self::addZeroDate($fecha[1]);
 					
@@ -85,6 +101,9 @@ class Validacion
 				}			
 				
 			}elseif(preg_match("/^[0-9]{1}+$/", $fecha[0])){
+				$fecha1 = (self::validarNumero($fecha[1]) == '-1') ? false : $fecha[1] ;
+				$fecha2 = (self::validarNumero($fecha[0]) == '-1') ? false : $fecha[0] ;
+				$fecha3 = (self::validarNumero($fecha[2]) == '-1') ? false : $fecha[2] ;
 				if(checkdate($fecha[1], $fecha[0], $fecha[2])){
 					$checkday = self::addZeroDate($fecha[0]);
 					$checkMonth = self::addZeroDate($fecha[1]);
@@ -102,7 +121,7 @@ class Validacion
 			return 1;
 		}
 	}
-	public function addZeroDate($dayOrMonth){
+	public static function addZeroDate($dayOrMonth){
 		$count = strlen($dayOrMonth);
 		$correct = 0;
 		if($count == 1){
@@ -112,11 +131,11 @@ class Validacion
 		}
 		return $correct;
 	}
-	public function validarTelefono($telefono)
+	public static function validarTelefono($telefono)
 	{
 		$phoneNumber = "/^[0-9-()+]{3,20}/";
 
-		if(preg_match($phoneNumber, $telefono)||$telefono=="SIN DATO"){
+		if(preg_match('/^[0-9]{3,20}$/', $telefono)||$telefono=="SIN DATO"){
 			return $telefono;
 		}else{
 			return 0;
@@ -197,7 +216,7 @@ class Validacion
 		}
 	}
 
-	public function validarNumIntYNumExt($numero){
+	public function numerico($numero){
 		if(!preg_match("/^\s*$/", $numero || $numero != "")){
 			return $numero;
 		}else{
@@ -206,7 +225,7 @@ class Validacion
 	}
 
 	public static function validarNumero($numeros){
-		if(preg_match("/^[[:digit:]]+$/", $numeros)){
+		if(is_numeric($numeros)){
 			return $numeros;
 		}else{
 			return -1;
@@ -223,5 +242,7 @@ class Validacion
 		}
 		return $textoCortado;
 	}
+
+	
 }
  ?>
