@@ -99,6 +99,29 @@ class PacienteController{
         }
     }
 
+    public function saveArray(){
+        $ver = "";
+        echo "<pre>";
+        $datos = array();
+        if(isset($_POST["deabetes"])){
+            array_push($datos,$_POST["deabetes"]);
+        }
+        if(isset($_POST["hipertension"])){
+            array_push($datos,$_POST["hipertension"]);
+        }
+        if(isset($_POST["cancer"])){
+            array_push($datos,$_POST["cancer"]);
+        }
+        if(isset($_POST["otros"])){
+            array_push($datos,$_POST["otros"]);
+        }
+        foreach($datos as $nfermedad){
+            echo 'insert into tabla values("012020070002",'.$nfermedad[0].','.$nfermedad[1].','.$nfermedad[2].');<br>';
+            echo '///////////////////////////////////////////////////////////////////////////////////////<br>';
+        }
+        var_dump($_POST);
+    }
+
     public function getMunicipio($id){
         $idMun = Validacion::validarNumero($id);
 
