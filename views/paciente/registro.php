@@ -6,7 +6,7 @@
 				<h2 class="font-weight-light"><p>Hoja Clinica</p></h2> 
 			</figcaption> 
 		</figure>
-		<?php $sesion = "";
+		<?php $sesion = ""; 
 		 if(isset($_SESSION['formulario'])){$sesion = $_SESSION['formulario']['datos'];} ?>
 		<div class="texcto">	
 			<p class="lead">ESTE FORMATO DEBE SER LLENADO POR EL PACIENTE</p>
@@ -14,12 +14,8 @@
 			<?php if(isset($_SESSION['statusSave'])) echo '<p class="alert alert-success error" role="alert">'.$_SESSION['statusSave']."</p>";?>
 		</div>
 		<div style="height: auto">
-<<<<<<< HEAD
-			<!-- <form action="[base_url]Paciente/save" method="POST"> -->	
-			<form action="<?=base_url?>Paciente/saveArray" method="POST">	
-=======
-			<form id="basic-form" action="<?=base_url?>Paciente/save" method="POST" >	
->>>>>>> e3a0fcc37dfcfe045f680ee9dbca8b4b3338fc0b
+			<form action="<?=base_url?>Paciente/save" method="POST">	
+			<!-- <form action="<?=base_url?>Paciente/saveArray" method="POST"> -->	
 				<div class="idPaciente">
 				<input type="text" class="form-control" id="idPaciente" value="012020070002" readonly="true" name="idPaciente">	
 				</div>	
@@ -28,15 +24,15 @@
 				<div class="form-row">
 					<div class="form-group col-md-4">
 						<label for="intputname">Nombre</label>
-						<input type="text" class="form-control" id="intputname" name="intputname" value="<?php if($sesion != "") echo $sesion["nombre"];?>">
+						<input type="text" class="form-control" id="intputname" name="intputname" value="<?php if($sesion != "") echo $sesion["Nombre"];?>">
 					</div>
 					<div class="form-group col-md-4">
 						<label for="inputAppat">Apellido Paterno</label>
-						<input type="text" class="form-control" id="inputAppat" name="inputAppat" value="<?php  if($sesion != "") echo $sesion["apellido_paterno"];?>">
+						<input type="text" class="form-control" id="inputAppat" name="inputAppat" value="<?php  if($sesion != "") echo $sesion["Apellido_Pat"];?>">
 					</div>
 					<div class="form-group col-md-4">
 						<label for="inputApmat">Apellido Materno</label>
-						<input type="text" class="form-control" id="inputApmat" name="inputApmat" value="<?php  if($sesion != "") echo $sesion["apellido_materno"];?>">
+						<input type="text" class="form-control" id="inputApmat" name="inputApmat" value="<?php  if($sesion != "") echo $sesion["Apellido_Mat"];?>">
 					</div>
 				</div>
 				<div class="form-row ">
@@ -70,7 +66,7 @@
 					</div>
 					<div class="form-group col-md-4">
 						<label for="inpuOcupacion">Ocupacion</label>
-						<input type="text" class="form-control" id="inpuOcupacion" name="inpuOcupacion" value="<?php  if($sesion != "") echo $sesion["Ocupacion"];?>">
+						<input type="text" class="form-control" id="inpuOcupacion" name="inpuOcupacion" value="<?php  if($sesion != "") echo $sesion["ocupacion"];?>">
 					</div>
 					<div class="form-group col-md-4">
 						<label for="inpuEstadoCivil">Estado Civil</label>
@@ -90,16 +86,16 @@
 				<div class="form-row ">
 					<div class="form-group col-md-4">
 						<label for="inpuCelular">Celular</label>
-						<input type="text" class="form-control" id="inpuCelular" name="inpuCelular" value="<?php  if($sesion != "") echo $sesion["Celular"];?>">
+						<input type="text" class="form-control" id="inpuCelular" name="inpuCelular" value="<?php  if($sesion != "") echo $sesion["celular"];?>">
 					</div>
 					<div class="form-group col-md-4">
 						<label for="inpuCorreo">Correo</label>
-						<input type="text" class="form-control" id="inpuCorreo" name="inpuCorreo" value="<?php  if($sesion != "") echo $sesion["Correo"];?>">
+						<input type="text" class="form-control" id="inpuCorreo" name="inpuCorreo" value="<?php  if($sesion != "") echo $sesion["correo"];?>">
 						<div id="error" class=""></div>
 					</div>
 					<div class="form-group col-md-4">
 						<label for="inpuRedSocial">Red Social</label>
-						<input type="text" class="form-control" id="inpuRedSocial" name="inpuRedSocial" value="<?php  if($sesion != "") echo $sesion["RedSocial"];?>">
+						<input type="text" class="form-control" id="inpuRedSocial" name="inpuRedSocial" value="<?php  if($sesion != "") echo $sesion["red_social"];?>">
 					</div>
 				</div>
 				<div class="page-header"><small>DATOS DOMICILIO</small></div>
@@ -120,21 +116,21 @@
 					</div>
 					<div class="form-group col-md-4">
 						<label for="inpuCP">CP.</label>
-						<input type="text" class="form-control" id="inpuCP" name="inpuCP" value="<?php  if($sesion != "") echo $sesion["CP"];?>">
+						<input type="text" class="form-control" id="inpuCP" name="inpuCP" value="<?php  if($sesion != "") echo $sesion["codigo_postal"];?>">
 					</div>
 				</div>
 				<div class="form-row">
 					<div class="form-group col-md-4">
 						<label for="inpuColonia">Colonia</label>
-						<input type="text" class="form-control" id="inpuColonia" name="inpuColonia" value="<?php  if($sesion != "") echo $sesion["Colonia"];?>">
+						<input type="text" class="form-control" id="inpuColonia" name="inpuColonia" value="<?php  if($sesion != "") echo $sesion["colonia"];?>">
 					</div>
 					<div class="form-group col-md-4">
 						<label for="inpuCalle">Calle</label>
-						<input type="text" class="form-control" id="inpuCalle" name="inpuCalle" value="<?php  if($sesion != "") echo $sesion["Calle"];?>">
+						<input type="text" class="form-control" id="inpuCalle" name="inpuCalle" value="<?php  if($sesion != "") echo $sesion["calle"];?>">
 					</div>
 					<div class="form-group col-md-4">
 						<label for="inpuNumCasa">Num Casa</label>
-						<input type="text" class="form-control" id="inpuNumCasa" name="inpuNumCasa" value="<?php  if($sesion != "") echo $sesion["NumCasa"];?>">
+						<input type="text" class="form-control" id="inpuNumCasa" name="inpuNumCasa" value="<?php  if($sesion != "") echo $sesion["numero_casa"];?>">
 					</div>
 				</div>
 				<div class="page-header"><small>DATOS EMERGENCIA</small></div>
@@ -142,11 +138,11 @@
 				<div class="form-row" >
 					<div class="form-group col-md-4">
 						<label for="inpuTelEmergencia">Tel. Emergencia</label>
-						<input type="text" class="form-control" id="inpuTelEmergencia" name="inpuTelEmergencia" value="<?php  if($sesion != "") echo $sesion["Tel_Emergencia"];?>">
+						<input type="text" class="form-control" id="inpuTelEmergencia" name="inpuTelEmergencia" value="<?php  if($sesion != "") echo $sesion["tetefono_emergencia"];?>">
 					</div>
 					<div class="form-group col-md-4">
 						<label for="inpuParentesco">Parentesco</label>
-						<input type="text" class="form-control" id="inpuParentesco" name="inpuParentesco" value="<?php  if($sesion != "") echo $sesion["Parentesco"];?>">
+						<input type="text" class="form-control" id="inpuParentesco" name="inpuParentesco" value="<?php  if($sesion != "") echo $sesion["parentesco"];?>">
 					</div>
 				</div>
 				<div class="page-header"><small>DATOS EXTRA</small></div>
@@ -154,11 +150,11 @@
 				<div class="form-row ">
 					<div class="form-group col-md-4">
 						<label for="inpuTelNombreRecomienda">Nombre Recomienda</label>
-						<input type="text" class="form-control" id="inpuNombreRecomienda" name="inpuNombreRecomienda" value="<?php  if($sesion != "") echo $sesion["iNombre_Recomienda"];?>">
+						<input type="text" class="form-control" id="inpuNombreRecomienda" name="inpuNombreRecomienda" value="<?php  if($sesion != "") echo $sesion["nombre_Recomienda"];?>">
 					</div>
 					<div class="form-group col-md-8">
 						<label for="inpuMotivo">Motivo</label>
-						<input type="text" class="form-control" id="inpuMotivo" name="inpuMotivo" value="<?php  if($sesion != "") echo $sesion["Motivo"];?>">
+						<input type="text" class="form-control" id="inpuMotivo" name="inpuMotivo" value="<?php  if($sesion != "") echo $sesion["motivo"];?>">
 					</div>
 				</div>
 				<div class="page-header"><small>DATOS MEDICACION</small></div>
@@ -178,7 +174,7 @@
 					</div>
 				</div>
 <!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
-				<div class="page-header titulo_padecimiento"><small>FAMILIARES QUE PADESCAN O HAYAN PADECIDO:</small></div>
+<!-- 				<div class="page-header titulo_padecimiento"><small>FAMILIARES QUE PADESCAN O HAYAN PADECIDO:</small></div>
 				<hr>
 				<div class="form-row col-md-12" id="parentesco">
 					<div class="form-row col-md-12">
@@ -254,7 +250,7 @@
 							
 						</div>
 					</div>
-				</div>
+				</div> -->
 <!-- ::::::::::::::::::::::::::::::::::::::::padecimientos actuales:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
 				<!-- <div class="page-header titulo_padecimiento"><small>PADECIMIENTOS ACTUALES:</small></div>
 				<hr>
