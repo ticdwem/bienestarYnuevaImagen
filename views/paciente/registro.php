@@ -14,8 +14,8 @@
 			<?php if(isset($_SESSION['statusSave'])) echo '<p class="alert alert-success error" role="alert">'.$_SESSION['statusSave']."</p>";?>
 		</div>
 		<div style="height: auto">
-			<form action="<?=base_url?>Paciente/save" method="POST">	
-			<!-- <form action="<?=base_url?>Paciente/saveArray" method="POST"> -->	
+			<!-- <form action="<?=base_url?>Paciente/save" method="POST">	 -->
+			<form action="<?=base_url?>Paciente/saveArray" method="POST">	
 				<div class="idPaciente">
 				<input type="text" class="form-control" id="idPaciente" value="012020070002" readonly="true" name="idPaciente">	
 				</div>	
@@ -174,26 +174,27 @@
 					</div>
 				</div>
 <!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
-<!-- 				<div class="page-header titulo_padecimiento"><small>FAMILIARES QUE PADESCAN O HAYAN PADECIDO:</small></div>
+				<div class="page-header titulo_padecimiento"><small>FAMILIARES QUE PADESCAN O HAYAN PADECIDO:</small></div>
 				<hr>
 				<div class="form-row col-md-12" id="parentesco">
 					<div class="form-row col-md-12">
 						<div class="form-group form-check  col-md-6">
-							<input class="form-check-input parentesco" type="checkbox" value="DIABETES" id="checkDeabetes" name="enfermedad[]">
+							<input class="form-check-input parentesco" type="checkbox" value="DIABETES" id="checkDeabetes" name="deabetes[]">
 			                    <label class="form-check-label" for="checkDeabetes">
 			                        DIABETES
 			                    </label>
 						</div>
+						<input type="hidden" class="form-control"  name="deabetes[]" aria-label="Small" value="0">
 						<div class="form-group input-group input-group-sm col-md-6">
 							<div class="input-group-prepend">
 			                      <span class="input-group-text" id="inputGroup-sizing-sm">PARENTESCO</span>
 			                  </div>
-			                  <input type="text" class="form-control" id="checkDeabetesParentesco" name="parentescoDiabetes" aria-label="Small" aria-describedby="inputGroup-sizing-sm" disabled>
+			                  <input type="text" class="form-control" id="checkDeabetesParentesco" name="deabetes[]" aria-label="Small" aria-describedby="inputGroup-sizing-sm" disabled>
 						</div>
 					</div> 
 					<div class="form-row col-md-12">
 						<div class="form-group form-check col-md-6">
-							<input class="form-check-input parentesco" type="checkbox" value="HIPERTENSIÓN" id="checkHipertension" name="enfermedad[]">
+							<input class="form-check-input parentesco" type="checkbox" value="HIPERTENSIÓN" id="checkHipertension" name="hipertension[]">
 			                    <label class="form-check-label" for="checkHipertension">
 			                        HIPERTENSIÓN
 			                    </label>
@@ -202,12 +203,13 @@
 							<div class="input-group-prepend">
 			                      <span class="input-group-text" id="inputGroup-sizing-sm">PARENTESCO</span>
 			                  </div>
-			                  <input type="text" class="form-control" id="checkHipertensionParentesco" name="parentescoHipertension" aria-label="Small" aria-describedby="inputGroup-sizing-sm" disabled>
+			                  <input type="hidden" class="form-control"  name="hipertension[]" aria-label="Small"  value = "0">
+			                  <input type="text" class="form-control" id="checkHipertensionParentesco" name="hipertension[]" aria-label="Small" aria-describedby="inputGroup-sizing-sm" disabled>
 						</div>
 					</div> 
 					<div class="form-row col-md-12">
 						<div class="form-group form-check col-md-6">
-							<input class="form-check-input parentesco" type="checkbox" value="CÁNCER" id="checkCancer" name="enfermedad[]">
+							<input class="form-check-input parentesco" type="checkbox" value="CÁNCER" id="checkCancer" name="cancer[]">
 			                    <label class="form-check-label" for="checkCancer">
 			                        CÁNCER
 			                    </label>
@@ -216,12 +218,13 @@
 							<div class="input-group-prepend">
 			                      <span class="input-group-text" id="inputGroup-sizing-sm">PARENTESCO</span>
 			                  </div>
-			                  <input type="text" class="form-control" id="checkCancerParntesco" name="parntescoCancer" aria-label="Small" aria-describedby="inputGroup-sizing-sm" disabled>
+			                  <input type="hidden" class="form-control"  name="cancer[]" aria-label="Small"  value = "0">
+			                  <input type="text" class="form-control" id="checkCancerParntesco" name="cancer[]" aria-label="Small" aria-describedby="inputGroup-sizing-sm" disabled>
 						</div>
 					</div> 
 					<div class="form-row col-md-12">
 						<div class="form-group form-check  col-md-2">
-							<input class="form-check-input parentesco" type="checkbox" value="OTROS" id="checkOtrosFamilia" name="enfermedad[]">
+							<input class="form-check-input parentesco" type="checkbox" value="OTROS" id="checkOtrosFamilia" name="otros[]">
 			                    <label class="form-check-label" for="checkOtrosFamilia">
 			                        OTROS
 			                    </label>
@@ -230,18 +233,18 @@
 								<div class="input-group-prepend hide">
 				                    <span class="input-group-text" id="inputGroup-sizing-sm">INDIQUE</span>
 				                </div>
-				                <input type="text" class="form-control hide" name="indiqueEnfermedadOtro" aria-label="Small" aria-describedby="inputGroup-sizing-sm">       
+				                <input type="text" class="form-control hide" name="otros[]" aria-label="Small" aria-describedby="inputGroup-sizing-sm">       
 			             </div>
 						<div class="form-group input-group input-group-sm col-md-6">
 							<div class="input-group-prepend">
 			                      <span class="input-group-text" id="inputGroup-sizing-sm">PARENTESCO</span>
 			                  </div>
-			                  <input type="text" class="form-control otroIndique" aria-label="Small" name="parentescoOtro" aria-describedby="inputGroup-sizing-sm" disabled>
+			                  <input type="text" class="form-control otroIndique" aria-label="Small" name="otros[]" aria-describedby="inputGroup-sizing-sm" disabled>
 						</div>
 					</div> 
 					<div class="form-row col-md-12">
 						<div class="form-group form-check  col-md-6">
-							<input class="form-check-input" type="checkbox" value="NINGUNO" id="checkNinguno" name="enfermedad[]">
+							<input class="form-check-input" type="checkbox" value="NINGUNO" id="checkNinguno" name="ninguno">
 			                    <label class="form-check-label" for="checkNinguno">
 			                        NINGUNO
 			                    </label>
@@ -250,7 +253,7 @@
 							
 						</div>
 					</div>
-				</div> -->
+				</div>
 <!-- ::::::::::::::::::::::::::::::::::::::::padecimientos actuales:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
 				<!-- <div class="page-header titulo_padecimiento"><small>PADECIMIENTOS ACTUALES:</small></div>
 				<hr>
