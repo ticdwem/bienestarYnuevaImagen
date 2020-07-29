@@ -14,7 +14,7 @@
 			<?php if(isset($_SESSION['statusSave'])) echo '<p class="alert alert-success error" role="alert">'.$_SESSION['statusSave']."</p>";?>
 		</div>
 		<div style="height: auto">
-			<form action="<?=base_url?>Paciente/save" method="POST">
+			<form id="registro" action="<?=base_url?>Paciente/save" method="POST">
 			 <!-- <form action="<?=base_url?>Paciente/saveArray" method="POST"> 	--> 
 				<div class="idPaciente">
 				<input type="text" class="form-control" id="idPaciente" value="012020070011" readonly="true" name="idPaciente">	
@@ -445,7 +445,7 @@
 					<input type="text" class="form-control anteriorMedicamento" name="namcidosTermino" id="inputNacidosTermino" disabled>
 				</div>
 				<!-- <button class="btn btn-primary" type="submit">Submit form</button> -->
-				<input type="submit" values="enviar" name="enviar">
+				<input type="submit" id="btn-env" values="enviar" name="enviar">
 			</form>
 		</div>
 	</div>
