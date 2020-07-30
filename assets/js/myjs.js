@@ -116,7 +116,7 @@ $(document).ready(function(){
 			}
 		}
 	})
-/*:::::::::::::::::::::::::::::::::::::::::::::::validar el correo que sea unico::::::::::::::::::::::::::::::::::::::::::::::::::::*/
+/*:::::::::::::::::::::::::::::::::::::::::::::::validar el enfermedades::::::::::::::::::::::::::::::::::::::::::::::::::::*/
 	$("#checkDeabetes").on('change',function(){
 		if($(this).is(':checked')){
 			$("#checkDeabetesParentesco").removeAttr('disabled');
