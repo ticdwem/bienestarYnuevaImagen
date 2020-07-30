@@ -14,8 +14,8 @@
 			<?php if(isset($_SESSION['statusSave'])) echo '<p class="alert alert-success error" role="alert">'.$_SESSION['statusSave']."</p>";?>
 		</div>
 		<div style="height: auto">
-			<form action="<?=base_url?>Paciente/save" method="POST">
-			 <!-- <form action="<?=base_url?>Paciente/saveArray" method="POST"> 	  -->
+			<form id="registro" action="<?=base_url?>Paciente/save" method="POST">
+			 <!-- <form action="<?=base_url?>Paciente/saveArray" method="POST"> 	--> 
 				<div class="idPaciente">
 				<input type="text" class="form-control" id="idPaciente" value="012020070013" readonly="true" name="idPaciente">	
 				</div>	
@@ -444,7 +444,8 @@
 					<label for="medicamentoAnterior">¿Que medicamentos consumio durante el tratamiento de control de peso anterior?</label>
 					<input type="text" class="form-control anteriorMedicamento" name="medicamentoAnterior" id="medicamentoAnterior" placeholder="si es mas de un medicamento separalo por una coma (,)" disabled>
 				</div>
-				<input type="submit" values="enviar" name="enviar">
+				<!-- <button class="btn btn-primary" type="submit">Submit form</button> -->
+				<input type="submit" id="btn-env" values="enviar" name="enviar">
 			</form>
 		</div>
 	</div>
