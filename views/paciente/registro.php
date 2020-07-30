@@ -15,9 +15,9 @@
 		</div>
 		<div style="height: auto">
 			<form action="<?=base_url?>Paciente/save" method="POST">
-			 <!-- <form action="<?=base_url?>Paciente/saveArray" method="POST"> 	--> 
+			 <!-- <form action="<?=base_url?>Paciente/saveArray" method="POST"> 	  -->
 				<div class="idPaciente">
-				<input type="text" class="form-control" id="idPaciente" value="012020070011" readonly="true" name="idPaciente">	
+				<input type="text" class="form-control" id="idPaciente" value="012020070013" readonly="true" name="idPaciente">	
 				</div>	
 			<div class="page-header"><small>DATOS PERSONALES</small></div>
 			<hr>			
@@ -263,7 +263,7 @@
 				<div class="form-row col-md-12" id="actuales">
 					<div class="form-row col-md-12">
 						<div class="form-group form-check  col-md-6">
-							<input class="form-check-input actual" type="checkbox" value="DIABETES" id="checkDeabetesActual" name="actualDeabetes[]>
+							<input class="form-check-input actual" type="checkbox" value="DIABETES" id="checkDeabetesActual" name="actualDeabetes[]">
 			                <label class="form-check-label" for="checkDeabetesActual">DIABETES</label>
 						</div>
 						<input type="hidden"  name="actualDeabetes[]" value="0">
@@ -320,7 +320,7 @@
 					</div> 
 					<div class="form-row col-md-12">
 						<div class="form-group form-check  col-md-6">
-							<input class="form-check-input" type="checkbox" value="0" id="checkNingunoActual" name="actualNinguno[]">
+							<input class="form-check-input" type="checkbox" value="NINGUNO" id="checkNingunoActual" name="actualNinguno[]">
 							<input type="hidden" class="form-control"  name="actualNinguno[]" aria-label="Small"  value = "0">
 							<input type="hidden" class="form-control"  name="actualNinguno[]" aria-label="Small"  value = "0">
 							<input type="hidden" class="form-control"  name="actualNinguno[]" aria-label="Small"  value = "0">
@@ -335,14 +335,14 @@
 <!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::cirugias::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
 				<div class="page-header titulo_cirugia"><small>¿Le han realizado alguna cirugia actualmente?</small></div>
 					<div>
+				<hr>
 					  <input type="radio" id="siCheck" name="cirugia" value="1">
 					  <label for="siCheck">SI</label>
 					</div>
 					<div>
-					  <input type="radio" id="noCheck" name="cirugia" value="2">
+					  <input type="radio" id="noCheck" name="cirugia" value="2" checked>
 					  <label for="noCheck">NO</label>
 					</div>
-				<hr>
 				<div class="form-row col-md-12" id="cirugias">
 					<div class="form-row col-md-12">
 						<div class="form-group input-group input-group-sm col-md-6">
@@ -351,11 +351,11 @@
 							</div>
 							<input type="text" class="form-control disableoff" aria-label="Small" name="operacionUno[]" aria-describedby="inputGroup-sizing-sm" disabled>
 						</div>
-						<div class="form-group input-group input-group-sm   col-md-6">
+						<div class="form-group input-group input-group-sm col-md-6">
 							<div class="input-group-prepend">
 								<span class="input-group-text" id="inputGroup-sizing-sm">Fecha</span>
 							</div>
-							<input type="text" class="form-control disableoff" aria-label="Small" name="operacionUno[]" aria-describedby="inputGroup-sizing-sm" disabled>
+								<input type="date" class="form-control disableoff" aria-label="Small" name="operacionUno[]" aria-describedby="inputGroup-sizing-sm" disabled>
 						</div>
 					</div>
 					<div class="form-row col-md-12">
@@ -369,7 +369,7 @@
 							<div class="input-group-prepend">
 								<span class="input-group-text " id="inputGroup-sizing-sm">Fecha</span>
 							</div>
-							<input type="text" class="form-control disableoff" aria-label="Small" name="operacionDos[]" aria-describedby="inputGroup-sizing-sm" disabled>
+							<input type="date" class="form-control disableoff" aria-label="Small" name="operacionDos[]" aria-describedby="inputGroup-sizing-sm" disabled>
 						</div>
 					</div>
 					<div class="form-row col-md-12">
@@ -383,7 +383,7 @@
 							<div class="input-group-prepend">
 								<span class="input-group-text " id="inputGroup-sizing-sm">Fecha</span>
 							</div>
-							<input type="text" class="form-control disableoff" aria-label="Small" name="operacionTres[]" aria-describedby="inputGroup-sizing-sm" disabled>
+							<input type="date" class="form-control disableoff" aria-label="Small" name="operacionTres[]" aria-describedby="inputGroup-sizing-sm" disabled>
 						</div>
 					</div>
 				</div>
@@ -404,18 +404,18 @@
 						<input type="number" class="form-control hideOn" name="nacidosPretermino" id="inputNacidosPre">
 					</div>
 					<div class="form-group col-md-3">
-						<label for="inputNacidosPre">Fecha del ultimo parto</label>
-						<input type="date" class="form-control hideOn" name="nacidosPretermino" id="inputNacidosPre">
+						<label for="inputultimoEmbarazo">Fecha del ultimo parto</label>
+						<input type="date" class="form-control hideOn" name="ultimoEmbarazo" id="inputultimoEmbarazo">
 					</div>
 				</div>
 				<div class="form-row col-md-12" id="mujeres">
 					<div class="form-group col-md-4">
-						<label for="unputEmbarazos">Fecha de ultima regla</label>
-						<input type="date" class="form-control hideOn" name="embarazos" id="unputEmbarazos" max="10">
+						<label for="unputregla">Fecha de ultima regla</label>
+						<input type="date" class="form-control hideOn" name="regla" id="unputregla" max="10">
 					</div>
 					<div class="form-group col-md-4">
-						<label for="inputNacidosTermino">Metodo Anticonceptivo actual</label>
-						<input type="text" class="form-control hideOn" name="namcidosTermino" id="inputNacidosTermino">
+						<label for="inputMedotoAnticonceptivo">Metodo Anticonceptivo actual</label>
+						<input type="text" class="form-control hideOn" name="MedotoAnticonceptivo" id="MedotoAnticonceptivo">
 					</div>
 					<div class="form-group col-md-4">
 						
@@ -432,7 +432,7 @@
 						  <label class="custom-control-label" for="customRadioControl">SI</label>
 						</div>
 						<div class="custom-control custom-radio custom-control-inline radio-Sexo">
-						  <input type="radio" id="customRadioControl2" name="radioTratamiento" class="custom-control-input" value="2">
+						  <input type="radio" id="customRadioControl2" name="radioTratamiento" class="custom-control-input" value="2" checked>
 						  <label class="custom-control-label" for="customRadioControl2">NO</label>
 						</div>
 					</div>
@@ -441,10 +441,9 @@
 					</div>
 				</div>
 				<div class="form-row col-md-12" id="anteriorMedicamento">
-					<label for="inputNacidosTermino">¿Que medicamentos consumio durante el tratamiento de control de peso anterior?</label>
-					<input type="text" class="form-control anteriorMedicamento" name="namcidosTermino" id="inputNacidosTermino" disabled>
+					<label for="medicamentoAnterior">¿Que medicamentos consumio durante el tratamiento de control de peso anterior?</label>
+					<input type="text" class="form-control anteriorMedicamento" name="medicamentoAnterior" id="medicamentoAnterior" placeholder="si es mas de un medicamento separalo por una coma (,)" disabled>
 				</div>
-				<!-- <button class="btn btn-primary" type="submit">Submit form</button> -->
 				<input type="submit" values="enviar" name="enviar">
 			</form>
 		</div>
