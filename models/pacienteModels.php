@@ -29,6 +29,14 @@ class Usuario extends ModeloBase{
     private $inpuMotivo;
     private $select;
     private $inputNombreMedicamento;
+    private $cirugia;
+    private $embarazo;
+    private $terminoEmbarazo;
+    private $aborto;
+    private $fechaUltmoEmbarazo;
+    private $periodo;
+    private $anticonceptivo;
+    private $medicamento;
 
     private $tabla;
 
@@ -552,6 +560,168 @@ class Usuario extends ModeloBase{
         return $this;
     }
 
+    
+    /**
+     * Get the value of cirugia
+     */ 
+    public function getCirugia()
+    {
+        return $this->cirugia;
+    }
+
+    /**
+     * Set the value of cirugia
+     *
+     * @return  self
+     */ 
+    public function setCirugia($cirugia)
+    {
+        $this->cirugia = $cirugia;
+
+        return $this;
+    }
+
+      /**
+     * Get the value of anticonceptivo
+     */ 
+    public function getAnticonceptivo()
+    {
+        return $this->anticonceptivo;
+    }
+
+    /**
+     * Set the value of anticonceptivo
+     *
+     * @return  self
+     */ 
+    public function setAnticonceptivo($anticonceptivo)
+    {
+        $this->anticonceptivo = $anticonceptivo;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of embarazo
+     */ 
+    public function getEmbarazo()
+    {
+        return $this->embarazo;
+    }
+
+    /**
+     * Set the value of embarazo
+     *
+     * @return  self
+     */ 
+    public function setEmbarazo($embarazo)
+    {
+        $this->embarazo = $embarazo;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of terminoEmbarazo
+     */ 
+    public function getTerminoEmbarazo()
+    {
+        return $this->terminoEmbarazo;
+    }
+
+    /**
+     * Set the value of terminoEmbarazo
+     *
+     * @return  self
+     */ 
+    public function setTerminoEmbarazo($terminoEmbarazo)
+    {
+        $this->terminoEmbarazo = $terminoEmbarazo;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of aborto
+     */ 
+    public function getAborto()
+    {
+        return $this->aborto;
+    }
+
+    /**
+     * Set the value of aborto
+     *
+     * @return  self
+     */ 
+    public function setAborto($aborto)
+    {
+        $this->aborto = $aborto;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of fechaUltmoEmbarazo
+     */ 
+    public function getFechaUltmoEmbarazo()
+    {
+        return $this->fechaUltmoEmbarazo;
+    }
+
+    /**
+     * Set the value of fechaUltmoEmbarazo
+     *
+     * @return  self
+     */ 
+    public function setFechaUltmoEmbarazo($fechaUltmoEmbarazo)
+    {
+        $this->fechaUltmoEmbarazo = $fechaUltmoEmbarazo;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of periodo
+     */ 
+    public function getPeriodo()
+    {
+        return $this->periodo;
+    }
+
+    /**
+     * Set the value of periodo
+     *
+     * @return  self
+     */ 
+    public function setPeriodo($periodo)
+    {
+        $this->periodo = $periodo;
+
+        return $this;
+    }
+
+        /**
+     * Get the value of medicamento
+     */ 
+    public function getMedicamento()
+    {
+        return $this->medicamento;
+    }
+
+    /**
+     * Set the value of medicamento
+     *
+     * @return  self
+     */ 
+    public function setMedicamento($medicamento)
+    {
+        $this->medicamento = $medicamento;
+
+        return $this;
+    }
+
+
     public function getMunModels(){
     	$consulta = "SELECT mp.id,mp.municipio,es.estado FROM estados_municipios esmp
 									INNER JOIN municipios mp
@@ -599,4 +769,46 @@ class Usuario extends ModeloBase{
         }
         return $result;
     }
+
+    public function insertCiruguias(){
+        $result = false;
+        foreach($this->getCirugia() as $valor){
+            $cirugia = "INSERT INTO {$this->getTabla()}
+            VALUES (null,'{$this->getIdPaciente()}', '{$valor[0]}', '{$valor[1]}')";
+            $guardar = $this->db->query($cirugia);
+
+           
+            if($guardar){
+                $result = true;
+            }
+        }
+        return $result;
+    }
+
+    public function insertDatoMujer(){
+        $insert = "INSERT INTO datosmujer
+        (idDatoMujer, idclienteDatoMujer, numEmbarazosDatoMujer, naciTerminoEmbarazoDatoMujer, abortoDatoMujer, fechaUltimoEmbarazoDatoMujer, ultimaPeriodoDatoMujer,anticonceptivoDatoMujer)
+        VALUES (NULL,'{$this->getIdPaciente()}','{$this->getEmbarazo()}','{$this->getTerminoEmbarazo()}','{$this->getAborto()}','{$this->getFechaUltmoEmbarazo()}','{$this->getPeriodo()}','{$this->getAnticonceptivo()}')";
+        $saveMujer = $this->db->query($insert);
+        $insertM = false;
+        if($saveMujer){
+            $insertM = true;
+        }    
+        return $insertM;
+    }
+    public function insertControl(){
+        $insert = "INSERT INTO tratameintoactual
+        (idTratamiento, idClientesConotrol, nombreMedicamento)
+        VALUES (NULL, '{$this->getIdPaciente()}', '{$this->getMedicamento()}')";
+
+        $saveControl = $this->db->query($insert);
+       
+        $controlMedicamento = false;
+        if($saveControl){
+            $controlMedicamento = true;
+        }    
+        return $controlMedicamento;
+    }
+
+
 }
