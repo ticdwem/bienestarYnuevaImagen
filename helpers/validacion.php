@@ -9,7 +9,7 @@ class Validacion
 	public static function pregmatchletras($valor1){
 
 		$vacio = self::emptySpace($valor1);
-		if($vacio != 1 && preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚäëïöüÄËÏÖÜàèìòùÀÈÌÒÙñÑ\s\']+$/", $valor1)){
+		if($vacio != 1 && preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚäëïöüÄËÏÖÜàèìòùÀÈÌÒÙñÑ_.,\s\']+$/", $valor1)){
 			return mb_strtoupper($valor1, 'UTF-8');
 		}else{
 			return 0;			 
@@ -169,7 +169,7 @@ class Validacion
 		}
 	}
 
-	public function textoLargo($texto)
+	public static function textoLargo($texto)
 	{
 		if($texto != "")
 		{
