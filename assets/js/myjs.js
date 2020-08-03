@@ -6,7 +6,7 @@ $(document).ready(function(){
 	})
 
 /*detectamos el select seleccionado*/
-	$("#inpuEstado").on('change',function(){
+	$(".inpuEstado").on('change',function(){
 		var dato = $(this).val();
 		var id = new FormData();
 		var selectMun = '';
@@ -165,50 +165,60 @@ $(document).ready(function(){
     });
 /*:::::::::::::::::::::::::::::::::::::::::::::::validar checkbox actual::::::::::::::::::::::::::::::::::::::::::::::::::::*/
 
-		$("#checkDeabetesActual").on('change',function(){
-		if($(this).is(':checked')){
-			$("#checkDeabetesActualParentesco").removeAttr('disabled');
-		}else{
-			$("#checkDeabetesActualParentesco").attr('disabled','disabled');			
-		}
-	})
-	$("#checkHipertensionActual").on('change',function(){
-		if($(this).is(':checked')){
-			$("#checkHipertensionActualParentesco").removeAttr('disabled');
-		}else{
-			$("#checkHipertensionActualParentesco").attr('disabled','disabled');			
-		}
-	})
-	$("#checkCancerActual").on('change',function(){
-		if($(this).is(':checked')){
-			$("#checkCancerActualParentesco").removeAttr('disabled');
-		}else{
-			$("#checkCancerActualParentesco").attr('disabled','disabled');			
-		}
-	})
-	 // Comprobar cuando cambia Ninguno Checkbox
-	    $('#checkNingunoActual').on('change', function() {
-	        if ($(this).is(':checked') ) {
-	            $(".actual").prop("checked",false);
-	            $(".actual").attr('disabled','disabled');
-
-	            $("#otroIndiqueActual").css('visibility','hidden');
-            	$(".otroIndiqueActual").attr('disabled','disabled');
-            	$("#checkDeabetesActualParentesco").attr('disabled','disabled');
-            	$("#checkHipertensionActualParentesco").attr('disabled','disabled');	
-				$("#checkCancerActualParentesco").attr('disabled','disabled');		
-	        } else{
-	            $(".actual").removeAttr('disabled','disabled');
-	        }
-	    });
-	    // Comprobar cuando cambia otros Checkbox
-    $('#otroActual').on('change', function() {
-        if ($(this).is(':checked') ) {
-            $("#otroIndiqueActual").css('visibility','visible');
-            $('.otroIndiqueActual').removeAttr('disabled');
-        } else {
-            $("#otroIndiqueActual").css('visibility','hidden');
-            $(".otroIndiqueActual").attr('disabled','disabled');
-        }
-    });
+$("#checkDeabetesActual").on('change',function(){
+	if($(this).is(':checked')){
+		$("#checkDeabetesActualParentesco").removeAttr('disabled');
+	}else{
+		$("#checkDeabetesActualParentesco").attr('disabled','disabled');			
+	}
+})
+$("#checkHipertensionActual").on('change',function(){
+	if($(this).is(':checked')){
+		$("#checkHipertensionActualParentesco").removeAttr('disabled');
+	}else{
+		$("#checkHipertensionActualParentesco").attr('disabled','disabled');			
+	}
+})
+$("#checkCancerActual").on('change',function(){
+	if($(this).is(':checked')){
+		$("#checkCancerActualParentesco").removeAttr('disabled');
+	}else{
+		$("#checkCancerActualParentesco").attr('disabled','disabled');			
+	}
+})
+// Comprobar cuando cambia Ninguno Checkbox
+$('#checkNingunoActual').on('change', function() {
+	if ($(this).is(':checked') ) {
+		$(".actual").prop("checked",false);
+		$(".actual").attr('disabled','disabled');
+		
+		$("#otroIndiqueActual").css('visibility','hidden');
+		$(".otroIndiqueActual").attr('disabled','disabled');
+		$("#checkDeabetesActualParentesco").attr('disabled','disabled');
+		$("#checkHipertensionActualParentesco").attr('disabled','disabled');	
+		$("#checkCancerActualParentesco").attr('disabled','disabled');		
+	} else{
+		$(".actual").removeAttr('disabled','disabled');
+	}
+});
+// Comprobar cuando cambia otros Checkbox
+$('#otroActual').on('change', function() {
+	if ($(this).is(':checked') ) {
+		$("#otroIndiqueActual").css('visibility','visible');
+		$('.otroIndiqueActual').removeAttr('disabled');
+	} else {
+		$("#otroIndiqueActual").css('visibility','hidden');
+		$(".otroIndiqueActual").attr('disabled','disabled');
+	}
+	});
+	/*:::::::::::::::::::::::::::::::::::::::::::::::colocar nombre en nombre de consutorio::::::::::::::::::::::::::::::::::::::::::::::::::::*/
+	$("#inpuColoniaConsultorio").on('change', function() {
+		var valorCalle,valorSelect,nuevoNombre;
+		valorCalle = $(this).val();
+		valorSelect = $(".altaConsultorio option:selected").text();
+		nuevoNombre = $("#intputnameConsultorio").val(valorSelect+' '+valorCalle);
+	
+	
+	
+	});
 });
