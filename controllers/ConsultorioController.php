@@ -32,12 +32,12 @@ class ConsultorioController {
 
             if(!isset($_SESSION["errorConsultorio"])){
                 $guardar = new Consultorio();
-                $guardar->setNombre($municipio);
-                $guardar->setMunicipio($cp);
-                $guardar->setCp($colonia);
-                $guardar->setColonia($calle);
-                $guardar->setCalle($numero);
-                $guardar->setNumero($nombre);
+                $guardar->setNombre($nombre);
+                $guardar->setMunicipio($municipio);
+                $guardar->setCp($cp);
+                $guardar->setColonia($colonia);
+                $guardar->setCalle($calle);
+                $guardar->setNumero($numero);
                 $registro = $guardar->insertConsultorio();
 
                 if($registro){
