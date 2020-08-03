@@ -6,6 +6,12 @@
 				<h2 class="font-weight-light"><p>ALTA CONSULTORIO</p></h2> 
 			</figcaption> 
 		</figure>
+		<?php $sesion = ""; 
+		 if(isset($_SESSION['formulario'])){$sesion = $_SESSION['formulario']['datos'];} ?>
+		<div class="texcto">
+			<?php if($sesion != "") echo '<p class="alert alert-danger error" role="alert">'.$_SESSION['formulario']["error"]."</p>";?>
+			<?php if(isset($_SESSION['statusSave'])) echo '<p class="alert alert-success error" role="alert">'.$_SESSION['statusSave']."</p>";?>
+		</div>
 		<div style="height: auto">
 			<form id="registro" action="<?=base_url?>Consultorio/save" method="POST">
             
