@@ -103,7 +103,7 @@
 				<div class="form-row ">
 					<div class="form-group col-md-4">
 						<label for="inpuEstado">Estado</label>
-						<select class="form-control" id="inpuEstado" name="inpuEstado">
+						<select class="form-control inpuEstado" id="inpuEstado" name="inpuEstado">
 						<?php while ($estado = $nombreE->fetch_object()):?>							
 							<option value="<?= $estado->id?>"><?= $estado->estado?></option> 							
 						<?php endwhile; ?>
