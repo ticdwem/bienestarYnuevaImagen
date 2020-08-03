@@ -17,7 +17,7 @@
 			<form id="registro" action="<?=base_url?>Paciente/save" method="POST">
 			 <!-- <form action="<?=base_url?>Paciente/saveArray" method="POST"> 	--> 
 				<div class="idPaciente">
-				<input type="text" class="form-control" id="idPaciente" value="012020070013" readonly="true" name="idPaciente">	
+				<input type="text" class="form-control" id="idPaciente" value="<?=Utls::createId(1,$id['id'])?>" readonly="true" name="idPaciente">	
 				</div>	
 			<div class="page-header"><small>DATOS PERSONALES</small></div>
 			<hr>			
@@ -174,7 +174,7 @@
 					</div>
 				</div>
 <!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
-				<div class="page-header titulo_padecimiento"><small>FAMILIARES QUE PADESCAN O HAYAN PADECIDO:</small></div>
+				<div class="page-header titulo_padecimiento"><small>ANTECEDENTES HEREDOFAMILIARES (PADRES-ABUELOS-HERMANOS):</small></div>
 				<hr>
 				<div class="form-row col-md-12" id="parentesco">
 					<div class="form-row col-md-12">
@@ -209,6 +209,21 @@
 					</div> 
 					<div class="form-row col-md-12">
 						<div class="form-group form-check col-md-6">
+							<input class="form-check-input parentesco" type="checkbox" value="Asma" id="checkAsma" name="Asma[]">
+			                    <label class="form-check-label" for="checkAsma">
+			                        ASMA
+			                    </label>
+						</div>
+						<div class="form-group input-group input-group-sm col-md-6">
+							<div class="input-group-prepend">
+			                      <span class="input-group-text" id="inputGroup-sizing-sm">PARENTESCO</span>
+			                  </div>
+			                  <input type="hidden" class="form-control"  name="Asma[]" aria-label="Small"  value = "0">
+			                  <input type="text" class="form-control" id="checkAsmaParntesco" name="Asma[]" aria-label="Small" aria-describedby="inputGroup-sizing-sm" disabled>
+						</div>
+					</div> 
+					<div class="form-row col-md-12">
+						<div class="form-group form-check col-md-6">
 							<input class="form-check-input parentesco" type="checkbox" value="CÁNCER" id="checkCancer" name="cancer[]">
 			                    <label class="form-check-label" for="checkCancer">
 			                        CÁNCER
@@ -222,6 +237,21 @@
 			                  <input type="text" class="form-control" id="checkCancerParntesco" name="cancer[]" aria-label="Small" aria-describedby="inputGroup-sizing-sm" disabled>
 						</div>
 					</div> 
+					<div class="form-row col-md-12">
+						<div class="form-group form-check col-md-6">
+							<input class="form-check-input parentesco" type="checkbox" value="ALERGIAS" id="checkAlergias" name="alergias[]">
+			                    <label class="form-check-label" for="checkalergias">
+			                        ALERGIAS
+			                    </label>
+						</div>
+						<div class="form-group input-group input-group-sm col-md-6">
+							<div class="input-group-prepend">
+			                      <span class="input-group-text" id="inputGroup-sizing-sm">PARENTESCO</span>
+			                  </div>
+			                  <input type="hidden" class="form-control"  name="alergias[]" aria-label="Small"  value = "0">
+			                  <input type="text" class="form-control" id="checkAlergiasParntesco" name="alergias[]" aria-label="Small" aria-describedby="inputGroup-sizing-sm" disabled>
+						</div>
+					</div>
 					<div class="form-row col-md-12">
 						<div class="form-group form-check  col-md-2">
 							<input class="form-check-input parentesco" type="checkbox" value="OTROS" id="checkOtrosFamilia" name="otros[]">
@@ -258,7 +288,7 @@
 					</div>
 				</div>
 <!-- ::::::::::::::::::::::::::::::::::::::::padecimientos actuales:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
-				<div class="page-header titulo_padecimiento"><small>PADECIMIENTOS ACTUALES:</small></div>
+				<div class="page-header titulo_padecimiento"><small>ANTECEDENTES PERSONALES PATOLOGICOS:</small></div>
 				<hr>
 				<div class="form-row col-md-12" id="actuales">
 					<div class="form-row col-md-12">
@@ -269,7 +299,7 @@
 						<input type="hidden"  name="actualDeabetes[]" value="0">
 						<div class="form-group input-group input-group-sm col-md-6">
 							<div class="input-group-prepend">
-			                      <span class="input-group-text" id="inputGroup-sizing-sm">PARENTESCO</span>
+			                      <span class="input-group-text" id="inputGroup-sizing-sm">TRATAMIENTO</span>
 			                  </div>
 			                  <input type="text" class="form-control" id="checkDeabetesActualParentesco" name="actualDeabetes[]" aria-label="Small" aria-describedby="inputGroup-sizing-sm" disabled>
 						</div>
@@ -277,16 +307,29 @@
 					<div class="form-row col-md-12">
 						<div class="form-group form-check  col-md-6">
 							<input class="form-check-input actual" type="checkbox" value="HIPERTENSIÓN" id="checkHipertensionActual" name="actualHipertension[]">
-			                <label class="form-check-label" for="checkHipertensionActual">HIPERTENSIÓN</label>
+			                <label class="form-check-label" for="checkHipertensionActual">ENFERMEDADES CARDIOVASCULAES (HIPERTENSION)</label>
 						</div>
 						<input type="hidden" name="actualHipertension[]" value="0">
 						<div class="form-group input-group input-group-sm   col-md-6">
 							<div class="input-group-prepend">
-			                      <span class="input-group-text" id="inputGroup-sizing-sm">PARENTESCO</span>
+			                      <span class="input-group-text" id="inputGroup-sizing-sm">TRATAMIENTO</span>
 			                  </div>
 			                  <input type="text" class="form-control" id="checkHipertensionActualParentesco" name="actualHipertension[]" aria-label="Small" aria-describedby="inputGroup-sizing-sm" disabled>
 						</div>
 					</div> 
+					<div class="form-row col-md-12">
+						<div class="form-group form-check  col-md-6">
+							<input class="form-check-input actual" type="checkbox" value="ASMA" id="checkAsmaActual" name="actualAsma[]">
+			                <label class="form-check-label" for="checkAsmaActual">ASMA</label>
+						</div>
+						<input type="hidden" name="actualAsma[]" value="0">
+						<div class="form-group input-group input-group-sm   col-md-6">
+							<div class="input-group-prepend">
+			                      <span class="input-group-text" id="inputGroup-sizing-sm">TRATAMIENTO</span>
+			                  </div>
+			                  <input type="text" class="form-control" id="checkAsmaActualParentesco" name="actualAsma[]" aria-label="Small" aria-describedby="inputGroup-sizing-sm" disabled>
+						</div>
+					</div>
 					<div class="form-row col-md-12">
 						<div class="form-group form-check  col-md-6">
 							<input class="form-check-input actual" type="checkbox" value="CÁNCER" id="checkCancerActual" name="actualCancer[]">
@@ -295,11 +338,141 @@
 						<input type="hidden" name="actualCancer[]" value="0">
 						<div class="form-group input-group input-group-sm   col-md-6">
 							<div class="input-group-prepend">
-			                      <span class="input-group-text" id="inputGroup-sizing-sm">PARENTESCO</span>
+			                      <span class="input-group-text" id="inputGroup-sizing-sm">TRATAMIENTO</span>
 			                  </div>
 			                  <input type="text" class="form-control" id="checkCancerActualParentesco" name="actualCancer[]" aria-label="Small" aria-describedby="inputGroup-sizing-sm" disabled>
 						</div>
+					</div>
+					<div class="form-row col-md-12">
+						<div class="form-group form-check  col-md-6">
+							<input class="form-check-input actual" type="checkbox" value="ALERGIAS" id="checkAlergiasActual" name="actualAlergias[]">
+			                <label class="form-check-label" for="checkAlergiasActual">ALERGIAS</label>
+						</div>
+						<input type="hidden" name="actualAlergias[]" value="0">
+						<div class="form-group input-group input-group-sm   col-md-6">
+							<div class="input-group-prepend">
+			                      <span class="input-group-text" id="inputGroup-sizing-sm">TRATAMIENTO</span>
+			                  </div>
+			                  <input type="text" class="form-control" id="checkAlergiasActualParentesco" name="actualAlergias[]" aria-label="Small" aria-describedby="inputGroup-sizing-sm" disabled>
+						</div>
+					</div>
+					<div class="form-row col-md-12">
+						<div class="form-group form-check  col-md-6">
+							<input class="form-check-input actual" type="checkbox" value="DISLIPIDEMIAS" id="checkDislipidemiasActual" name="actualDislipidemias[]">
+			                <label class="form-check-label" for="checkDislipidemiasActual">DISLIPIDEMIAS (TRIGLICEDIDOS Y COLESTEROL)</label>
+						</div>
+						<input type="hidden" name="actualDislipidemias[]" value="0">
+						<div class="form-group input-group input-group-sm   col-md-6">
+							<div class="input-group-prepend">
+			                      <span class="input-group-text" id="inputGroup-sizing-sm">TRATAMIENTO</span>
+			                  </div>
+			                  <input type="text" class="form-control" id="checkDislipidemiasActualParentesco" name="actualDislipidemias[]" aria-label="Small" aria-describedby="inputGroup-sizing-sm" disabled>
+						</div>
+					</div>
+					<div class="form-row col-md-12">
+						<div class="form-group form-check  col-md-6">
+							<input class="form-check-input actual" type="checkbox" value="HEPATICOS" id="checkHepaticosActual" name="actualHepaticos[]">
+			                <label class="form-check-label" for="checkHepaticosActual">HEPATICOS</label>
+						</div>
+						<input type="hidden" name="actualHepaticos[]" value="0">
+						<div class="form-group input-group input-group-sm   col-md-6">
+							<div class="input-group-prepend">
+			                      <span class="input-group-text" id="inputGroup-sizing-sm">TRATAMIENTO</span>
+			                  </div>
+			                  <input type="text" class="form-control" id="checkHepaticosActualParentesco" name="actualHepaticos[]" aria-label="Small" aria-describedby="inputGroup-sizing-sm" disabled>
+						</div>
 					</div> 
+					<div class="form-row col-md-12">
+						<div class="form-group form-check  col-md-6">
+							<input class="form-check-input actual" type="checkbox" value="RENALES" id="checkRenalesActual" name="actualRenales[]">
+			                <label class="form-check-label" for="checkRenalesActual">RENALES</label>
+						</div>
+						<input type="hidden" name="actualRenales[]" value="0">
+						<div class="form-group input-group input-group-sm   col-md-6">
+							<div class="input-group-prepend">
+			                      <span class="input-group-text" id="inputGroup-sizing-sm">TRATAMIENTO</span>
+			                  </div>
+			                  <input type="text" class="form-control" id="checkRenalesActualParentesco" name="actualRenales[]" aria-label="Small" aria-describedby="inputGroup-sizing-sm" disabled>
+						</div>
+					</div>
+					<div class="form-row col-md-12">
+						<div class="form-group form-check  col-md-6">
+							<input class="form-check-input actual" type="checkbox" value="URINARIOS" id="checkUrinariosActual" name="actualUrinarios[]">
+			                <label class="form-check-label" for="checkUrinariosActual">URINARIOS</label>
+						</div>
+						<input type="hidden" name="actualUrinarios[]" value="0">
+						<div class="form-group input-group input-group-sm   col-md-6">
+							<div class="input-group-prepend">
+			                      <span class="input-group-text" id="inputGroup-sizing-sm">TRATAMIENTO</span>
+			                  </div>
+			                  <input type="text" class="form-control" id="checkUrinariosActualParentesco" name="actualUrinarios[]" aria-label="Small" aria-describedby="inputGroup-sizing-sm" disabled>
+						</div>
+					</div>
+					<div class="form-row col-md-12">
+						<div class="form-group form-check  col-md-6">
+							<input class="form-check-input actual" type="checkbox" value="PROSTATA" id="checkProstataActual" name="actualProstata[]">
+			                <label class="form-check-label" for="checkProstataActual">PROSTATA</label>
+						</div>
+						<input type="hidden" name="actualProstata[]" value="0">
+						<div class="form-group input-group input-group-sm   col-md-6">
+							<div class="input-group-prepend">
+			                      <span class="input-group-text" id="inputGroup-sizing-sm">TRATAMIENTO</span>
+			                  </div>
+			                  <input type="text" class="form-control" id="checkProstataActualParentesco" name="actualProstata[]" aria-label="Small" aria-describedby="inputGroup-sizing-sm" disabled>
+						</div>
+					</div>
+					<div class="form-row col-md-12">
+						<div class="form-group form-check  col-md-6">
+							<input class="form-check-input actual" type="checkbox" value="DISFUNSION ERECTIL" id="checkDisfusionActual" name="actualDisfusion[]">
+			                <label class="form-check-label" for="checkDisfusionActual">DISFUNSION ERECTIL</label>
+						</div>
+						<input type="hidden" name="actualDisfusion[]" value="0">
+						<div class="form-group input-group input-group-sm   col-md-6">
+							<div class="input-group-prepend">
+			                      <span class="input-group-text" id="inputGroup-sizing-sm">TRATAMIENTO</span>
+			                  </div>
+			                  <input type="text" class="form-control" id="checkDisfusionActualParentesco" name="actualDisfusion[]" aria-label="Small" aria-describedby="inputGroup-sizing-sm" disabled>
+						</div>
+					</div>
+					<div class="form-row col-md-12">
+						<div class="form-group form-check  col-md-6">
+							<input class="form-check-input actual" type="checkbox" value="HIPOTIROIDISMO" id="checkHipotiroidismoActual" name="actualHipotiroidismo[]">
+			                <label class="form-check-label" for="checkHipotiroidismoActual">HIPOTIROIDISMO</label>
+						</div>
+						<input type="hidden" name="actualHipotiroidismo[]" value="0">
+						<div class="form-group input-group input-group-sm   col-md-6">
+							<div class="input-group-prepend">
+			                      <span class="input-group-text" id="inputGroup-sizing-sm">TRATAMIENTO</span>
+			                  </div>
+			                  <input type="text" class="form-control" id="checkHipotiroidismoParentesco" name="actualHipotiroidismo[]" aria-label="Small" aria-describedby="inputGroup-sizing-sm" disabled>
+						</div>
+					</div>
+					<div class="form-row col-md-12">
+						<div class="form-group form-check  col-md-6">
+							<input class="form-check-input actual" type="checkbox" value="HIPERTIROIDISMO" id="checkHipertiroidismoActual" name="actualHipertiroidismo[]">
+			                <label class="form-check-label" for="checkHipertiroidismoActual">HIPERTIROIDISMO</label>
+						</div>
+						<input type="hidden" name="actualHipertiroidismo[]" value="0">
+						<div class="form-group input-group input-group-sm   col-md-6">
+							<div class="input-group-prepend">
+			                      <span class="input-group-text" id="inputGroup-sizing-sm">TRATAMIENTO</span>
+			                  </div>
+			                  <input type="text" class="form-control" id="checkHipertiroidismoParentesco" name="actualHipertiroidismo[]" aria-label="Small" aria-describedby="inputGroup-sizing-sm" disabled>
+						</div>
+					</div>
+					<div class="form-row col-md-12">
+						<div class="form-group form-check  col-md-6">
+							<input class="form-check-input actual" type="checkbox" value="SINDROME DE OVARIO POLIQUISTICO" id="checkSindromeActual" name="actualSindrome[]">
+			                <label class="form-check-label" for="checkSindromeActual">SINDROME DE OVARIO POLIQUISTICO</label>
+						</div>
+						<input type="hidden" name="actualSindrome[]" value="0">
+						<div class="form-group input-group input-group-sm   col-md-6">
+							<div class="input-group-prepend">
+			                      <span class="input-group-text" id="inputGroup-sizing-sm">TRATAMIENTO</span>
+			                  </div>
+			                  <input type="text" class="form-control" id="checkSindromeParentesco" name="actualSindrome[]" aria-label="Small" aria-describedby="inputGroup-sizing-sm" disabled>
+						</div>
+					</div>
 					<div class="form-row col-md-12">
 						<div class="form-group form-check  col-md-2">
 							<input class="form-check-input actual" type="checkbox" value="OTROS" id="otroActual" name="actualOtro[]">
@@ -313,7 +486,7 @@
 			             </div>
 						<div class="form-group input-group input-group-sm   col-md-6">
 							<div class="input-group-prepend">
-			                      <span class="input-group-text" id="inputGroup-sizing-sm">PARENTESCO</span>
+			                      <span class="input-group-text" id="inputGroup-sizing-sm">TRATAMIENTO</span>
 			                  </div>
 			                  <input type="text" class="form-control otroIndiqueActual" name="actualOtro[]" aria-label="Small" aria-describedby="inputGroup-sizing-sm" disabled>
 						</div>
