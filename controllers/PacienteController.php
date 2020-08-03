@@ -6,8 +6,11 @@ class PacienteController{
     /*este es una clase de prueba para saber que todo esta bien relacionado */
     public function index(){
     	 $estado = new Usuario();
-    	 $nombreE = $estado->getAll('estados'); 
-
+         $nombreE = $estado->getAll('estados'); 
+         
+         $idCleinte = new Usuario();
+         $datos = $idCleinte->getIdCleinte('idCliente','cliente');
+         $id = $datos->fetch_assoc();
        require_once 'views/paciente/registro.php';
        
     }
@@ -62,32 +65,48 @@ class PacienteController{
         
         /* ::::::::::::::::::::::::::::::::::::::::seccion FAMILIARES QUE PADESCAN O HAYAN PADECIDO:::::::::::::::::::::::::::::::::::::::::: */          
         if(!isset($_SESSION['formulario'])){
-            $familia = array();
-            if(isset($_POST["deabetes"]) && $_POST["deabetes"][0] != '0'){
-                $nombreDeabetes = (Validacion::pregmatchletras($_POST["deabetes"][0]) == '0') ? false : true;
-                $indiqueDeabetes = (Validacion::validarNumero($_POST["deabetes"][1]) == '-1') ? false :  true;
-                $parentescoDeabetes = (Validacion::pregmatchletras($_POST["deabetes"][2]) == '0') ? false : true ;
-                if($nombreDeabetes && $indiqueDeabetes  && $parentescoDeabetes ){
-                    array_push($familia,$_POST["deabetes"]);
-                }else{
-                    $_SESSION['formulario'] = array(
-                        "error"=> 'SECCION FAMILIARES DEABETES ES INCORRECTO  ',
-                        "datos"=>$datos
-                    );
-                    echo '<script>window.location="'.base_url.'"</script>';
-                    die();
+                $familia = array();
+                if(isset($_POST["deabetes"]) && $_POST["deabetes"][0] != '0'){
+                    $nombreDeabetes = (Validacion::pregmatchletras($_POST["deabetes"][0]) == '0') ? false : true;
+                    $indiqueDeabetes = (Validacion::validarNumero($_POST["deabetes"][1]) == '-1') ? false :  true;
+                    $parentescoDeabetes = (Validacion::pregmatchletras($_POST["deabetes"][2]) == '0') ? false : true ;
+                    if($nombreDeabetes && $indiqueDeabetes  && $parentescoDeabetes ){
+                        array_push($familia,$_POST["deabetes"]);
+                    }else{
+                        $_SESSION['formulario'] = array(
+                            "error"=> 'SECCION FAMILIARES DEABETES ES INCORRECTO  ',
+                            "datos"=>$datos
+                        );
+                        echo '<script>window.location="'.base_url.'"</script>';
+                        die();
+                    }
                 }
-            }
-            if(isset($_POST["hipertension"]) && $_POST["hipertension"][0] != '0'){
-                $nombreHipertension = (Validacion::pregmatchletras($_POST["hipertension"][0]) == '0') ? false : true ;
-                $indiqueHipertension = (Validacion::validarNumero($_POST["hipertension"][1]) == '-1') ? false : true ;
-                $parentescoHipertension = (Validacion::pregmatchletras($_POST["hipertension"][2]) == '0') ? false : true ;
+                if(isset($_POST["hipertension"]) && $_POST["hipertension"][0] != '0'){
+                    $nombreHipertension = (Validacion::pregmatchletras($_POST["hipertension"][0]) == '0') ? false : true ;
+                    $indiqueHipertension = (Validacion::validarNumero($_POST["hipertension"][1]) == '-1') ? false : true ;
+                    $parentescoHipertension = (Validacion::pregmatchletras($_POST["hipertension"][2]) == '0') ? false : true ;
                 
-                if($nombreHipertension && $indiqueHipertension && $parentescoHipertension){
+                    if($nombreHipertension && $indiqueHipertension && $parentescoHipertension){
                     array_push($familia,$_POST["hipertension"]);
                     }else{
                         $_SESSION['formulario'] = array(
                             "error"=> 'SECCION FAMILIARES HIPERTENSION ES INCORRECTO  ',
+                            "datos"=>$datos
+                        );
+                        echo '<script>window.location="'.base_url.'"</script>';
+                        die();
+                    }
+                }
+                if(isset($_POST["Asma"]) && $_POST["Asma"][0] != '0'){
+                    $nombreAsma = (Validacion::pregmatchletras($_POST["Asma"][0]) == '0') ? false : true ;
+                    $indiqueAsma = (Validacion::validarNumero($_POST["Asma"][1]) == '-1') ? false : true ;
+                    $parentescoAsma = (Validacion::pregmatchletras($_POST["Asma"][2]) == '0') ? false : true ;
+                
+                    if($nombreAsma && $indiqueAsma && $parentescoAsma){
+                    array_push($familia,$_POST["Asma"]);
+                    }else{
+                        $_SESSION['formulario'] = array(
+                            "error"=> 'SECCION FAMILIARES ASMA ES INCORRECTO  ',
                             "datos"=>$datos
                         );
                         echo '<script>window.location="'.base_url.'"</script>';
@@ -103,6 +122,22 @@ class PacienteController{
                     }else{
                         $_SESSION['formulario'] = array(
                             "error"=> 'SECCION FAMILIARES CANCER ES INCORRECTO  ',
+                            "datos"=>$datos
+                        );
+                        echo '<script>window.location="'.base_url.'"</script>';
+                        die();
+                    }
+                }
+                if(isset($_POST["alergias"]) && $_POST["alergias"][0] != '0'){
+                    $nombreAlergias = (Validacion::pregmatchletras($_POST["alergias"][0]) == '0') ? false : true ;
+                    $indiqueAlergias = (Validacion::validarNumero($_POST["alergias"][1]) == '-1') ? false : true ;
+                    $parentescoAlergias = (Validacion::pregmatchletras($_POST["alergias"][2]) == '0') ? false : true ;
+                
+                    if($nombreAlergias && $indiqueAlergias && $parentescoAlergias){
+                    array_push($familia,$_POST["alergias"]);
+                    }else{
+                        $_SESSION['formulario'] = array(
+                            "error"=> 'SECCION FAMILIARES Alergias ES INCORRECTO  ',
                             "datos"=>$datos
                         );
                         echo '<script>window.location="'.base_url.'"</script>';
@@ -175,6 +210,22 @@ class PacienteController{
                             die();
                         }
                     }
+                    if(isset($_POST["actualAsma"]) && $_POST["actualAsma"][0] != '0'){
+                        $nombreActualAsma = (Validacion::pregmatchletras($_POST["actualAsma"][0]) == '0') ? false :true ;
+                        $indiqueActualAsma = (Validacion::validarNumero($_POST["actualAsma"][1]) == '-1') ? false : true ;
+                        $parentescoActualAsma = (Validacion::pregmatchletras($_POST["actualAsma"][2]) == '0') ? false :true ;
+                        if($nombreActualAsma && $indiqueActualAsma && $parentescoActualAsma ){
+                            array_push($actuales,$_POST["actualAsma"]);
+                        }else{
+                            $_SESSION['formulario'] = array(
+                                "error"=> 'SECCION PADECIMIENTOS ACTUALES ASMA ES INCORRECTO  ',
+                                "datos"=>$datos
+                            );
+                            echo '<script>window.location="'.base_url.'"</script>';
+                            die();
+                        }
+                    }
+                    
                     if(isset($_POST["actualCancer"]) && $_POST["actualCancer"][0] != '0'){
                         $nombreActualCancer = (Validacion::pregmatchletras($_POST["actualCancer"][0]) == '0') ? false :true ;
                         $indiqueActualCancer = (Validacion::validarNumero($_POST["actualCancer"][1]) == '-1') ? false : true ;
@@ -190,6 +241,157 @@ class PacienteController{
                             die();
                         }
                     }
+                    if(isset($_POST["actualAlergias"]) && $_POST["actualAlergias"][0] != '0'){
+                        $nombreActualAlergias = (Validacion::pregmatchletras($_POST["actualAlergias"][0]) == '0') ? false :true ;
+                        $indiqueActualAlergias = (Validacion::validarNumero($_POST["actualAlergias"][1]) == '-1') ? false : true ;
+                        $parentescoActualAlergias = (Validacion::pregmatchletras($_POST["actualAlergias"][2]) == '0') ? false :true ;
+                        if($nombreActualAlergias && $indiqueActualAlergias && $parentescoActualAlergias ){
+                            array_push($actuales,$_POST["actualAlergias"]);
+                        }else{
+                            $_SESSION['formulario'] = array(
+                                "error"=> 'SECCION PADECIMIENTOS ACTUALES ALERGIAS ES INCORRECTO  ',
+                                "datos"=>$datos
+                            );
+                            echo '<script>window.location="'.base_url.'"</script>';
+                            die();
+                        }
+                    }
+                    if(isset($_POST["actualDislipidemias"]) && $_POST["actualDislipidemias"][0] != '0'){
+                        $nombreActualDislipidemia = (Validacion::pregmatchletras($_POST["actualDislipidemias"][0]) == '0') ? false :true ;
+                        $indiqueActualDislipidemia = (Validacion::validarNumero($_POST["actualDislipidemias"][1]) == '-1') ? false : true ;
+                        $parentescoActualDislipidemia = (Validacion::pregmatchletras($_POST["actualDislipidemias"][2]) == '0') ? false :true ;
+                        if($nombreActualDislipidemia && $indiqueActualDislipidemia && $parentescoActualDislipidemia ){
+                            array_push($actuales,$_POST["actualDislipidemias"]);
+                        }else{
+                            $_SESSION['formulario'] = array(
+                                "error"=> 'SECCION PADECIMIENTOS ACTUALES DISLIPIDEMIAS (TRIGLICEDIDOS Y COLESTEROL) ES INCORRECTO  ',
+                                "datos"=>$datos
+                            );
+                            echo '<script>window.location="'.base_url.'"</script>';
+                            die();
+                        }
+                    }
+                    if(isset($_POST["actualHepaticos"]) && $_POST["actualHepaticos"][0] != '0'){
+                        $nombreActualHepaticos = (Validacion::pregmatchletras($_POST["actualHepaticos"][0]) == '0') ? false :true ;
+                        $indiqueActualHepaticos = (Validacion::validarNumero($_POST["actualHepaticos"][1]) == '-1') ? false : true ;
+                        $parentescoActualHepaticos = (Validacion::pregmatchletras($_POST["actualHepaticos"][2]) == '0') ? false :true ;
+                        if($nombreActualHepaticos && $indiqueActualHepaticos && $parentescoActualHepaticos ){
+                            array_push($actuales,$_POST["actualHepaticos"]);
+                        }else{
+                            $_SESSION['formulario'] = array(
+                                "error"=> 'SECCION PADECIMIENTOS ACTUALES HEPATICOS ES INCORRECTO  ',
+                                "datos"=>$datos
+                            );
+                            echo '<script>window.location="'.base_url.'"</script>';
+                            die();
+                        }
+                    }
+                    if(isset($_POST["actualRenales"]) && $_POST["actualRenales"][0] != '0'){
+                        $nombreActualRenales = (Validacion::pregmatchletras($_POST["actualRenales"][0]) == '0') ? false :true ;
+                        $indiqueActualRenales = (Validacion::validarNumero($_POST["actualRenales"][1]) == '-1') ? false : true ;
+                        $parentescoActualRenales = (Validacion::pregmatchletras($_POST["actualRenales"][2]) == '0') ? false :true ;
+                        if($nombreActualRenales && $indiqueActualRenales && $parentescoActualRenales ){
+                            array_push($actuales,$_POST["actualRenales"]);
+                        }else{
+                            $_SESSION['formulario'] = array(
+                                "error"=> 'SECCION PADECIMIENTOS ACTUALES RENALES ES INCORRECTO  ',
+                                "datos"=>$datos
+                            );
+                            echo '<script>window.location="'.base_url.'"</script>';
+                            die();
+                        }
+                    }
+                    if(isset($_POST["actualUrinarios"]) && $_POST["actualUrinarios"][0] != '0'){
+                        $nombreActualCancer = (Validacion::pregmatchletras($_POST["actualUrinarios"][0]) == '0') ? false :true ;
+                        $indiqueActualCancer = (Validacion::validarNumero($_POST["actualUrinarios"][1]) == '-1') ? false : true ;
+                        $parentescoActualCancer = (Validacion::pregmatchletras($_POST["actualUrinarios"][2]) == '0') ? false :true ;
+                        if($nombreActualCancer && $indiqueActualCancer && $parentescoActualCancer ){
+                            array_push($actuales,$_POST["actualUrinarios"]);
+                        }else{
+                            $_SESSION['formulario'] = array(
+                                "error"=> 'SECCION PADECIMIENTOS ACTUALES URINARIOS ES INCORRECTO  ',
+                                "datos"=>$datos
+                            );
+                            echo '<script>window.location="'.base_url.'"</script>';
+                            die();
+                        }
+                    }
+                    if(isset($_POST["actualProstata"]) && $_POST["actualProstata"][0] != '0'){
+                        $nombreActualProstata = (Validacion::pregmatchletras($_POST["actualProstata"][0]) == '0') ? false :true ;
+                        $indiqueActualProstata = (Validacion::validarNumero($_POST["actualProstata"][1]) == '-1') ? false : true ;
+                        $parentescoActualProstata = (Validacion::pregmatchletras($_POST["actualProstata"][2]) == '0') ? false :true ;
+                        if($nombreActualProstata && $indiqueActualProstata && $parentescoActualProstata ){
+                            array_push($actuales,$_POST["actualProstata"]);
+                        }else{
+                            $_SESSION['formulario'] = array(
+                                "error"=> 'SECCION PADECIMIENTOS ACTUALES PROSTATA ES INCORRECTO  ',
+                                "datos"=>$datos
+                            );
+                            echo '<script>window.location="'.base_url.'"</script>';
+                            die();
+                        }
+                    }
+                    if(isset($_POST["actualDisfusion"]) && $_POST["actualDisfusion"][0] != '0'){
+                        $nombreActualDisfuncion = (Validacion::pregmatchletras($_POST["actualDisfusion"][0]) == '0') ? false :true ;
+                        $indiqueActualDisfuncion = (Validacion::validarNumero($_POST["actualDisfusion"][1]) == '-1') ? false : true ;
+                        $parentescoActualDisfuncion = (Validacion::pregmatchletras($_POST["actualDisfusion"][2]) == '0') ? false :true ;
+                        if($nombreActualDisfuncion && $indiqueActualDisfuncion && $parentescoActualDisfuncion ){
+                            array_push($actuales,$_POST["actualDisfusion"]);
+                        }else{
+                            $_SESSION['formulario'] = array(
+                                "error"=> 'SECCION PADECIMIENTOS ACTUALES DISFUNCION ES INCORRECTO  ',
+                                "datos"=>$datos
+                            );
+                            echo '<script>window.location="'.base_url.'"</script>';
+                            die();
+                        }
+                    }
+                    if(isset($_POST["actualHipotiroidismo"]) && $_POST["actualHipotiroidismo"][0] != '0'){
+                        $nombreActualHipotiroides = (Validacion::pregmatchletras($_POST["actualHipotiroidismo"][0]) == '0') ? false :true ;
+                        $indiqueActualHipotiroides = (Validacion::validarNumero($_POST["actualHipotiroidismo"][1]) == '-1') ? false : true ;
+                        $parentescoActualHipotiroides = (Validacion::pregmatchletras($_POST["actualHipotiroidismo"][2]) == '0') ? false :true ;
+                        if($nombreActualHipotiroides && $indiqueActualHipotiroides && $parentescoActualHipotiroides ){
+                            array_push($actuales,$_POST["actualHipotiroidismo"]);
+                        }else{
+                            $_SESSION['formulario'] = array(
+                                "error"=> 'SECCION PADECIMIENTOS ACTUALES HIPOTIROIDISMO ES INCORRECTO  ',
+                                "datos"=>$datos
+                            );
+                            echo '<script>window.location="'.base_url.'"</script>';
+                            die();
+                        }
+                    }
+                    if(isset($_POST["actualHipertiroidismo"]) && $_POST["actualHipertiroidismo"][0] != '0'){
+                        $nombreActualHipertiroidismo = (Validacion::pregmatchletras($_POST["actualHipertiroidismo"][0]) == '0') ? false :true ;
+                        $indiqueActualHipertiroidismo = (Validacion::validarNumero($_POST["actualHipertiroidismo"][1]) == '-1') ? false : true ;
+                        $parentescoActualHipertiroidismo = (Validacion::pregmatchletras($_POST["actualHipertiroidismo"][2]) == '0') ? false :true ;
+                        if($nombreActualHipertiroidismo && $indiqueActualHipertiroidismo && $parentescoActualHipertiroidismo ){
+                            array_push($actuales,$_POST["actualHipertiroidismo"]);
+                        }else{
+                            $_SESSION['formulario'] = array(
+                                "error"=> 'SECCION PADECIMIENTOS ACTUALES HIPERTIROIDISMO ES INCORRECTO  ',
+                                "datos"=>$datos
+                            );
+                            echo '<script>window.location="'.base_url.'"</script>';
+                            die();
+                        }
+                    }
+                    if(isset($_POST["actualSindrome"]) && $_POST["actualSindrome"][0] != '0'){
+                        $nombreActualSindrome = (Validacion::pregmatchletras($_POST["actualSindrome"][0]) == '0') ? false :true ;
+                        $indiqueActualSindrome = (Validacion::validarNumero($_POST["actualSindrome"][1]) == '-1') ? false : true ;
+                        $parentescoActualSindrome = (Validacion::pregmatchletras($_POST["actualSindrome"][2]) == '0') ? false :true ;
+                        if($nombreActualSindrome && $indiqueActualSindrome && $parentescoActualSindrome ){
+                            array_push($actuales,$_POST["actualSindrome"]);
+                        }else{
+                            $_SESSION['formulario'] = array(
+                                "error"=> 'SECCION PADECIMIENTOS ACTUALES SINDROME DE OVARIO POLIQUISTICO ES INCORRECTO  ',
+                                "datos"=>$datos
+                            );
+                            echo '<script>window.location="'.base_url.'"</script>';
+                            die();
+                        }
+                    }
+
                     if(isset($_POST["actualOtro"]) && !empty($_POST["actualOtro"][0])){
                         $nombreActualOtros = (Validacion::pregmatchletras($_POST["actualOtro"][0]) == '0') ? false : true ;
                         $indiqueActualOtros = (Validacion::pregmatchletras($_POST["actualOtro"][1]) == '0') ? false : true ;
