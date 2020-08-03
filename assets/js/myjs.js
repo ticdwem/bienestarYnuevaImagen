@@ -131,11 +131,25 @@ $(document).ready(function(){
 			$("#checkHipertensionParentesco").attr('disabled','disabled');			
 		}
 	})
+	$("#checkAsma").on('change',function(){
+		if($(this).is(':checked')){
+			$("#checkAsmaParntesco").removeAttr('disabled');
+		}else{
+			$("#checkAsmaParntesco").attr('disabled','disabled');			
+		}
+	})
 	$("#checkCancer").on('change',function(){
 		if($(this).is(':checked')){
 			$("#checkCancerParntesco").removeAttr('disabled');
 		}else{
 			$("#checkCancerParntesco").attr('disabled','disabled');			
+		}
+	})
+	$("#checkAlergias").on('change',function(){
+		if($(this).is(':checked')){
+			$("#checkAlergiasParntesco").removeAttr('disabled');
+		}else{
+			$("#checkAlergiasParntesco").attr('disabled','disabled');			
 		}
 	})
 	 // Comprobar cuando cambia Ninguno Checkbox
@@ -179,11 +193,88 @@ $("#checkHipertensionActual").on('change',function(){
 		$("#checkHipertensionActualParentesco").attr('disabled','disabled');			
 	}
 })
+$("#checkAsmaActual").on('change',function(){
+	if($(this).is(':checked')){
+		$("#checkAsmaActualParentesco").removeAttr('disabled');
+	}else{
+		$("#checkAsmaActualParentesco").attr('disabled','disabled');			
+	}
+})
 $("#checkCancerActual").on('change',function(){
 	if($(this).is(':checked')){
 		$("#checkCancerActualParentesco").removeAttr('disabled');
 	}else{
 		$("#checkCancerActualParentesco").attr('disabled','disabled');			
+	}
+})
+$("#checkAlergiasActual").on('change',function(){
+	if($(this).is(':checked')){
+		$("#checkAlergiasActualParentesco").removeAttr('disabled');
+	}else{
+		$("#checkAlergiasActualParentesco").attr('disabled','disabled');			
+	}
+})
+$("#checkDislipidemiasActual").on('change',function(){
+	if($(this).is(':checked')){
+		$("#checkDislipidemiasActualParentesco").removeAttr('disabled');
+	}else{
+		$("#checkDislipidemiasActualParentesco").attr('disabled','disabled');			
+	}
+})
+$("#checkHepaticosActual").on('change',function(){
+	if($(this).is(':checked')){
+		$("#checkHepaticosActualParentesco").removeAttr('disabled');
+	}else{
+		$("#checkHepaticosActualParentesco").attr('disabled','disabled');			
+	}
+})
+$("#checkRenalesActual").on('change',function(){
+	if($(this).is(':checked')){
+		$("#checkRenalesActualParentesco").removeAttr('disabled');
+	}else{
+		$("#checkRenalesActualParentesco").attr('disabled','disabled');			
+	}
+})
+$("#checkUrinariosActual").on('change',function(){
+	if($(this).is(':checked')){
+		$("#checkUrinariosActualParentesco").removeAttr('disabled');
+	}else{
+		$("#checkUrinariosActualParentesco").attr('disabled','disabled');			
+	}
+})
+$("#checkProstataActual").on('change',function(){
+	if($(this).is(':checked')){
+		$("#checkProstataActualParentesco").removeAttr('disabled');
+	}else{
+		$("#checkProstataActualParentesco").attr('disabled','disabled');			
+	}
+})
+$("#checkDisfusionActual").on('change',function(){
+	if($(this).is(':checked')){
+		$("#checkDisfusionActualParentesco").removeAttr('disabled');
+	}else{
+		$("#checkDisfusionActualParentesco").attr('disabled','disabled');			
+	}
+})
+$("#checkHipotiroidismoActual").on('change',function(){
+	if($(this).is(':checked')){
+		$("#checkHipotiroidismoParentesco").removeAttr('disabled');
+	}else{
+		$("#checkHipotiroidismoParentesco").attr('disabled','disabled');			
+	}
+})
+$("#checkHipertiroidismoActual").on('change',function(){
+	if($(this).is(':checked')){
+		$("#checkHipertiroidismoParentesco").removeAttr('disabled');
+	}else{
+		$("#checkHipertiroidismoParentesco").attr('disabled','disabled');			
+	}
+})
+$("#checkSindromeActual").on('change',function(){
+	if($(this).is(':checked')){
+		$("#checkSindromeParentesco").removeAttr('disabled');
+	}else{
+		$("#checkSindromeParentesco").attr('disabled','disabled');			
 	}
 })
 // Comprobar cuando cambia Ninguno Checkbox
@@ -196,7 +287,18 @@ $('#checkNingunoActual').on('change', function() {
 		$(".otroIndiqueActual").attr('disabled','disabled');
 		$("#checkDeabetesActualParentesco").attr('disabled','disabled');
 		$("#checkHipertensionActualParentesco").attr('disabled','disabled');	
-		$("#checkCancerActualParentesco").attr('disabled','disabled');		
+		$("#checkCancerActualParentesco").attr('disabled','disabled');			
+		$("#checkAsmaActualParentesco").attr('disabled','disabled');	
+		$("#checkAlergiasActualParentesco").attr('disabled','disabled');	
+		$("#checkDislipidemiasActualParentesco").attr('disabled','disabled');
+		$("#checkHepaticosActualParentesco").attr('disabled','disabled');		
+		$("#checkRenalesActualParentesco").attr('disabled','disabled');		
+		$("#checkUrinariosActualParentesco").attr('disabled','disabled');
+		$("#checkProstataActualParentesco").attr('disabled','disabled');	
+		$("#checkDisfusionActualParentesco").attr('disabled','disabled');	
+		$("#checkHipotiroidismoParentesco").attr('disabled','disabled');		
+		$("#checkHipertiroidismoParentesco").attr('disabled','disabled');		
+		$("#checkSindromeParentesco").attr('disabled','disabled');		
 	} else{
 		$(".actual").removeAttr('disabled','disabled');
 	}
