@@ -4,11 +4,19 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Inicio</div>
-                            <a class="nav-link" href="index.html">
+                            <a class="nav-link" href="<?=base_url?>">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Mi Escritorio
+                               NUEVO PACIENTE
+                            </a>
+                            <a class="nav-link" href="<?=base_url?>Consultorio/index">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                               ALTA CONSULTORIO
                             </a>
                             <div class="sb-sidenav-menu-heading">SUCURSALES</div>
+                            <!-- <a class="nav-link" href="">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                               QUITAR SESSIONES
+                            </a> -->
                             <!--     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts"
                                     ><div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                                     Layouts
@@ -18,12 +26,12 @@
                                     <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="layout-static.html">Static Navigation</a><a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a></nav>
                                 </div> -->
 
-                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+                            <!-- <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                                 aria-expanded="false" aria-controls="collapsePages">
                                 <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                                 Toluca
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
+                            </a> -->
                           <!--                  <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
                                     <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                                         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth"
@@ -43,15 +51,14 @@
                                     </nav>
                                 </div> -->
                             <div class="sb-sidenav-menu-heading">Administracion</div>
-                            <a class="nav-link" href="">
+                            <!-- <a class="nav-link" href="">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                <!-- charts.html -->
                                 Estado de Cuenta
-                            </a>
-                            <a class="nav-link" href="">
-                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div><!-- tables.html -->
+                            </a> -->
+                            <!-- <a class="nav-link" href="">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Pagos
-                            </a>
+                            </a> -->
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
