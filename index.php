@@ -6,8 +6,6 @@ require_once 'config/modeloBase.php';
 require_once 'config/parameters.php';
 require_once 'helpers/utls.php';
 require_once 'helpers/validacion.php';
-require_once 'views/layout/header.php';
-require_once 'views/layout/sidebar.php';
 
 function show_error(){
     $error = new ErrorController();
@@ -15,11 +13,13 @@ function show_error(){
 }
 
 if(isset($_GET['controller'])){
+    require_once 'views/layout/sidebar.php';
+    require_once 'views/layout/header.php';
     $nombreControlador = $_GET['controller'].'Controller';
 }elseif(!isset($_GET['controller'])  && !isset($_GET['action'])){
     $nombreControlador = controller_default;    
 }else{
-     show_error();
+    show_error();
     exit();
 }
 // comprobar sis existe un controlador
