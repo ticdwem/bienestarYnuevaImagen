@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500&display=swap');
+@import url('loggin.css');
+@import url('util.css');
 
 figure{
 	top: -45px;
