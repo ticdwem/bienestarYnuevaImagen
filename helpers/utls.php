@@ -13,6 +13,7 @@ class Utls{
         $increment=0;
         $Ano = date('Y');
         $mes = date('m'); 
+        $consultorio = ($sesionConsultorio >= 10) ? $sesionConsultorio : '0'.$sesionConsultorio ;
         if($mes === '01'){
             $increment = '0001';
         }else{
@@ -22,8 +23,28 @@ class Utls{
                 $increment = substr($idbd,7); 
             }
         }
-        //12020070010;
 
-        return $sesionConsultorio.$Ano.$mes.$increment;
+        return $consultorio.$Ano.$mes.$increment;
+    }
+
+    public static function titleCabecera($titleGet){
+        //$controlador = $titleGet['controller'];
+        
+        switch ($titleGet) {
+            case 'Consultorio':
+                if($_GET['action'] == "nuevo"){
+                    $getTirulo = "Paciente Nuevo";
+                }
+                break;
+            case 'Paciente':
+                // if($_GET['action'] == 'index'){
+                    $getTirulo = "Hoja Clinica";
+                // }
+                break;
+            default:
+            $getTirulo = "Bienestar Nueva Imagen";
+                break;
+        }
+        return $getTirulo;
     }
 }
