@@ -51,5 +51,13 @@ class ConsultorioController {
             }
         }
     }
+
+    public function nuevo(){
+        $sesionConsultorio = 1;
+        $nuevo = new Consultorio();
+        $listar = $nuevo->getAllStatus($sesionConsultorio,1);
+       require_once 'views/consultorio/nuevo.php'; 
+
+    }
 }
 
