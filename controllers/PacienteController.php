@@ -39,7 +39,6 @@ class PacienteController{
             $codigo_postal = (Validacion::validarNumero($_POST["inpuCP"]) == '-1' || Validacion::validarLArgo($_POST["inpuCP"],5) == '-1' ) ? false : $_POST["inpuCP"] ;
             $colonia = (Validacion::pregmatchletras($_POST["inpuColonia"]) == '0' ) ? false : $_POST["inpuColonia"] ;
             $calle = (Validacion::pregmatchletras($_POST["inpuCalle"]) == '0' ) ? false : $_POST["inpuCalle"] ;
-            $numero_casa = (Validacion::validarNumero($_POST["inpuNumCasa"]) == '-1' ) ? false : $_POST["inpuNumCasa"] ;
             $tetefono_emergencia = (Validacion::validarTelefono($_POST["inpuTelEmergencia"]) == '0' ) ? false : $_POST["inpuTelEmergencia"] ;
             $parentesco = (Validacion::pregmatchletras($_POST["inpuParentesco"]) == '0' ) ? false : $_POST["inpuParentesco"] ;
             $nombre_Recomienda = (Validacion::pregmatchletras($_POST["inpuNombreRecomienda"]) == '0' ) ? false : $_POST["inpuNombreRecomienda"] ;
@@ -50,8 +49,7 @@ class PacienteController{
             $datos = array('idPaciente' =>$idPaciente ,'Nombre' =>$Nombre ,'Apellido_Pat' =>$Apellido_Pat ,'Apellido_Mat' =>$Apellido_Mat ,'sexo' =>$sexo ,'fecha' =>$fecha ,
             'edad' =>$edad ,'estatura' =>$estatura ,'ocupacion' =>$ocupacion ,'estado_civil' =>$estado_civil ,'celular' =>$celular ,'correo' =>$correo ,
             'red_social' =>$red_social ,'estado' =>$estado ,'municipio' =>$municipio ,'codigo_postal' =>$codigo_postal ,'colonia' =>$colonia ,'calle' =>$calle ,
-            'numero_casa' =>$numero_casa ,'tetefono_emergencia' =>$tetefono_emergencia ,'parentesco' =>$parentesco ,'nombre_Recomienda' =>$nombre_Recomienda ,
-            'motivo' =>$motivo ,'select' =>$select ,'medicamento' =>$medicamento);
+            'tetefono_emergencia' =>$tetefono_emergencia ,'parentesco' =>$parentesco ,'nombre_Recomienda' =>$nombre_Recomienda ,'motivo' =>$motivo ,'select' =>$select ,'medicamento' =>$medicamento);
             
             foreach ($datos as $dato => $valor) {
                 if($valor == false){
@@ -539,7 +537,6 @@ class PacienteController{
                                     $paciente->setInpuCP($codigo_postal);
                                     $paciente->setInpuColonia($colonia);
                                     $paciente->setInpuCalle($calle);
-                                    $paciente->setInpuNumCasa($numero_casa);
                                     $paciente->setInpuTelEmergencia($tetefono_emergencia);
                                     $paciente->setInpuParentesco($parentesco);
                                     $paciente->setInpuNombreRecomienda($nombre_Recomienda);
