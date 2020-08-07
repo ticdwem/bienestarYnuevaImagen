@@ -28,18 +28,18 @@ class Utls{
     }
 
     public static function titleCabecera($titleGet){
-        //$controlador = $titleGet['controller'];
+        $controlador = $titleGet['controller'];
         
-        switch ($titleGet) {
+        switch ($controlador) {
             case 'Consultorio':
                 if($_GET['action'] == "nuevo"){
                     $getTirulo = "Paciente Nuevo";
                 }
                 break;
             case 'Paciente':
-                // if($_GET['action'] == 'index'){
+                if($_GET['action'] == 'index'){
                     $getTirulo = "Hoja Clinica";
-                // }
+                }
                 break;
             default:
             $getTirulo = "Bienestar Nueva Imagen";
