@@ -6,6 +6,7 @@ require_once 'config/modeloBase.php';
 require_once 'config/parameters.php';
 require_once 'helpers/utls.php';
 require_once 'helpers/validacion.php';
+require_once 'helpers/crypt.php';
 
 function show_error(){
     $error = new ErrorController();
