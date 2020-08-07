@@ -130,8 +130,7 @@
 						<input type="text" class="form-control" id="inpuCalle" name="inpuCalle" value="<?php  if($sesion != "") echo $sesion["calle"];?>">
 					</div>
 					<div class="form-group col-md-4">
-						<label for="inpuNumCasa">Num Casa</label>
-						<input type="text" class="form-control" id="inpuNumCasa" name="inpuNumCasa" value="<?php  if($sesion != "") echo $sesion["numero_casa"];?>">
+						
 					</div>
 				</div>
 				<div class="page-header"><small>DATOS EMERGENCIA</small></div>
@@ -154,7 +153,7 @@
 						<input type="text" class="form-control" id="inpuNombreRecomienda" name="inpuNombreRecomienda" value="<?php  if($sesion != "") echo $sesion["nombre_Recomienda"];?>">
 					</div>
 					<div class="form-group col-md-8">
-						<label for="inpuMotivo">Motivo</label>
+						<label for="inpuMotivo">Motivo de Consulta</label>
 						<input type="text" class="form-control" id="inpuMotivo" name="inpuMotivo" value="<?php  if($sesion != "") echo $sesion["motivo"];?>">
 					</div>
 				</div>
