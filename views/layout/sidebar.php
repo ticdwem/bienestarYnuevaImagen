@@ -4,7 +4,7 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Inicio</div>
-                            <a class="nav-link" href="<?=base_url?>">
+                            <a class="nav-link" href="<?=base_url?>Paciente/index">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                NUEVO PACIENTE
                             </a>
@@ -15,7 +15,7 @@
                             <div class="sb-sidenav-menu-heading">SUCURSALES</div>
                             <a class="nav-link" href="<?=base_url?>Consultorio/nuevo">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                               QUITAR SESSIONES
+                               PACIENTES NUEVOS
                             </a>
                             <!--     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts"
                                     ><div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
