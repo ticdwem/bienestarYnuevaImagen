@@ -4,7 +4,12 @@ $(document).ready(function(){
 		uiLibrary: 'bootstrap4',
 		format: 'dd-mm-yyyy'
 	})
-
+/* data table paciente nuevo */
+	$("#newPaciente").DataTable({
+		"language": {
+            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+        }
+	});
 /*detectamos el select seleccionado*/
 	$(".inpuEstado").on('change',function(){
 		var dato = $(this).val();
