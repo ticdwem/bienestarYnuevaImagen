@@ -1,5 +1,5 @@
-<?= require_once 'views/layout/cabeceraLogo.php' ?>
-<table class="table table-hover">
+<?php require_once 'views/layout/cabeceraLogo.php' ?>
+<table class="table table-hover display compact" id="newPaciente">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -11,7 +11,7 @@
   <?php while($nuevo = $listar->fetch_object()):?>
             <tr>
             <th scope="row"><?=$nuevo->idCliente?></th>
-            <td><?=$nuevo->completo?></td>
+            <td><?=SED::decryption($nuevo->nombreCliente).' '.SED::decryption($nuevo->apPatCliente).' '.SED::decryption($nuevo->apMatCliente)?></td>
             <td><a href="<?=base_url?>Consulta/paciente&id=<?=$nuevo->idCliente?>" class="btn btn-primary">DAR CONSULTA</a></td>
             </tr>
     <?php endwhile;?>

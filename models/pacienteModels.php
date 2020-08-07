@@ -86,7 +86,7 @@ class Usuario extends ModeloBase{
      */
     public function getIntputname()
     {
-        return $this->intputname;
+        return SED::encryption($this->intputname);
     }
 
     /**
@@ -106,7 +106,7 @@ class Usuario extends ModeloBase{
      */
     public function getInputAppat()
     {
-        return $this->inputAppat;
+        return SED::encryption($this->inputAppat);
     }
 
     /**
@@ -126,7 +126,7 @@ class Usuario extends ModeloBase{
      */
     public function getInputApmat()
     {
-        return $this->inputApmat;
+        return SED::encryption($this->inputApmat);
     }
 
     /**
@@ -146,7 +146,7 @@ class Usuario extends ModeloBase{
      */
     public function getCustomRadioSexo()
     {
-        return $this->customRadioSexo;
+        return SED::encryption($this->customRadioSexo);
     }
 
     /**
@@ -226,7 +226,7 @@ class Usuario extends ModeloBase{
      */
     public function getInpuOcupacion()
     {
-        return $this->inpuOcupacion;
+        return SED::encryption($this->inpuOcupacion);
     }
 
     /**
@@ -266,7 +266,7 @@ class Usuario extends ModeloBase{
      */
     public function getInpuCelular()
     {
-        return $this->inpuCelular;
+        return SED::encryption($this->inpuCelular);
     }
 
     /**
@@ -384,7 +384,7 @@ class Usuario extends ModeloBase{
      */
     public function getInpuColonia()
     {
-        return $this->inpuColonia;
+        return SED::encryption($this->inpuColonia);
     }
 
     /**
@@ -404,7 +404,7 @@ class Usuario extends ModeloBase{
      */
     public function getInpuCalle()
     {
-        return $this->inpuCalle;
+        return SED::encryption($this->inpuCalle);
     }
 
     /**
@@ -444,7 +444,7 @@ class Usuario extends ModeloBase{
      */
     public function getInpuTelEmergencia()
     {
-        return $this->inpuTelEmergencia;
+        return SED::encryption($this->inpuTelEmergencia);
     }
 
     /**
@@ -464,7 +464,7 @@ class Usuario extends ModeloBase{
      */
     public function getInpuParentesco()
     {
-        return $this->inpuParentesco;
+        return SED::encryption($this->inpuParentesco);
     }
 
     /**
@@ -484,7 +484,7 @@ class Usuario extends ModeloBase{
      */
     public function getInpuNombreRecomienda()
     {
-        return $this->inpuNombreRecomienda;
+        return SED::encryption($this->inpuNombreRecomienda);
     }
 
     /**
@@ -504,7 +504,7 @@ class Usuario extends ModeloBase{
      */
     public function getInpuMotivo()
     {
-        return $this->inpuMotivo;
+        return SED::encryption($this->inpuMotivo);
     }
 
     /**
@@ -544,7 +544,7 @@ class Usuario extends ModeloBase{
      */
     public function getInputNombreMedicamento()
     {
-        return $this->inputNombreMedicamento;
+        return SED::encryption($this->inputNombreMedicamento);
     }
 
     /**
