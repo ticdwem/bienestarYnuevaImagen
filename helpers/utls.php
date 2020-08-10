@@ -34,6 +34,8 @@ class Utls{
             case 'Consultorio':
                 if($_GET['action'] == "nuevo"){
                     $getTirulo = "Paciente Nuevo";
+                }else if('control'){
+                    $getTirulo = "Control ";
                 }
                 break;
             case 'Paciente':
