@@ -180,3 +180,68 @@ function getAbsolutePath() {
     var pathName = loc.pathname.substring(0, 23);
     return loc.href.substring(0, loc.href.length - ((loc.pathname + loc.search + loc.hash).length - pathName.length));    
 }
+
+function sumar(uno,dos){
+  var result;
+  result = (uno + dos);
+
+  return result;
+}
+
+function restar(uno,dos){
+  var resta;
+  resta = (uno - dos);
+
+  if(resta < 0){
+    return 0;
+  }else{
+    return resta;
+  }
+}
+
+function emptyInput(input){
+  if(input === ''){
+    return 'empty';
+  }else{
+    return input;
+  }
+}
+
+function enviarAjax(control,totalNow,updateNow){
+  var suma,resta,btnSuma,btnResta,ptintSuma,printResta;
+  var datos = Array();
+
+  suma = sumar(totalNow,updateNow);
+  resta = restar(totalNow,updateNow);
+  
+  datos.push({"con":control,"suma":suma,"resta":resta});
+  var data = {"data":datos};
+  var json = JSON.stringify(data);
+  console.log(control);
+  if(control == "meso"){
+    btnSuma = "btnSumaMeso";
+    btnResta = "btnRestarMeso";
+    ptintSuma = "sumarMeso";
+    printResta = "restarMeso";
+  }else if(control == "con"){
+    btnSuma = "btnSumaCon";
+    btnResta = "btnRestarCon";
+    ptintSuma = "sumarCon";
+    printResta = "restarCon";
+  }
+  $.ajax({
+    url: getAbsolutePath()+"views/layout/ajax.php",
+    method:"POST",
+    data:{"sentDatos":json},
+    cache:false,
+    success:function(resultados){
+      
+      $("#"+btnSuma).attr('href',getAbsolutePath()+'Consultorio/actualizar&s='+resultados.suma+'&tr='+resultados.tratameinto);
+      $("#"+btnResta).attr('href',getAbsolutePath()+'Consultorio/actualizar&s='+resultados.resta+'&tr='+resultados.tratameinto);
+      
+       $("."+ptintSuma).html(suma);
+       $("."+printResta).html(resta);
+      
+    }
+  })
+}
