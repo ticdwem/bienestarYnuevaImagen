@@ -59,5 +59,41 @@ class ConsultorioController {
        require_once 'views/consultorio/nuevo.php'; 
 
     }
+
+    public function control(){
+        $sesionConsultorio = 1;
+        $medicina = new Consultorio();
+        $medicina->setIdConsultorio($sesionConsultorio);
+        $resultado = $medicina->getMedicinaModels();
+        require_once 'views/consultorio/control.php';
+    }
+
+    public function actualizar(){
+        $get = $_GET;
+        $dato="";
+        $sesionConsultorio = 1;
+        $numeroSuma = (int)SED::decryption($get['s']);
+        $updateCampo = SED::decryption($get['tr']);
+        
+        if($updateCampo === 'meso'){
+            $dato = 'meso_Consultorio';
+        }else if($updateCampo === 'con'){
+            $dato = 'consentrado_Consultorio';
+        }
+        
+        $updateControl = new Consultorio();
+        $updateControl->setIdConsultorio($sesionConsultorio);
+        $updateControl->setMesoCons($numeroSuma);
+        $update = $updateControl->updaControl($dato);
+         if($update){
+             echo '<script>window.location="'.base_url.'Consultorio/control"</script>';
+         }else{
+             echo "nopo";
+         }
+
+
+
+        
+    }
 }
 
