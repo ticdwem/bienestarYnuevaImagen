@@ -324,8 +324,38 @@ $('#otroActual').on('change', function() {
 		valorCalle = $(this).val();
 		valorSelect = $(".altaConsultorio option:selected").text();
 		nuevoNombre = $("#intputnameConsultorio").val(valorSelect+' '+valorCalle);
-	
-	
-	
+		
+		
+		
 	});
+	
+	/*:::::::::::::::::::::::::::::::::::::::::::::::sumar y resatar control::::::::::::::::::::::::::::::::::::::::::::::::::::*/
+	$("#inputMesotrolSumaResta").on('keyup',function(){
+		var totalNow = parseInt($("#mesoTotal").html(),10);
+		var updateNow = parseInt($(this).val(),10);
+		var control = $("#meso").attr('id');
+		var jsonBack;
+		jsonBack = enviarAjax(control,totalNow,updateNow);	
+	});
+	$("#inputControlSumaResta").on('keyup',function(){
+		var totalNow = parseInt($("#conTotal").html(),10);
+		var updateNow = parseInt($(this).val(),10);
+		var control = $("#con").attr('id');
+		var jsonBack;
+		jsonBack = enviarAjax(control,totalNow,updateNow);		
+	});
+	/*:::::::::::::::::::::::::::::::::::::::::::::::VALIDAR BOTONES DE ACTUALIZAR MESO::::::::::::::::::::::::::::::::::::::::::::::::::::*/
+	$("#btnSuma").on("click",function(){
+		var validarInput = emptyInput($("#inputControlSumaResta").val());
+		
+		if(validarInput == "empty"){
+			$("#inputControlSumaResta").css("border","1px solid red");
+			$(".errorSumResta").css("color","red");
+			$(".errorSumResta").html("DEBES INGRESAR NUMERO A SUMAR O A RESTAR");
+			return false;
+		}
+
+	});
+	
+// btnRestar
 });
