@@ -25,4 +25,11 @@ class ModeloBase{
         return $nuevo;
     }
 
+    public function getEmailExis($email){
+        $validar = "SELECT us.correoUsuario FROM usuario us WHERE us.correoUsuario = '$email'";
+        $query = $this->db->query($validar);
+
+        return $query;
+    }
+
 }
