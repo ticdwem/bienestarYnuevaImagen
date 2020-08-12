@@ -43,6 +43,11 @@ class Utls{
                     $getTirulo = "Hoja Clinica";
                 }
                 break;
+            case 'Doctor':
+                if($_GET['action'] == 'index'){
+                    $getTirulo = "Alta Doctor";
+                }
+                break;
             default:
             $getTirulo = "Bienestar Nueva Imagen";
                 break;
