@@ -345,7 +345,7 @@ $('#otroActual').on('change', function() {
 		jsonBack = enviarAjax(control,totalNow,updateNow);		
 	});
 	/*:::::::::::::::::::::::::::::::::::::::::::::::VALIDAR BOTONES DE ACTUALIZAR MESO::::::::::::::::::::::::::::::::::::::::::::::::::::*/
-	$("#btnSuma").on("click",function(){
+	$("#btnSumaMeso,#btnRestarMeso,#btnSumaCon,#btnRestarCon").on("click",function(){
 		var validarInput = emptyInput($("#inputControlSumaResta").val());
 		
 		if(validarInput == "empty"){
