@@ -655,8 +655,7 @@ class PacienteController{
 
         if($correo != '0'){
             $mail = new Usuario();
-            $mail->setEmail($correo);
-            $resultado = $mail->getEmailExis();
+            $resultado = $mail->getEmailExis($correo);
             if($resultado->num_rows>0){
                 echo 1;
             }else{
