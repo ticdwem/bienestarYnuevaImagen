@@ -21,7 +21,7 @@
                                     ><div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                                     Layouts
                                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div
-                                ></a>
+                                ></a> 
                                 <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                     <nav class="sb-sidenav-menu-nested nav">
                                         <a class="nav-link" href="layout-static.html">Static Navigation</a>
@@ -57,6 +57,10 @@
                             <a class="nav-link" href="<?=base_url?>Consultorio/control">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 CONTROL
+                            </a>
+                            <a class="nav-link" href="<?=base_url?>Doctor/index">
+                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                ALTA DOCTOR
                             </a>
                             <!-- <a class="nav-link" href="">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
