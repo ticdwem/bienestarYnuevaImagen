@@ -733,13 +733,6 @@ class Usuario extends ModeloBase{
         return $query;
     }
 
-    public function getEmailExis(){
-        $validar = "SELECT cl.correoCliente FROM cliente cl WHERE cl.correoCliente = '{$this->getEmail()}'";
-        $query = $this->db->query($validar);
-
-        return $query;
-    }
-
     public function insertPaciente(){
         $insert = "INSERT INTO cliente
         (idCliente, nombreCliente, apPatCliente, apMatCliente, generoCliente,edadCliente,fechaNacimientoCliente, estaturaCliente,ocupacionCliente, estadoCivilCliente,celCliente, correoCliente, redSocialCliente,calleCliente,cpCliente,numeroCasaCleinte,coliniaCliente,idMuncipioCliente,nombreRecomiendaCliente,motivoCliente, telefonoEmergencia,parentescoEmergenciaCliente, medicamentoAnteriorCliente,envioCliente, fechaAltaCliente, statusCliente)
