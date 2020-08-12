@@ -13,10 +13,10 @@
 			<p class="lead">ESTE FORMATO DEBE SER LLENADO POR EL PACIENTE</p>
 			<?php if($sesion != "") echo '<p class="alert alert-danger error" role="alert">'.$_SESSION['formulario']["error"]."</p>";?>
 			<?php if(isset($_SESSION['statusSave'])) echo '<p class="alert alert-success error" role="alert">'.$_SESSION['statusSave']."</p>";?>
+			<?php Utls::deleteSession('statusSave') ?>
 		</div>
 		<div style="height: auto">
 			<form id="registro" action="<?=base_url?>Paciente/save" method="POST">
-			 <!-- <form action="<?=base_url?>Paciente/saveArray" method="POST"> 	--> 
 				<div class="idPaciente">
 				<input type="text" class="form-control" id="idPaciente" value="<?=Utls::createId(1,$id['id'])?>" readonly="true" name="idPaciente">	
 				</div>	
@@ -618,7 +618,7 @@
 					<input type="text" class="form-control anteriorMedicamento" name="medicamentoAnterior" id="medicamentoAnterior" placeholder="si es mas de un medicamento separalo por una coma (,)" disabled>
 				</div>
 				<!-- <button class="btn btn-primary" type="submit">Submit form</button> -->
-				<input type="submit" id="btn-env" values="enviar" name="enviar">
+				<input type="submit" class="btn btn-primary" id="btn-env" values="enviar" name="enviar">
 			</form>
 		</div>
 	</div>
