@@ -5,7 +5,6 @@ class ConsultorioController {
     public function index(){
         $estado = new Consultorio();
         $nombreE = $estado->getAll('estados'); 
-
         require_once 'views/consultorio/registro.php';
     }
 
@@ -53,7 +52,7 @@ class ConsultorioController {
     }
 
     public function nuevo(){
-        $sesionConsultorio = 1;
+        $sesionConsultorio = $_SESSION['usuario']['consultorio'];
         $nuevo = new Consultorio();
         $listar = $nuevo->getAllStatus($sesionConsultorio,1);
        require_once 'views/consultorio/nuevo.php'; 
@@ -61,7 +60,7 @@ class ConsultorioController {
     }
 
     public function control(){
-        $sesionConsultorio = 1;
+        $sesionConsultorio = $_SESSION['usuario']['consultorio'];
         $medicina = new Consultorio();
         $medicina->setIdConsultorio($sesionConsultorio);
         $resultado = $medicina->getMedicinaModels();
@@ -71,7 +70,7 @@ class ConsultorioController {
     public function actualizar(){
         $get = $_GET;
         $dato="";
-        $sesionConsultorio = 1;
+        $sesionConsultorio = $_SESSION['usuario']['consultorio'];
         $numeroSuma = (int)SED::decryption($get['s']);
         $updateCampo = SED::decryption($get['tr']);
         
