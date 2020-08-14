@@ -1,11 +1,5 @@
 <div class="card border-0 shadow my-2">
 	<div class="card-body p-5">
-		<!-- <figure>    
-			<img src="assets/img/logo.png" class="text-center" alt="logo salud y bienestar">
-			<figcaption>
-				<h2 class="font-weight-light"><p>Hoja Clinica</p></h2> 
-			</figcaption> 
-		</figure> -->
 		<?php require_once 'views/layout/cabeceraLogo.php';?>
 		<?php $sesion = ""; 
 		 if(isset($_SESSION['formulario'])){$sesion = $_SESSION['formulario']['datos'];} ?>
@@ -18,7 +12,7 @@
 		<div style="height: auto">
 			<form id="registro" action="<?=base_url?>Paciente/save" method="POST">
 				<div class="idPaciente">
-				<input type="text" class="form-control" id="idPaciente" value="<?=Utls::createId(1,$id['id'])?>" readonly="true" name="idPaciente">	
+				<input type="text" class="form-control" id="idPaciente" value="<?=Utls::createId($_SESSION['usuario']['consultorio'],$id['id'])?>" readonly="true" name="idPaciente">	
 				</div>	
 			<div class="page-header"><small>DATOS PERSONALES</small></div>
 			<hr>			
