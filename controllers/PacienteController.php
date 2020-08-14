@@ -585,7 +585,7 @@ class PacienteController{
                                                         $insertMedicamento = $medicamento->insertControl();
                                                         if($insertMedicamento){
                                                             $_SESSION['statusSave'] = "SE HA REGISTRADO EXITOSAMENTE";
-                                                            echo '<script>window.location="'.base_url.'"</script>';
+                                                            echo '<script>window.location="'.base_url.'Paciente/index"</script>';
                                                         }                                                      
                                                     } else{
                                                         echo 'ERROR DATOS MUJER';
