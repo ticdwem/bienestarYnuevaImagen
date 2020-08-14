@@ -46,12 +46,14 @@
 						INICIAR SESIÓN
 					</span>
 				</div>
-
-				<form action="<?=base_url?>Paciente/index" method="POST" class="login100-form validate-form">
+				 <?php if(isset($_SESSION['loggin'])){echo '<p class="alert alert-danger errorLoggin" role="alert"><strong>'.$_SESSION['loggin']."</strong></p>";}?>
+				 <?php Utls::deleteSession('loggin')?>
+				<form action="<?=base_url?>Loggin/verificar" method="POST" class="login100-form validate-form">
 					<div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
 						<span class="label-input100">Correo</span>
-						<input class="input100" type="text" name="username" placeholder="Enter Email">
+						<input class="input100" type="text" name="username" placeholder="Enter Email" id="emailLoggin">
 						<span class="focus-input100"></span>
+						<input type="hidden" name="tipoUser" id="tipoUser">
                     </div>
                     
 					<div class="wrap-input100 validate-input m-b-18" data-validate = "Password is required">
@@ -60,15 +62,16 @@
 						<span class="focus-input100"></span>
 					</div>
 
-					<div class="flex-sb-m w-full p-b-30">
-                    
-						<label for="consul">Consultorio</label>
-						<select class="form-control consul" id="consul" name="consul">
-						<?php while ($estado = $consutorio->fetch_object()):?>							
-							<option value="<?= $estado->id_consultorio?>"><?= $estado->nombreConsultorio?></option> 							
+					<div class="wrap-input100 validate-input m-b-18 selectH">                    
+						<!-- <label for="consul">Consultorio</label> -->
+						<span class="label-input100">Consultorio</span>
+						<select class="form-control consul hideSelect" id="consul" name="consul">
+						<option value="" selected>SELECCIONA CONSULTORIO</option> 							
+						<?php						
+						while ($estado = $consutorio->fetch_object()):?>							
+							<option value="<?=$estado->id_consultorio?>"><?=$estado->nombreConsultorio?></option> 							
 						<?php endwhile; ?>
-						</select>
-					
+						</select>					
 					</div>
 
 					<div class="container-login100-form-btn">
