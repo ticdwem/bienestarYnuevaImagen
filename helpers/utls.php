@@ -8,7 +8,13 @@ class Utls{
         }
         return $name;
     }
+    public static function getApellido($apellido){
+        $dato = explode(' ',$apellido);
+        $primer = $dato[0];
+        $second = $dato[1];
 
+        return ucwords(SED::decryption($primer).' '.SED::decryption($second));
+    }
     public static function createId($sesionConsultorio,$idbd){
         $increment=0;
         $Ano = date('Y');
