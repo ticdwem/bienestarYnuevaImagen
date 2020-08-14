@@ -1,6 +1,7 @@
 <?php
 // require_once base_server.'/models/pacienteModels.php';
 require_once $_SERVER['DOCUMENT_ROOT']."/bienestarYnuevaImagen/models/pacienteModels.php";
+// require_once $_SERVER['DOCUMENT_ROOT']."/models/pacienteModels.php";
 
 class PacienteController{
     /*este es una clase de prueba para saber que todo esta bien relacionado */

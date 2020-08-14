@@ -1,5 +1,6 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT']."/bienestarYnuevaImagen/models/consultorioModels.php";
+/* require_once $_SERVER['DOCUMENT_ROOT']."/models/consultorioModels.php"; */
 class ConsultorioController {
     /*este es una clase de prueba para saber que todo esta bien relacionado */
     public function index(){

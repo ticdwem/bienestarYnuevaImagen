@@ -1,5 +1,6 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT']."/bienestarYnuevaImagen/models/doctorModels.php";
+// require_once $_SERVER['DOCUMENT_ROOT']."/models/consultorioModels.php";
 class DoctorController{
     /*este es una clase de prueba para saber que todo esta bien relacionado */
     public function index(){

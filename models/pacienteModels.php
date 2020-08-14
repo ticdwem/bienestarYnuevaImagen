@@ -1,5 +1,6 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT']."/bienestarYnuevaImagen/config/modeloBase.php";
+// require_once $_SERVER['DOCUMENT_ROOT']."/config/modeloBase.php";
 
 
 class Usuario extends ModeloBase{
