@@ -3,6 +3,7 @@ require_once "../../controllers/PacienteController.php";
 require_once "../../models/pacienteModels.php";
 require_once "../../helpers/validacion.php";
 require_once "../../helpers/crypt.php";
+require_once "../../controllers/LogginController.php";
 
 
 class Ajax{
@@ -28,12 +29,13 @@ public function setDato($archivo)
 		$sent = new PacienteController();
 		$sent->getMunicipio($query);
 	}
+
 	public function verifCorreo(){
 		$query = $this->getDato();
 		$sent = new PacienteController();
 		$sent->getCorreoExistent($query);
 	}
-
+	
 	public function cryptAll(){
 		$dato = $this->getDato();
 		$datos = json_decode($dato,true);
@@ -41,7 +43,7 @@ public function setDato($archivo)
 		$title = $begin["con"];
 		$sum = $begin["suma"];
 		$subtraction= $begin["resta"];
-
+		
 		$sentInfo["tratameinto"] = SED::encryption($title);
 		$sentInfo["suma"] = SED::encryption($sum);
 		$sentInfo["resta"] = SED::encryption($subtraction);
@@ -50,13 +52,19 @@ public function setDato($archivo)
 		echo json_encode($sentInfo);
 		
 	}
+	
+	public function verifLogg(){
+		$query = $this->getDato();
+		$sent = new LogginController();
+		$sent->verifEmailLog($query);
+	}
 
 
 }
-//  echo "<pre>";
-//  var_dump($_POST);
-//  echo "</pre>";
-//  exit();
+//   echo "<pre>";
+//   var_dump($_POST);
+//   echo "</pre>";
+//   exit();
 
 if(isset($_POST["idEstado"])){
 	$sent = new Ajax();
@@ -74,4 +82,10 @@ if(isset($_POST['sentDatos'])){
 	$crypt = new Ajax();
 	$crypt->setDato($_POST['sentDatos']);
 	$crypt->cryptAll();
+}
+
+if(isset($_POST["correoLoggin"])){
+	$sent = new Ajax();
+	$sent -> setDato($_POST["correoLoggin"]);
+	$sent -> verifLogg();
 }
