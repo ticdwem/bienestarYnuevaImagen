@@ -422,22 +422,22 @@ class Usuario extends ModeloBase{
     /**
      * @return mixed
      */
-    public function getInpuNumCasa()
-    {
-        return $this->inpuNumCasa;
-    }
+    // public function getInpuNumCasa()
+    // {
+    //     return $this->inpuNumCasa;
+    // }
 
     /**
      * @param mixed $inpuNumCasa
      *
      * @return self
      */
-    public function setInpuNumCasa($inpuNumCasa)
-    {
-        $this->inpuNumCasa = $inpuNumCasa;
+    // public function setInpuNumCasa($inpuNumCasa)
+    // {
+    //     $this->inpuNumCasa = $inpuNumCasa;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     /**
      * @return mixed
@@ -735,9 +735,10 @@ class Usuario extends ModeloBase{
 
     public function insertPaciente(){
         $insert = "INSERT INTO cliente
-        (idCliente, nombreCliente, apPatCliente, apMatCliente, generoCliente,edadCliente,fechaNacimientoCliente, estaturaCliente,ocupacionCliente, estadoCivilCliente,celCliente, correoCliente, redSocialCliente,calleCliente,cpCliente,numeroCasaCleinte,coliniaCliente,idMuncipioCliente,nombreRecomiendaCliente,motivoCliente, telefonoEmergencia,parentescoEmergenciaCliente, medicamentoAnteriorCliente,envioCliente, fechaAltaCliente, statusCliente)
-        VALUES ('{$this->getIdPaciente()}', '{$this->getIntputname()}', '{$this->getInputAppat()}', '{$this->getInputApmat()}', '{$this->getCustomRadioSexo()}', '{$this->getInpuEdad()}', '{$this->getDateInicio()}', '{$this->getInpuEstatura()}', '{$this->getInpuOcupacion()}', '{$this->getInpuEstadoCivil()}', '{$this->getInpuCelular()}', '{$this->getEmail()}', '{$this->getInpuRedSocial()}', '{$this->getInpuCalle()}', '{$this->getInpuCP()}', '{$this->getInpuNumCasa()}', '{$this->getInpuColonia()}', '{$this->getInpuMunicipio()}', '{$this->getInpuNombreRecomienda()}', '{$this->getInpuMotivo()}', '{$this->getInpuTelEmergencia()}', '{$this->getInpuParentesco()}', '{$this->getInputNombreMedicamento()}', '1', NOW(), '1')";
-        $guardar = $this->db->query($insert);
+        (idCliente, nombreCliente, apPatCliente, apMatCliente, generoCliente,edadCliente,fechaNacimientoCliente, estaturaCliente,ocupacionCliente, estadoCivilCliente,celCliente, correoCliente, redSocialCliente,calleCliente,cpCliente,coliniaCliente,idMuncipioCliente,nombreRecomiendaCliente,motivoCliente, telefonoEmergencia,parentescoEmergenciaCliente, medicamentoAnteriorCliente,envioCliente, fechaAltaCliente, statusCliente)
+        VALUES ('{$this->getIdPaciente()}', '{$this->getIntputname()}', '{$this->getInputAppat()}', '{$this->getInputApmat()}', '{$this->getCustomRadioSexo()}', '{$this->getInpuEdad()}', '{$this->getDateInicio()}', '{$this->getInpuEstatura()}', '{$this->getInpuOcupacion()}', '{$this->getInpuEstadoCivil()}', '{$this->getInpuCelular()}', '{$this->getEmail()}', '{$this->getInpuRedSocial()}', '{$this->getInpuCalle()}', '{$this->getInpuCP()}', '{$this->getInpuColonia()}', '{$this->getInpuMunicipio()}', '{$this->getInpuNombreRecomienda()}', '{$this->getInpuMotivo()}', '{$this->getInpuTelEmergencia()}', '{$this->getInpuParentesco()}', '{$this->getInputNombreMedicamento()}', '1', NOW(), '1')";
+
+       $guardar = $this->db->query($insert);
 
         $result = false;
         if($guardar){
