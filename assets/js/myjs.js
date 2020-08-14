@@ -345,9 +345,9 @@ $('#otroActual').on('change', function() {
 		jsonBack = enviarAjax(control,totalNow,updateNow);		
 	});
 	/*:::::::::::::::::::::::::::::::::::::::::::::::VALIDAR BOTONES DE ACTUALIZAR MESO::::::::::::::::::::::::::::::::::::::::::::::::::::*/
-	$("#btnSumaMeso,#btnRestarMeso,#btnSumaCon,#btnRestarCon").on("click",function(){
+	$("#btnSumaCon,#btnRestarCon").on("click",function(){
 		var validarInput = emptyInput($("#inputControlSumaResta").val());
-		
+
 		if(validarInput == "empty"){
 			$("#inputControlSumaResta").css("border","1px solid red");
 			$(".errorSumResta").css("color","red");
@@ -356,6 +356,49 @@ $('#otroActual').on('change', function() {
 		}
 
 	});
-	
-// btnRestar
+	$("#btnSumaMeso,#btnRestarMeso").on("click",function(){
+		var validarInputMeso = emptyInput($("#inputMesotrolSumaResta").val());
+		
+		if(validarInputMeso == "empty"){
+			console.log(validarInputMeso);
+			$("#inputMesotrolSumaResta").css("border","1px solid red");
+			$(".errorSumResta").css("color","red");
+			$(".errorSumResta").html("DEBES INGRESAR NUMERO A SUMAR O A RESTAR");
+			return false;
+		}
+
+	});
+
+	$("#emailLoggin").on('change',function(){
+		var email = $(this).val();
+		var validarEmail =  expRegular("email",email);
+
+		if(validarEmail != 0){
+			var mail = new FormData();
+			mail.append("correoLoggin",email);
+	 	$.ajax({
+				url: getAbsolutePath()+"views/layout/ajax.php",
+				method:"POST",
+				data:mail,
+				cache:false,
+				contentType:false,
+				processData:false,
+				beforeSend:function(){
+				$('.spinnerWhite').html('<i class="fas fa-sync fa-spin"></i>');
+						},
+				success:function(emaillog){					
+					if(emaillog){
+						$("#tipoUser").val(emaillog.tipo);
+						if(emaillog.tipo == 2 || emaillog.tipo == 3){
+							$(".selectH").css('display','block');
+						}else{
+							$(".selectH").css('display','none');
+						}
+					}else{
+						$("#tipoUser").val(0);
+					}
+				 }
+			})
+		}
+	});
 });
