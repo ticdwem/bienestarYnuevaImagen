@@ -26,7 +26,7 @@ class ModeloBase{
     }
 
     public function getEmailExis($email){
-        $validar = "SELECT us.correoUsuario FROM usuario us WHERE us.correoUsuario = '$email'";
+        $validar = "SELECT us.correoUsuario, us.tipoUsuario FROM usuario us WHERE us.correoUsuario = '$email'";
         $query = $this->db->query($validar);
 
         return $query;
