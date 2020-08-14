@@ -182,5 +182,40 @@ form .idPaciente #idPaciente{
 	margin-bottom: 250px;
 }
 
+/* ocultar consultorio de loggin */
+.errorLoggin strong{
+	position: relative;
+	left: 25%;
+	top: 0%;
+	
+}
+form .selectH{
+	display: none;
+	
+}
+form .selectH .hideSelect{
+	text-transform: uppercase;
+}
+
+/* titulo header */
+#headerBienestar{
+	width: 100%;
+	height: auto;
+}
+#headerBienestar .divconsul{
+	width: 50%;
+	justify-content: center;
+	position: relative;
+	left: 25%;
+}
+#headerBienestar .divconsul .consul{
+	position: relative;
+	top: 10px;
+	color: whitesmoke;
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+	text-transform: uppercase;
+	font-size: 1.2em;
+}
+
 
 
