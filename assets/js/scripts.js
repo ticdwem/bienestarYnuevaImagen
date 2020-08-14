@@ -217,7 +217,6 @@ function enviarAjax(control,totalNow,updateNow){
   datos.push({"con":control,"suma":suma,"resta":resta});
   var data = {"data":datos};
   var json = JSON.stringify(data);
-  console.log(control);
   if(control == "meso"){
     btnSuma = "btnSumaMeso";
     btnResta = "btnRestarMeso";

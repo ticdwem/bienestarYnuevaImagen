@@ -69,8 +69,13 @@
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
+                        <?php if(isset($_SESSION['usuario'])): ?>
                         <div class="small">Hola Dr:</div>
-                        Luis M. Albarran
+                        <?php
+                        echo ucwords(SED::decryption($_SESSION['usuario']['nombre'])).' '.Utls::getApellido($_SESSION['usuario']['apeliidos']);                       
+                        //echo ucwords(SED::decryption($_SESSION['usuario']['nombre']));                       
+                       ?>
+                        <?php endif ?>
                     </div>
                 </nav>
             </div>

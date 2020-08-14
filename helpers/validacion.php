@@ -155,11 +155,13 @@ class Validacion
 			return 1;
 		}
 	}
-		public function validarPass($pass)
+		public static function validarPass($pass)
 	{
 
 		if(!$pass == ""){
-		 if(preg_match('/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])\S{8,50}/', $pass)){
+		//  if(preg_match('/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])\S{8,50}/', $pass)){
+		 if(preg_match('/^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/', $pass)){
+						
 		 		return $pass;
 		 }else{
 		 	return 0;
