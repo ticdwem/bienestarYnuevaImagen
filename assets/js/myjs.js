@@ -429,4 +429,73 @@ $('#otroActual').on('change', function() {
 
 		})
 	})
+
+	$("#btnUpdateRegistro").on('click',function(){
+		$("#frmCobroEstatura").submit(function(e){
+			var cobro = emptyInput($("#cobro").val());
+			var estatura = emptyInput($("#txtEstatura").val());
+			var observacion = emptyInput($("#observacion").val());
+			var contenido;
+
+			if(cobro == "empty"){
+				$("#cobro").addClass('is-invalid');
+				$("#alertaCobro").addClass('invalid-feedback');
+				$("#alertaCobro").html('CAMPO OBLIGATORIO');
+				e.preventDefault();
+			}else{
+				cobro = expRegular('decimales',$("#cobro").val());
+				if(cobro != 0){
+					$("#cobro").addClass('is-valid');
+					$("#alertaCobro").addClass('valid-feedback');
+					$("#alertaCobro").html('CORRECTO!!');
+				}else{
+					$("#cobro").addClass('is-invalid');
+					$("#alertaCobro").addClass('invalid-feedback');
+					$("#alertaCobro").html('FORMATO INVALIDO');
+					e.preventDefault();
+				}
+			}
+
+			if(estatura == "empty"){
+				$("#txtEstatura").addClass('is-invalid');
+				$("#alertaEstatura").addClass('invalid-feedback');
+				$("#alertaEstatura").html('CAMPO OBLIGATORIO');
+				e.preventDefault();
+			}else{
+				estatura = expRegular('decimales',$("#txtEstatura").val());
+				if(estatura != 0){
+					$("#txtEstatura").addClass('is-valid');
+					$("#alertaEstatura").addClass('valid-feedback');
+					$("#alertaEstatura").html('CORRECTO!!');
+				}else{
+					$("#txtEstatura").addClass('is-invalid');
+					$("#alertaEstatura").addClass('invalid-feedback');
+					$("#alertaEstatura").html('FORMATO INVALIDO');
+					e.preventDefault();	
+				}
+			}
+
+			if(observacion == "empty"){
+				$("#observacion").addClass('is-invalid');
+				$("#alertaObs").addClass('invalid-feedback');
+				$("#alertaObs").html('CAMPO OBLIGATORIO');
+				e.preventDefault();
+			}else{
+				observacion = expRegular('messagge',$("#observacion").val());
+				contenido = $("#observacion").val().length;
+
+				if(observacion =! 0 && contenido <= 500){
+					$("#observacion").addClass('is-valid');
+					$("#alertaObs").addClass('valid-feedback');
+					$("#alertaObs").html('CORRECTO!!');
+				}else{
+					$("#observacion").addClass('is-invalid');
+					$("#alertaObs").addClass('invalid-feedback');
+					$("#alertaObs").html('MENOR A 500 CARACTERES O NO INGRESES VALORES INCORRECTOS');
+					e.preventDefault();
+				}
+			}
+
+		})
+	});
 });
