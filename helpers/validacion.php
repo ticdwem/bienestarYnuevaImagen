@@ -202,12 +202,12 @@ class Validacion
 		}
 	}
 
-	public function textLong($texto)
+	public static function textLong($texto)
 	{
 		if($texto != "")
 		{
 		$contar = strlen($texto);
-			if (preg_match("/^[0-9a-zA-ZáéíóúàèìòùÀÈÌÒÙÁÉÍÓÚñÑüÜ_.\s]+$/",$texto) && $contar <= 200) {
+			if (preg_match("/^[0-9a-zA-ZáéíóúàèìòùÀÈÌÒÙÁÉÍÓÚñÑüÜ_.\s]+$/",$texto) && $contar <= 500) {
 				return strtoupper($texto);
 			} else {
 				return 1;
