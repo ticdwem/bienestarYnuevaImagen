@@ -368,7 +368,7 @@ $('#otroActual').on('change', function() {
 		}
 
 	});
-
+/* :::::::::::::::::::::::::::::::::::::::::::::::loguin:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
 	$("#emailLoggin").on('change',function(){
 		var email = $(this).val();
 		var validarEmail =  expRegular("email",email);
@@ -401,4 +401,32 @@ $('#otroActual').on('change', function() {
 			})
 		}
 	});
+
+	$(".btnstart").on("click", function(){		
+		$("#frmLogginVerif").submit(function(e){
+			var correo = emptyInput($("#emailLoggin").val());
+			var pass = emptyInput($("#inputPassLoggin").val());
+			var tipo = $("#tipoUser").val();
+			if(correo == "empty"){
+				$("#emailLoggin").attr('placeholder','RECUERDA ESTE CAMPO ES OBLIGATORIO');
+				e.preventDefault();
+			}
+
+			if(pass == "empty"){
+				$("#inputPassLoggin").attr('placeholder','RECUERDA ESTE CAMPO ES OBLIGATORIO');
+				e.preventDefault();
+			}
+
+			if(tipo == 2 || tipo == 3){
+				var select = emptyInput($("#consul option:selected").val());
+
+				if(select == "empty"){
+					$(".errorSelect").css({'color':'red','opacity':'0.5','font-family': "'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif"});
+					$(".errorSelect").html('RECUERDA ESTE CAMPO ES OBLIGATORIO');
+					e.preventDefault();
+				}
+			}
+
+		})
+	})
 });
