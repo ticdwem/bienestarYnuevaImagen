@@ -2,7 +2,7 @@
 
 class ErrorController{
     /*este es una clase de prueba para saber que todo esta bien relacionado */
-    public function index(){
-        echo "<h2>LA PAGINA QUE BUSCAS NO EXISTE</h2>";
+    public function error(){
+        require_once 'views/layout/error404.php';
     }
 }
