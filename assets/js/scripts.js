@@ -132,7 +132,8 @@ function expRegular(texto,contenido){
   var phonearray;   
   var mesaje;
   var pass;
-  var varif;  
+  var varif;
+  var decimal;  
 
   switch (texto) {
     case "nombre":
@@ -150,6 +151,11 @@ function expRegular(texto,contenido){
      varif =   phonearray;
     break; 
     
+    case "decimales":
+     decimal = /^([0-9]+\.?[0-9]{0,2})$/;
+     varif =   decimal;
+    break; 
+
     case "messagge":
     case "dir":
      mesaje = /^[0-9a-zA-ZáéíóúàèìòùÀÈÌÒÙÁÉÍÓÚñÑüÜ_;,.()¿$?\s]+$/;
