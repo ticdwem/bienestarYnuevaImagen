@@ -1,6 +1,14 @@
 <?php
 
 class Utls{
+    public static function verifSession($session){
+        if(empty($session)){
+            session_destroy();
+            echo '<script>window.location="'.base_url.'"</script>';
+        }
+
+    }
+
     public static function deleteSession($name){
         if(isset($_SESSION[$name])){
                 $_SESSION[$name] = null;
@@ -39,7 +47,7 @@ class Utls{
         switch ($controlador) {
             case 'Consultorio':
                 if($_GET['action'] == "nuevo"){
-                    $getTirulo = "Paciente Nuevo";
+                    $getTirulo = "Nuevo Ingreso";
                 }else if('control'){
                     $getTirulo = "Control ";
                 }
@@ -55,6 +63,13 @@ class Utls{
                 }
                 break;
             default:
+            case 'Consulta':
+                if($_GET['action'] == "ingreso"){
+                    $getTirulo = "Pagos Y Consultas";
+                }else if('control'){
+                    $getTirulo = "Control ";
+                }
+                break;
             $getTirulo = "Bienestar Nueva Imagen";
                 break;
         }
