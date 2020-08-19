@@ -48,7 +48,7 @@
 				</div>
 				 <?php if(isset($_SESSION['loggin'])){echo '<p class="alert alert-danger errorLoggin" role="alert"><strong>'.$_SESSION['loggin']."</strong></p>";}?>
 				 <?php Utls::deleteSession('loggin')?>
-				<form action="<?=base_url?>Loggin/verificar" method="POST" class="login100-form validate-form">
+				<form action="<?=base_url?>Loggin/verificar" method="POST" class="login100-form validate-form" id="frmLogginVerif">
 					<div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
 						<span class="label-input100">Correo</span>
 						<input class="input100" type="text" name="username" placeholder="Enter Email" id="emailLoggin">
@@ -58,7 +58,7 @@
                     
 					<div class="wrap-input100 validate-input m-b-18" data-validate = "Password is required">
 						<span class="label-input100">Password</span>
-						<input class="input100" type="password" name="pass" placeholder="Enter password">
+						<input class="input100" type="password" name="pass" placeholder="Enter password" id="inputPassLoggin">
 						<span class="focus-input100"></span>
 					</div>
 
@@ -71,11 +71,12 @@
 						while ($estado = $consutorio->fetch_object()):?>							
 							<option value="<?=$estado->id_consultorio?>"><?=$estado->nombreConsultorio?></option> 							
 						<?php endwhile; ?>
-						</select>					
+						</select>
+						<div class="errorSelect"></div>					
 					</div>
 
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
+						<button class="login100-form-btn btnstart">
 							Login
 						</button>
 					</div>

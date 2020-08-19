@@ -28,8 +28,8 @@ class LogginController{
        
     }
 
-    public function verificar(){
-        Utls::deleteSession('usuario');
+    public function verificar(){/* 
+        Utls::deleteSession('usuario'); */
         $user = (Validacion::validarEmail($_POST["username"]) == '0') ? false : $_POST["username"];
         //$password = (Validacion::validarPass($_POST["pass"]) == '0') ? false : $_POST["pass"];
         $tipo = (Validacion::validarNumero($_POST["tipoUser"]) == '-1') ? false : $_POST["tipoUser"];
