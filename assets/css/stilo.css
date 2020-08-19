@@ -217,5 +217,32 @@ form .selectH .hideSelect{
 	font-size: 1.2em;
 }
 
+/* primera ve en consulta */
+.pagos .pagosAll{
+	position: relative;
+	left: 0%;
 
+}
+.pagos .control{
+	width: 12%;
+	position: absolute;
+	left: 82%;
+	top: 40px;
+}
 
+.pagos .datosPaciente{
+	position: relative;
+	top: -45px;
+}
+.pagos .datosPaciente .nombrePaciente{
+	border-bottom:1px solid rgba(159, 163, 159, 0.616);
+	position: relative;
+	width: 45%;
+	left: 35%;
+}
+.pagos .datosPaciente .nombrePaciente p{
+	font-family: Georgia, 'Times New Roman', Times, serif;
+	font-size: 1.2em;	
+	position: relative;
+	left: 25%;
+}
