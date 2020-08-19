@@ -8,27 +8,34 @@
          <p class="name"><?php echo ucwords(SED::decryption($datos->nombreCliente).' '.SED::decryption($datos->apPatCliente).' '.SED::decryption($datos->apMatCliente))?></p>
         </div>
     </div>
-    <form>
+    <form action="<?=base_url?>Consulta/ingreso" method="POST" id="frmCobroEstatura" novalidate>
+        <input type="hidden" name="idPaciente" value="<?=$datos->idCliente?>">
         <div class="form-row">
             <div class="form-group col-md-6">
-            <label for="inputEmail4">Recomendado Por:</label>
-            <input type="text" class="form-control" value="<?=ucwords(SED::decryption($datos->nombreRecomiendaCliente))?>" id="disabledTextInput" disabled>
+                <label for="inputEmail4">Recomendado Por:</label>
+                <input type="text" class="form-control" value="<?=ucwords(SED::decryption($datos->nombreRecomiendaCliente))?>" id="disabledTextInput" disabled>
             </div>
             <div class="form-group col-md-6">
-            <label for="cobro">Cobro</label>
-            <input type="number" class="form-control" id="cobro">
+                <label for="cobro">Cobro</label>
+                <input type="number" class="form-control" id="cobro" name="txtCobro">
+                <div class="" id="alertaCobro">
+                </div>
             </div>
         </div>
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="txtNumber">Estatura</label>
-                <input type="number" class="form-control" id="txtNumber" min="1" max="2.50">
+                <input type="number" class="form-control" id="txtEstatura" name="txtEstatura" value="<?=$datos->estaturaCliente?>">
+                <div class="" id="alertaEstatura">
+                </div>
             </div>
         </div>
         <div class="form-group">
-            <label for="exampleFormControlTextarea1">Example textarea</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <label for="observacion">Observaciones</label>
+            <textarea class="form-control" id="observacion" name="txtObs" rows="3"></textarea>
+            <div class="" id="alertaObs">
+                </div>
         </div>
-        <button type="submit" class="btn btn-primary">REGISTRAR</button>
+        <button type="submit" class="btn btn-primary" name="btnRegistro" id="btnUpdateRegistro">REGISTRAR</button>
 </form>
 </div>
