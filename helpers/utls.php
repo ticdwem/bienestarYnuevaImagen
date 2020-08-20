@@ -1,13 +1,13 @@
 <?php
 
 class Utls{
-    public static function verifSession($session){
-        if(empty($session)){
-            session_destroy();
-            echo '<script>window.location="'.base_url.'"</script>';
-        }
+    // public static function verifSession($session){
+    //     if(empty($session)){
+    //         session_destroy();
+    //         echo '<script>window.location="'.base_url.'"</script>';
+    //     }
 
-    }
+    // }
 
     public static function deleteSession($name){
         if(isset($_SESSION[$name])){

@@ -429,7 +429,7 @@ $('#otroActual').on('change', function() {
 
 		})
 	})
-
+/* :::::::::::::::::::::::::::::::::::::::::::::::::::::::CobroEstaturaObservacion::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
 	$("#btnUpdateRegistro").on('click',function(){
 		$("#frmCobroEstatura").submit(function(e){
 			var cobro = emptyInput($("#cobro").val());
