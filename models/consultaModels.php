@@ -105,7 +105,8 @@ class Consulta extends ModeloBase{
         $update = "UPDATE cliente 
         SET estaturaCliente = '{$this->getEstatura()}',
              cobroCliente = '{$this->getCobro()}',
-             observacionCleinte = '{$this->getObser()}'
+             observacionCleinte = '{$this->getObser()}',
+             statusCliente = 2
         WHERE idCliente = '{$this->getId()}'";
         $query = $this->db->query($update);
          $upPac = false;
