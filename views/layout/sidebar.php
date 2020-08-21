@@ -18,6 +18,10 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                PACIENTES NUEVOS
                             </a>
+                            <a class="nav-link" href="<?=base_url?>Consulta/lista">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                               MIS PACIENTES
+                            </a>
                                 <!-- <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts"
                                     ><div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                                     Layouts

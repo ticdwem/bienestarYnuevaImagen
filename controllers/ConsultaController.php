@@ -51,5 +51,15 @@ class ConsultaController {
             }
         }
     }
+
+    public function lista(){
+        $pacientes = new Consulta();
+        $listar = $pacientes->getAllStatus(Consultorio,2);
+        require_once 'views/consultorio/listaPacientes.php';
+    }
+
+    public function diario(){
+        echo "diario";
+    }
 }
 

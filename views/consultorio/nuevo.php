@@ -1,5 +1,5 @@
 <?php require_once 'views/layout/cabeceraLogo.php' ?>
-<table class="table table-hover display compact" id="newPaciente">
+<table class="table table-hover display compact newPaciente" id="newPaciente">
   <thead>
     <tr>
       <th scope="col">#</th>

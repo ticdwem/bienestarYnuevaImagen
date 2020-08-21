@@ -19,7 +19,9 @@ class ModeloBase{
     }
 
     public function getAllStatus($consultorio,$status){
-        $getAll=('CALL Proc_getNewCliente('.$status.','.$consultorio.')');
+        $getAll="SELECT * FROM listado_pacientes
+                 WHERE statusCliente = $status
+                 AND id_consultorio = $consultorio";
         $nuevo = $this->db->query($getAll);
 
         return $nuevo;

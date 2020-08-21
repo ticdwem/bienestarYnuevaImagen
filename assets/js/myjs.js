@@ -5,11 +5,13 @@ $(document).ready(function(){
 		format: 'dd-mm-yyyy'
 	})
 /* data table paciente nuevo */
-	$("#newPaciente").DataTable({
+	$(".newPaciente").DataTable({
 		"language": {
             "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
         }
 	});
+/* para mostrar tip en lo sbotones */
+	$('[data-toggle="tooltip"]').tooltip();   
 /*detectamos el select seleccionado*/
 	$(".inpuEstado").on('change',function(){
 		var dato = $(this).val();

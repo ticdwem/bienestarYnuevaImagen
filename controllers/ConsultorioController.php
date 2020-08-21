@@ -53,17 +53,15 @@ class ConsultorioController {
     }
 
     public function nuevo(){
-        $sesionConsultorio = $_SESSION['usuario']['consultorio'];
         $nuevo = new Consultorio();
-        $listar = $nuevo->getAllStatus($sesionConsultorio,1);
+        $listar = $nuevo->getAllStatus(Consultorio,1);
        require_once 'views/consultorio/nuevo.php'; 
 
     }
 
     public function control(){
-        $sesionConsultorio = $_SESSION['usuario']['consultorio'];
         $medicina = new Consultorio();
-        $medicina->setIdConsultorio($sesionConsultorio);
+        $medicina->setIdConsultorio(Consultorio);
         $resultado = $medicina->getMedicinaModels();
         require_once 'views/consultorio/control.php';
     }
@@ -71,7 +69,6 @@ class ConsultorioController {
     public function actualizar(){
         $get = $_GET;
         $dato="";
-        $sesionConsultorio = $_SESSION['usuario']['consultorio'];
         $numeroSuma = (int)SED::decryption($get['s']);
         $updateCampo = SED::decryption($get['tr']);
         
@@ -82,7 +79,7 @@ class ConsultorioController {
         }
         
         $updateControl = new Consultorio();
-        $updateControl->setIdConsultorio($sesionConsultorio);
+        $updateControl->setIdConsultorio(Consultorio);
         $updateControl->setMesoCons($numeroSuma);
         $update = $updateControl->updaControl($dato);
          if($update){

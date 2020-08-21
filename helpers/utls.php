@@ -41,6 +41,15 @@ class Utls{
         return $consultorio.$Ano.$mes.$increment;
     }
 
+    public static function linksEspecializado($getAction){
+        $link = '';
+        if($getAction['controller'] == 'Consulta' && $getAction['action']== 'lista'){
+            $link = 'https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css';
+            // $link = '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">';
+        }
+        var_dump($link);
+    }
+
     public static function titleCabecera($titleGet){
         $controlador = $titleGet['controller'];
         
@@ -49,7 +58,7 @@ class Utls{
                 if($_GET['action'] == "nuevo"){
                     $getTirulo = "Nuevo Ingreso";
                 }else if('control'){
-                    $getTirulo = "Control ";
+                    $getTirulo = "Control";
                 }
                 break;
             case 'Paciente':
@@ -66,8 +75,10 @@ class Utls{
             case 'Consulta':
                 if($_GET['action'] == "ingreso"){
                     $getTirulo = "Pagos Y Consultas";
-                }else if('control'){
-                    $getTirulo = "Control ";
+                }else if($_GET['action'] == "index"){
+                    $getTirulo = "Datos" ;
+                }else if($_GET['action'] == "lista"){
+                    $getTirulo = "Pacientes";
                 }
                 break;
             $getTirulo = "Bienestar Nueva Imagen";
