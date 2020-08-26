@@ -12,7 +12,7 @@
 		<div style="height: auto">
 			<form id="registro" action="<?=base_url?>Paciente/save" method="POST">
 				<div class="idPaciente">
-				<input type="text" class="form-control" id="idPaciente" value="<?=Utls::createId($_SESSION['usuario']['consultorio'],$id['id'])?>" readonly="true" name="idPaciente">	
+				<input type="text" class="form-control" id="idPaciente" value="<?=Utls::createId(Consultorio,$id['id'])?>" readonly="true" name="idPaciente">	
 				</div>	
 			<div class="page-header"><small>DATOS PERSONALES</small></div>
 			<hr>			
@@ -100,7 +100,7 @@
 						<label for="inpuEstado">Estado</label>
 						<select class="form-control inpuEstado" id="inpuEstado" name="inpuEstado">
 						<?php while ($estado = $nombreE->fetch_object()):?>							
-							<option value="<?= $estado->id?>"><?= $estado->estado?></option> 							
+							<option value="<?= $estado->idEstado?>"><?= $estado->estado?></option> 							
 						<?php endwhile; ?>
 						</select>
 					</div>

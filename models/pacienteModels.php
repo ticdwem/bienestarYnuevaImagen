@@ -723,12 +723,12 @@ class Usuario extends ModeloBase{
 
 
     public function getMunModels(){
-    	$consulta = "SELECT mp.id,mp.municipio,es.estado FROM estados_municipios esmp
+    	$consulta = "SELECT mp.idMunicipio,mp.municipio,es.estado FROM estados_municipios esmp
 									INNER JOIN municipios mp
-									ON esmp.municipios_id = mp.id
+									ON esmp.municipios_id = mp.idMunicipio
 									INNER JOIN estados es
-									ON esmp.estados_id = es.id
-									WHERE es.id = {$this->getIdEstado()}";
+									ON esmp.estados_id = es.idEstado
+									WHERE es.idEstado = {$this->getIdEstado()}";
     	$query = $this->db->query($consulta);
 
         return $query;

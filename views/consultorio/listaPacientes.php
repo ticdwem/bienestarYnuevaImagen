@@ -15,7 +15,7 @@
             <td>
             <div class="btn-group" role="group" aria-label="Basic example">
                 <a href="<?=base_url?>Consulta/index&id=<?=$nuevo->idCliente?>" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="DAR CONSULTA"><i class="fa fa-user-md" aria-hidden="true"></i></a>
-                <a href="<?=base_url?>Consulta/index&id=<?=$nuevo->idCliente?>" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="EDITAR"><i class="fa fa-file-text" aria-hidden="true"></i></a>
+                <a href="<?=base_url?>Paciente/editar&id=<?=$nuevo->idCliente?>&tittle=" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Hoja Clinica"><i class="fa fa-file-text" aria-hidden="true"></i></a>
             </div>
             </td>
             </tr>

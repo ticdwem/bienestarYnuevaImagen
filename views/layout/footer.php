@@ -15,8 +15,6 @@
         </div>
     </div>
     <script src="<?=base_url?>assets/js/scripts.js"></script>
-    <script src="<?=base_url?>assets/jquery-validation-1.19.2/dist/jquery.validate.min.js"></script>
-    <script src="<?=base_url?>assets/js/validar-campos.js"></script>
 </body>
 </html>
             <!-- <p>DESARROLLADO POR TIdfsdfsdfCDWEM &COPY; <?= date('Y') ?></p> -->

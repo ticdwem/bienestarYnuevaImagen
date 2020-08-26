@@ -29,10 +29,10 @@ $(document).ready(function(){
 				$('.spinnerWhite').html('<i class="fas fa-sync fa-spin"></i>');
 						},
 				success:function(exist){
-					$.each(exist, function(i,item){				
-						 selectMun += '<option value="'+item.id+'">'+item.name+'</option>';
-					});
-					$("#inpuMunicipio").html(selectMun);
+				 $.each(exist, function(i,item){				
+				 	 selectMun += '<option value="'+item.id+'">'+item.name+'</option>';
+				 });
+				 $("#inpuMunicipio").html(selectMun);
 				 }
 			})
 	})
@@ -43,7 +43,6 @@ $(document).ready(function(){
 
 		if(desicion == 1){
 			$("#medicamento").css('display','block');
-			$("#inputNombreMedicamento").css('border','1px solid red');
 		}else if(desicion == 2){
 			$("#medicamento").css('display','none');
 		}
