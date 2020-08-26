@@ -10,7 +10,7 @@ class PacienteController{
          $nombreE = $estado->getAll('estados'); 
          
          $idCleinte = new Usuario();
-         $datos = $idCleinte->getIdCleinte('idCliente','cliente');
+         $datos = $idCleinte->getIdCleinte('id_Cliente','consultoriocliente',Consultorio);
          $id = $datos->fetch_assoc();
        require_once 'views/paciente/registro.php';
        
@@ -47,11 +47,12 @@ class PacienteController{
             $select = (Validacion::validarSelect($_POST["select"]) == '0' ) ? false : $_POST["select"] ;
             
             if($select == 2){$medicamento = 'no';}else{$medicamento = (Validacion::validarSelect($_POST["inputNombreMedicamento"]) == '0' ) ? false : $_POST["inputNombreMedicamento"] ;}
+            
             $datos = array('idPaciente' =>$idPaciente ,'Nombre' =>$Nombre ,'Apellido_Pat' =>$Apellido_Pat ,'Apellido_Mat' =>$Apellido_Mat ,'sexo' =>$sexo ,'fecha' =>$fecha ,
             'edad' =>$edad ,'estatura' =>$estatura ,'ocupacion' =>$ocupacion ,'estado_civil' =>$estado_civil ,'celular' =>$celular ,'correo' =>$correo ,
             'red_social' =>$red_social ,'estado' =>$estado ,'municipio' =>$municipio ,'codigo_postal' =>$codigo_postal ,'colonia' =>$colonia ,'calle' =>$calle ,
             'tetefono_emergencia' =>$tetefono_emergencia ,'parentesco' =>$parentesco ,'nombre_Recomienda' =>$nombre_Recomienda ,'motivo' =>$motivo ,'select' =>$select ,'medicamento' =>$medicamento);
-            
+           
             foreach ($datos as $dato => $valor) {
                 if($valor == false){
                     $_SESSION['formulario'] = array(
@@ -637,7 +638,7 @@ class PacienteController{
                 $whileJson = array();
                 while ($muni = $verMun->fetch_object()){
                     $data = array(
-                    'id'=>$muni->id,
+                    'id'=>$muni->idMunicipio,
                     'name'=>$muni->municipio  
                 );
                     array_push($whileJson,$data);                       
@@ -666,6 +667,96 @@ class PacienteController{
         }else{
             echo 2;
         }
+    }
+
+    public function editar(){
+        /* id del paciente */
+        $id = $_GET['id'];
+        $where = 'WHERE idCliente = '.$id;
+        /* saber la seccion del formulario */
+        $datos = Utls::getSeccion($_GET['tittle']);
+       
+        $datosEdit = new Usuario();
+        $editar = $datosEdit->getAllWhere($datos, $where); 
+        $imprimir = $editar->fetch_object();
+        
+        $estado = new Usuario();
+        $nombreE = $estado->getAll('estados'); 
+
+        $_SESSION['genero']= $imprimir->generoCliente;
+        require_once 'views/paciente/editar.php';
+    }
+
+    public function editarAntecedente(){
+        // declaramos valirables para colocar disabled en los inputs
+        $diabetes='-1';$hiper='-1';$asma='-1';$cancer='-1';$aler='-1';$otro='-1';$ninguno='';
+        // obtenemos el id que probiene por el get y mandamos consulta where
+        $id = $_GET['id'];
+        $where = 'WHERE idClienteEnfermedadFamiliar ='.$id;
+        //mandamos el titulo para traer la tabla que hara la consulta
+        $datos = Utls::getSeccion($_GET['tittle']);
+        // enviamos la tabla y y condicion where
+        $datosEdit = new Usuario();
+        $editar = $datosEdit->getAllWhere($datos, $where); 
+        // declaramos variables para incializar array cada uno guarda un objeto
+        $name = array();$parentesco=array();$indique=array();
+		while ($enfermedad = $editar->fetch_object()) {
+            $name[]=$enfermedad->nombreEnfermedadFamiliar;
+            $parentesco[]=$enfermedad->parentescoEnfermedadFamiliar;
+            $indique[]=$enfermedad->indiqueEnfermedadFamiliar;
+		}
+        
+       require_once 'views/paciente/editarAntecedente.php';
+
+    }
+
+    public function editarpatologico(){
+        // declaramos valirables para colocar disabled en los inputs
+        $diabetes='-1';$hiper='-1';$asma='-1';$cancer='-1';$aler='-1';$dis='-1';$hepa='-1';$renales='-1';$urinarios='-1';$prostata='-1';$erectil='-1';$hipo='-1';$hiper='-1';$sindrome='-1';$otro='-1';$ninguno='';
+        // obtenemos el id que probiene por el get y mandamos consulta where
+        $id = $_GET['id'];
+        $where = 'WHERE idClientePP ='.$id;
+        //mandamos el titulo para traer la tabla que hara la consulta
+        $datos = Utls::getSeccion($_GET['tittle']);
+        // enviamos la tabla y y condicion where
+        $datosEdit = new Usuario();
+        $editar = $datosEdit->getAllWhere($datos, $where); 
+        // declaramos variables para incializar array cada uno guarda un objeto
+        $name = array();$parentesco=array();$indique=array();
+        
+		 while ($enfermedad = $editar->fetch_object()) {
+             $name[]=$enfermedad->nombreAntecedente;
+             $parentesco[]=$enfermedad->parentescoAntecedentePP;
+             $indique[]=$enfermedad->indiqueEnfermedadAntecedentePP;
+         }
+        
+        require_once 'views/paciente/editarPatologico.php';
+    }
+
+    public function editarCirugia(){
+        // declaramos valirables para colocar disabled en los inputs
+        $si='-1';$no='-1';
+        // obtenemos el id que probiene por el get y mandamos consulta where
+        $id = $_GET['id'];
+        $where = 'WHERE idCliente ='.$id;
+        //mandamos el titulo para traer la tabla que hara la consulta
+        $datos = Utls::getSeccion($_GET['tittle']);
+        // enviamos la tabla y y condicion where
+        $datosEdit = new Usuario();
+        $editar = $datosEdit->getAllWhere($datos, $where); 
+        // declaramos variables para incializar array cada uno guarda un objeto
+        $name = array();$fecha=array();
+        
+		 while ($enfermedad = $editar->fetch_object()) {
+             $name[]=$enfermedad->nombreCirugia;
+             $fecha[]=$enfermedad->fechacirugia;
+         }
+        
+        require_once 'views/paciente/editarCirugia.php';
+    }
+
+    public function editarEmbarazo(){
+
     }
 
 }
