@@ -12,8 +12,16 @@ class ModeloBase{
         $query = $this->db->query($consulta);
         return $query;
     }
-    public function getIdCleinte($id,$tabla){
-         $getId = "SELECT IFNULL(MAX($id),0)+1 as id FROM $tabla";
+    public function getAllWhere($tabla,$where){
+        $consulta = "SELECT * FROM $tabla $where";
+        $query = $this->db->query($consulta);
+        return $query;
+    }
+    public function getIdCleinte($id,$tabla,$idConsultorio){
+        // $getId = "SELECT IFNULL(MAX($id),0)+1 as id FROM $tabla";
+         $getId = "SELECT IFNULL(MAX($id),0)+1 as id FROM $tabla
+        WHERE id_consultorio = $idConsultorio";
+        
          $id = $this->db->query($getId);
          return $id;
     }
