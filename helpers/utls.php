@@ -23,6 +23,7 @@ class Utls{
 
         return ucwords(SED::decryption($primer).' '.SED::decryption($second));
     }
+
     public static function createId($sesionConsultorio,$idbd){
         $increment=0;
         $Ano = date('Y');
@@ -41,13 +42,19 @@ class Utls{
         return $consultorio.$Ano.$mes.$increment;
     }
 
-    public static function linksEspecializado($getAction){
-        $link = '';
-        if($getAction['controller'] == 'Consulta' && $getAction['action']== 'lista'){
-            $link = 'https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css';
-            // $link = '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">';
+    public static function getSeccion($seccion){
+        $nameSEccion = '';
+        if($seccion == ''){
+            $nameSEccion = 'clienteMunicipio';
+        }elseif($seccion == 'heredofamiliar'){
+            $nameSEccion = 'enfermedadfamiliar';
+        }elseif($seccion == 'patologico'){
+            $nameSEccion = 'antecedentespatologicos';
+        }elseif($seccion == 'cirugia'){
+            $nameSEccion = 'cirugia';
         }
-        var_dump($link);
+
+        return $nameSEccion;
     }
 
     public static function titleCabecera($titleGet){
@@ -64,6 +71,14 @@ class Utls{
             case 'Paciente':
                 if($_GET['action'] == 'index'){
                     $getTirulo = "Hoja Clinica";
+                }elseif($_GET['action'] == 'editar'){
+                    $getTirulo = "Editar Hoja Clinica";
+                }elseif($_GET['action']== 'editarAntecedente'){
+                    $getTirulo = "Editar Antecedentes";
+                }elseif($_GET['action']== 'editarPatologico'){
+                    $getTirulo = "Editar Patologicos";
+                }elseif($_GET['action']== 'editarCirugia'){
+                    $getTirulo = "Editar Cirugias";
                 }
                 break;
             case 'Doctor':
