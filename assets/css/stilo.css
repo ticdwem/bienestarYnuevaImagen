@@ -65,8 +65,13 @@ form .form-row #intputSexo{
 form .form-row .genero .radio-Sexo{
 	position: relative;
 	/* top: 15%; */
-	left: 25%;
+	left: 15%;
 	vertical-align: middle;
+}
+form .form-row .genero .radio-Sexo label{
+	position: relative;
+	margin-left: 5px;
+	top:-5px
 }
 
 form .idPaciente{
