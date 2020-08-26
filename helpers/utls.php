@@ -52,6 +52,10 @@ class Utls{
             $nameSEccion = 'antecedentespatologicos';
         }elseif($seccion == 'cirugia'){
             $nameSEccion = 'cirugia';
+        }elseif($seccion == 'mujer'){
+            $nameSEccion = 'datosmujer';
+        }elseif($seccion == 'anterior'){
+            $nameSEccion = 'tratameintoactual';
         }
 
         return $nameSEccion;
@@ -79,6 +83,10 @@ class Utls{
                     $getTirulo = "Editar Patologicos";
                 }elseif($_GET['action']== 'editarCirugia'){
                     $getTirulo = "Editar Cirugias";
+                }elseif($_GET['action']== 'editarEmbarazo'){
+                    $getTirulo = "Editar Datos Mujer";
+                }elseif($_GET['action']== 'editarTratamiento'){
+                    $getTirulo = "Control De Peso Anterior";
                 }
                 break;
             case 'Doctor':
@@ -100,5 +108,10 @@ class Utls{
                 break;
         }
         return $getTirulo;
+    }
+
+    public static function disbled($nameSession){
+        if($nameSession == 'dndMc3')
+        return ' disabled=disabled ';
     }
 }

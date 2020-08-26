@@ -179,9 +179,12 @@ w3Unpocodet0d0 */
     }
 
 }
+console.log(window.location);
+console.log(location.pathname);
 
 function getAbsolutePath() {
     var loc = window.location;
+
     //var pathName = loc.pathname.substring(0, loc.pathname.lastIndexOf('/') + 1);
     var pathName = loc.pathname.substring(0, 23);
     // var pathName = loc.pathname.substring(0, 1);
@@ -251,3 +254,17 @@ function enviarAjax(control,totalNow,updateNow){
     }
   })
 }
+
+/**
+ * @param String name
+ * @return String
+ */
+function getParameterByName(name) {
+  name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+  var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+  results = regex.exec(location.search);
+  return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+var prodId = getParameterByName('gen');
+console.log(prodId)

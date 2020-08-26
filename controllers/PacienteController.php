@@ -756,7 +756,45 @@ class PacienteController{
     }
 
     public function editarEmbarazo(){
+         // declaramos valirables para guardar los valores
+         $num='';$termino='';$pretermino='';$parto='';$regla='';$anticonsptivo='';
+        // obtenemos el id que probiene por el get y mandamos consulta where
+        $id = $_GET['id'];
+        $where = 'WHERE idclienteDatoMujer ='.$id;
+        //mandamos el titulo para traer la tabla que hara la consulta
+        $datos = Utls::getSeccion($_GET['tittle']);
+        // enviamos la tabla y y condicion where
+        $datosEdit = new Usuario();
+        $editar = $datosEdit->getAllWhere($datos, $where); 
 
+        if($editar && $editar->num_rows == 1){
+            $women = $editar->fetch_object();
+            $num=$women->numEmbarazosDatoMujer;
+            $termino=$women->naciTerminoEmbarazoDatoMujer;
+            $pretermino=$women->abortoDatoMujer;
+            $parto=$women->fechaUltimoEmbarazoDatoMujer;
+            $regla=$women->ultimaPeriodoDatoMujer;
+            $anticonsptivo=$women->anticonceptivoDatoMujer;
+        }
+        require_once 'views/paciente/editarDatosMujer.php';
     }
+
+    public function editarTratamiento(){
+        $medicamento='';
+        // obtenemos el id que probiene por el get y mandamos consulta where
+        $id = $_GET['id'];
+        $where = 'WHERE idClientesConotrol ='.$id;
+        //mandamos el titulo para traer la tabla que hara la consulta
+        $datos = Utls::getSeccion($_GET['tittle']);
+        // enviamos la tabla y y condicion where
+        $datosEdit = new Usuario();
+        $editar = $datosEdit->getAllWhere($datos, $where); 
+        $dtos = $editar->fetch_object();
+        if( $dtos->nombreMedicamento != 'no'){
+            $medicamento = $dtos->nombreMedicamento;
+        }
+            
+        require_once 'views/paciente/editarTratamiento.php';
+    } 
 
 }

@@ -3,7 +3,6 @@
 		<?php 
 		require_once 'views/layout/editarNavs.php';
 		require_once 'views/layout/cabeceraLogo.php';
-		var_dump($_SESSION['genero']);
 		$fecha = date_create($imprimir->fechaNacimientoCliente);
 		$sesion = ""; 
 		 if(isset($_SESSION['formulario'])){$sesion = $_SESSION['formulario']['datos'];} 
