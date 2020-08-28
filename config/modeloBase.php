@@ -31,12 +31,18 @@ class ModeloBase{
                  WHERE statusCliente = $status
                  AND id_consultorio = $consultorio";
         $nuevo = $this->db->query($getAll);
-
         return $nuevo;
     }
 
     public function getEmailExis($email){
         $validar = "SELECT us.correoUsuario, us.tipoUsuario FROM usuario us WHERE us.correoUsuario = '$email'";
+        $query = $this->db->query($validar);
+
+        return $query;
+    }
+
+    public function deleteTable($tabla,$where,$idUser){
+        $validar = "DELETE FROM $tabla WHERE $where='$idUser'";
         $query = $this->db->query($validar);
 
         return $query;

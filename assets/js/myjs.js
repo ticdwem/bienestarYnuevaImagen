@@ -126,6 +126,7 @@ $(document).ready(function(){
 	$("#checkDeabetes").on('change',function(){
 		if($(this).is(':checked')){
 			$("#checkDeabetesParentesco").removeAttr('disabled');
+			$('#checkNinguno').prop('checked',false);
 		}else{
 			$("#checkDeabetesParentesco").attr('disabled','disabled');			
 		}
@@ -133,6 +134,7 @@ $(document).ready(function(){
 	$("#checkHipertension").on('change',function(){
 		if($(this).is(':checked')){
 			$("#checkHipertensionParentesco").removeAttr('disabled');
+			$('#checkNinguno').prop('checked',false);
 		}else{
 			$("#checkHipertensionParentesco").attr('disabled','disabled');			
 		}
@@ -140,6 +142,7 @@ $(document).ready(function(){
 	$("#checkAsma").on('change',function(){
 		if($(this).is(':checked')){
 			$("#checkAsmaParntesco").removeAttr('disabled');
+			$('#checkNinguno').prop('checked',false);
 		}else{
 			$("#checkAsmaParntesco").attr('disabled','disabled');			
 		}
@@ -147,6 +150,7 @@ $(document).ready(function(){
 	$("#checkCancer").on('change',function(){
 		if($(this).is(':checked')){
 			$("#checkCancerParntesco").removeAttr('disabled');
+			$('#checkNinguno').prop('checked',false);
 		}else{
 			$("#checkCancerParntesco").attr('disabled','disabled');			
 		}
@@ -154,6 +158,7 @@ $(document).ready(function(){
 	$("#checkAlergias").on('change',function(){
 		if($(this).is(':checked')){
 			$("#checkAlergiasParntesco").removeAttr('disabled');
+			$('#checkNinguno').prop('checked',false);
 		}else{
 			$("#checkAlergiasParntesco").attr('disabled','disabled');			
 		}
@@ -164,11 +169,14 @@ $(document).ready(function(){
 	            $(".parentesco").prop("checked",false);
 	            $(".parentesco").attr('disabled','disabled');
 
+				$("#hide").attr('value','0');
 	            $("#otroIndique").css('visibility','hidden');
             	$(".otroIndique").attr('disabled','disabled');
             	$("#checkDeabetesParentesco").attr('disabled','disabled');
             	$("#checkHipertensionParentesco").attr('disabled','disabled');	
+            	$("#checkAsmaParntesco").attr('disabled','disabled');
 				$("#checkCancerParntesco").attr('disabled','disabled');		
+				$("#checkAlergiasParntesco").attr('disabled','disabled');		
 	        } else{
 	            $(".parentesco").removeAttr('disabled','disabled');
 	        }
@@ -188,6 +196,7 @@ $(document).ready(function(){
 $("#checkDeabetesActual").on('change',function(){
 	if($(this).is(':checked')){
 		$("#checkDeabetesActualParentesco").removeAttr('disabled');
+		$('#checkNingunoActual').prop('checked',false);
 	}else{
 		$("#checkDeabetesActualParentesco").attr('disabled','disabled');			
 	}
@@ -195,6 +204,7 @@ $("#checkDeabetesActual").on('change',function(){
 $("#checkHipertensionActual").on('change',function(){
 	if($(this).is(':checked')){
 		$("#checkHipertensionActualParentesco").removeAttr('disabled');
+		$('#checkNingunoActual').prop('checked',false);
 	}else{
 		$("#checkHipertensionActualParentesco").attr('disabled','disabled');			
 	}
@@ -202,6 +212,7 @@ $("#checkHipertensionActual").on('change',function(){
 $("#checkAsmaActual").on('change',function(){
 	if($(this).is(':checked')){
 		$("#checkAsmaActualParentesco").removeAttr('disabled');
+		$('#checkNingunoActual').prop('checked',false);
 	}else{
 		$("#checkAsmaActualParentesco").attr('disabled','disabled');			
 	}
@@ -209,6 +220,7 @@ $("#checkAsmaActual").on('change',function(){
 $("#checkCancerActual").on('change',function(){
 	if($(this).is(':checked')){
 		$("#checkCancerActualParentesco").removeAttr('disabled');
+		$('#checkNingunoActual').prop('checked',false);
 	}else{
 		$("#checkCancerActualParentesco").attr('disabled','disabled');			
 	}
@@ -216,6 +228,7 @@ $("#checkCancerActual").on('change',function(){
 $("#checkAlergiasActual").on('change',function(){
 	if($(this).is(':checked')){
 		$("#checkAlergiasActualParentesco").removeAttr('disabled');
+		$('#checkNingunoActual').prop('checked',false);
 	}else{
 		$("#checkAlergiasActualParentesco").attr('disabled','disabled');			
 	}
@@ -223,6 +236,7 @@ $("#checkAlergiasActual").on('change',function(){
 $("#checkDislipidemiasActual").on('change',function(){
 	if($(this).is(':checked')){
 		$("#checkDislipidemiasActualParentesco").removeAttr('disabled');
+		$('#checkNingunoActual').prop('checked',false);
 	}else{
 		$("#checkDislipidemiasActualParentesco").attr('disabled','disabled');			
 	}
@@ -230,6 +244,7 @@ $("#checkDislipidemiasActual").on('change',function(){
 $("#checkHepaticosActual").on('change',function(){
 	if($(this).is(':checked')){
 		$("#checkHepaticosActualParentesco").removeAttr('disabled');
+		$('#checkNingunoActual').prop('checked',false);
 	}else{
 		$("#checkHepaticosActualParentesco").attr('disabled','disabled');			
 	}
@@ -237,6 +252,7 @@ $("#checkHepaticosActual").on('change',function(){
 $("#checkRenalesActual").on('change',function(){
 	if($(this).is(':checked')){
 		$("#checkRenalesActualParentesco").removeAttr('disabled');
+		$('#checkNingunoActual').prop('checked',false);
 	}else{
 		$("#checkRenalesActualParentesco").attr('disabled','disabled');			
 	}
@@ -244,6 +260,7 @@ $("#checkRenalesActual").on('change',function(){
 $("#checkUrinariosActual").on('change',function(){
 	if($(this).is(':checked')){
 		$("#checkUrinariosActualParentesco").removeAttr('disabled');
+		$('#checkNingunoActual').prop('checked',false);
 	}else{
 		$("#checkUrinariosActualParentesco").attr('disabled','disabled');			
 	}
@@ -251,6 +268,7 @@ $("#checkUrinariosActual").on('change',function(){
 $("#checkProstataActual").on('change',function(){
 	if($(this).is(':checked')){
 		$("#checkProstataActualParentesco").removeAttr('disabled');
+		$('#checkNingunoActual').prop('checked',false);
 	}else{
 		$("#checkProstataActualParentesco").attr('disabled','disabled');			
 	}
@@ -258,6 +276,7 @@ $("#checkProstataActual").on('change',function(){
 $("#checkDisfusionActual").on('change',function(){
 	if($(this).is(':checked')){
 		$("#checkDisfusionActualParentesco").removeAttr('disabled');
+		$('#checkNingunoActual').prop('checked',false);
 	}else{
 		$("#checkDisfusionActualParentesco").attr('disabled','disabled');			
 	}
@@ -265,6 +284,7 @@ $("#checkDisfusionActual").on('change',function(){
 $("#checkHipotiroidismoActual").on('change',function(){
 	if($(this).is(':checked')){
 		$("#checkHipotiroidismoParentesco").removeAttr('disabled');
+		$('#checkNingunoActual').prop('checked',false);
 	}else{
 		$("#checkHipotiroidismoParentesco").attr('disabled','disabled');			
 	}
@@ -272,6 +292,7 @@ $("#checkHipotiroidismoActual").on('change',function(){
 $("#checkHipertiroidismoActual").on('change',function(){
 	if($(this).is(':checked')){
 		$("#checkHipertiroidismoParentesco").removeAttr('disabled');
+		$('#checkNingunoActual').prop('checked',false);
 	}else{
 		$("#checkHipertiroidismoParentesco").attr('disabled','disabled');			
 	}
@@ -279,6 +300,7 @@ $("#checkHipertiroidismoActual").on('change',function(){
 $("#checkSindromeActual").on('change',function(){
 	if($(this).is(':checked')){
 		$("#checkSindromeParentesco").removeAttr('disabled');
+		$('#checkNingunoActual').prop('checked',false);
 	}else{
 		$("#checkSindromeParentesco").attr('disabled','disabled');			
 	}
@@ -289,6 +311,7 @@ $('#checkNingunoActual').on('change', function() {
 		$(".actual").prop("checked",false);
 		$(".actual").attr('disabled','disabled');
 		
+		$("#hide").attr('value','0');
 		$("#otroIndiqueActual").css('visibility','hidden');
 		$(".otroIndiqueActual").attr('disabled','disabled');
 		$("#checkDeabetesActualParentesco").attr('disabled','disabled');

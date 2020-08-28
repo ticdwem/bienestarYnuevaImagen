@@ -4,7 +4,7 @@
 		require_once 'views/layout/editarNavs.php';
 		require_once 'views/layout/cabeceraLogo.php';
 		$sesion = ""; 
-		 if(isset($_SESSION['formulario'])){$sesion = $_SESSION['formulario']['datos'];} 
+		 if(isset($_SESSION['formulario'])){$sesion = $_SESSION['formulario']['error'];} 
 		 ?>
 		<div class="texcto">
 			<?php if($sesion != "") echo '<p class="alert alert-danger error" role="alert">'.$_SESSION['formulario']["error"]."</p>";
@@ -13,7 +13,7 @@
 			 ?>
 		</div>
 		<div class="tab-content" id="nav-tabContent" style="height: auto">
-			<form id="registro" action="<?=base_url?>Paciente/editarPaciente" method="POST" class="tab-pane fade show active" role="tabpanel" aria-labelledby="nav-home-tab">
+			<form id="registro" action="<?=base_url?>Paciente/updatePatologico&id=<?=$_GET['id']?>" method="POST" class="tab-pane fade show active" role="tabpanel" aria-labelledby="nav-home-tab">
 <!-- ::::::::::::::::::::::::::::::::::::::::padecimientos actuales:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
 <div class="page-header titulo_padecimiento"><small>ANTECEDENTES PERSONALES PATOLOGICOS:</small></div>
 				<hr>
@@ -209,7 +209,7 @@
 								<div class="input-group-prepend hide">
 				                    <span class="input-group-text" id="inputGroup-sizing-sm">INDIQUE</span>
 				                </div>
-				                <input type="text" class="form-control hide" aria-label="Small" aria-describedby="inputGroup-sizing-sm" name="actualOtro[]" value="<?php if(in_array('OTROS',$name)){echo $indique[$otro];}?>">      
+				                <input type="text" class="form-control hide" id="hide" aria-label="Small" aria-describedby="inputGroup-sizing-sm" name="actualOtro[]" value="<?php if(in_array('OTROS',$name)){echo $indique[$otro];}?>">      
 			             </div>
 						<div class="form-group input-group input-group-sm   col-md-6">
 							<div class="input-group-prepend">

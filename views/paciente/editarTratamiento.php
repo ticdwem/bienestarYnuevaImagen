@@ -14,7 +14,7 @@
 			 ?>
 		</div>
 		<div class="tab-content" id="nav-tabContent" style="height: auto">
-			<form id="registro" action="<?=base_url?>Paciente/editarPaciente" method="POST" class="tab-pane fade show active" role="tabpanel" aria-labelledby="nav-home-tab">
+			<form id="registro" action="<?=base_url?>Paciente/editarAnterior&id=<?=$_GET['id']?>" method="POST" class="tab-pane fade show active" role="tabpanel" aria-labelledby="nav-home-tab">
 <!-- :::::::::::::::::::::::::::::::::tratamiento Anterior:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
 <div class="page-header titulo_anterior"><small>CONTROL DE PESO ANTERIOR</small></div>
 				<hr>

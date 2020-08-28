@@ -13,7 +13,7 @@
 			 ?>
 		</div>
 		<div class="tab-content" id="nav-tabContent" style="height: auto">
-			<form id="registro" action="<?=base_url?>Paciente/editarPaciente" method="POST" class="tab-pane fade show active" role="tabpanel" aria-labelledby="nav-home-tab">
+			<form id="registro" action="<?=base_url?>Paciente/updateCirugia&id=<?=$_GET['id']?>" method="POST" class="tab-pane fade show active" role="tabpanel" aria-labelledby="nav-home-tab">
 <!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::cirugias::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
                 <div class="page-header titulo_cirugia"><small>¿Le han realizado alguna cirugia actualmente?</small></div>
 					<div>
@@ -31,13 +31,13 @@
 							<div class="input-group-prepend">
 								<span class="input-group-text" id="inputGroup-sizing-sm">NOMBRE</span>
 							</div>
-							<input type="text" class="form-control disableoff" aria-label="Small" name="operacionUno[]" aria-describedby="inputGroup-sizing-sm" value="<?php if($si == '1'){echo $name[0];}?>"<?php if($si == '-1'){ echo ' disabled=disabled ';}?>>
+							<input type="text" class="form-control disableoff" aria-label="Small" name="operacionUno[]" aria-describedby="inputGroup-sizing-sm" value="<?php if($si == '1' && isset($name[0])){echo $name[0];}?>"<?php if($si == '-1'){ echo ' disabled=disabled ';}?>>
 						</div>
 						<div class="form-group input-group input-group-sm col-md-6">
 							<div class="input-group-prepend">
 								<span class="input-group-text" id="inputGroup-sizing-sm">Fecha</span>
 							</div>
-								<input type="date" class="form-control disableoff" aria-label="Small" name="operacionUno[]" aria-describedby="inputGroup-sizing-sm" value="<?php if($si == '1'){echo $fecha[0];}?>"<?php if($si == '-1'){ echo ' disabled=disabled ';}?>>
+								<input type="date" class="form-control disableoff" aria-label="Small" name="operacionUno[]" aria-describedby="inputGroup-sizing-sm" value="<?php if($si == '1' && isset($fecha[0])){echo $fecha[0];}?>"<?php if($si == '-1'){ echo ' disabled=disabled ';}?>>
 						</div>
 					</div>
 					<div class="form-row col-md-12">
@@ -45,13 +45,13 @@
 							<div class="input-group-prepend">
 								<span class="input-group-text" id="inputGroup-sizing-sm">NOMBRE</span>
 							</div>
-							<input type="text" class="form-control disableoff" aria-label="Small" name="operacionDos[]" aria-describedby="inputGroup-sizing-sm" value="<?php if($si == '1'){echo $name[1];}?>"<?php if($si == '-1'){ echo ' disabled=disabled ';}?>>
+							<input type="text" class="form-control disableoff" aria-label="Small" name="operacionDos[]" aria-describedby="inputGroup-sizing-sm" value="<?php if($si == '1' && isset($name[1])){echo $name[1];}?>"<?php if($si == '-1'){ echo ' disabled=disabled ';}?>>
 						</div>
 						<div class="form-group input-group input-group-sm   col-md-6">
 							<div class="input-group-prepend">
 								<span class="input-group-text " id="inputGroup-sizing-sm">Fecha</span>
 							</div>
-							<input type="date" class="form-control disableoff" aria-label="Small" name="operacionDos[]" aria-describedby="inputGroup-sizing-sm" value="<?php if($si == '1'){echo $fecha[1];}?>"<?php if($si == '-1'){ echo ' disabled=disabled ';}?>>
+							<input type="date" class="form-control disableoff" aria-label="Small" name="operacionDos[]" aria-describedby="inputGroup-sizing-sm" value="<?php if($si == '1' && isset($fecha[1])){echo $fecha[1];}?>"<?php if($si == '-1'){ echo ' disabled=disabled ';}?>>
 						</div>
 					</div>
 					<div class="form-row col-md-12">
@@ -59,13 +59,13 @@
 							<div class="input-group-prepend">
 								<span class="input-group-text " id="inputGroup-sizing-sm">NOMBRE</span>
 							</div>
-							<input type="text" class="form-control disableoff" aria-label="Small" name="operacionTres[]" aria-describedby="inputGroup-sizing-sm" value="<?php if($si == '1'){echo $name[2];}?>"<?php if($si == '-1'){ echo ' disabled=disabled ';}?>>
+							<input type="text" class="form-control disableoff" aria-label="Small" name="operacionTres[]" aria-describedby="inputGroup-sizing-sm" value="<?php if($si == '1' && isset($name[2])){echo $name[2];}?>"<?php if($si == '-1'){ echo ' disabled=disabled ';}?>>
 						</div>
 						<div class="form-group input-group input-group-sm   col-md-6">
 							<div class="input-group-prepend">
 								<span class="input-group-text " id="inputGroup-sizing-sm">Fecha</span>
 							</div>
-							<input type="date" class="form-control disableoff" aria-label="Small" name="operacionTres[]" aria-describedby="inputGroup-sizing-sm" value="<?php if($si == '1'){echo $fecha[2];}?>"<?php if($si == '-1'){ echo ' disabled=disabled ';}?>>
+							<input type="date" class="form-control disableoff" aria-label="Small" name="operacionTres[]" aria-describedby="inputGroup-sizing-sm" value="<?php if($si == '1'&& isset($fecha[2])){echo $fecha[2];}?>"<?php if($si == '-1'){ echo ' disabled=disabled ';}?>>
 						</div>
 					</div>
 				</div>

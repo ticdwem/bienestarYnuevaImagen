@@ -14,7 +14,7 @@
 			 ?>
 		</div>
 		<div class="tab-content" id="nav-tabContent" style="height: auto">
-			<form id="registro" action="<?=base_url?>Paciente/editarPaciente" method="POST" class="tab-pane fade show active" role="tabpanel" aria-labelledby="nav-home-tab">
+			<form id="registro" action="<?=base_url?>Paciente/editarMujer&id=<?=$_GET['id']?>" method="POST" class="tab-pane fade show active" role="tabpanel" aria-labelledby="nav-home-tab">
 <!-- :::::::::::::::::::::::::::::::::datos mujeres:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
 <div class="page-header titulo_mujeres"><small>DATOS MUJER</small></div>
 				<hr>

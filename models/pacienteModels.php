@@ -22,7 +22,7 @@ class Usuario extends ModeloBase{
     private $inpuCP;
     private $inpuColonia;
     private $inpuCalle;
-    private $inpuNumCasa;
+    private $deleteIdEnfermedad;
     private $inpuTelEmergencia;
     private $inpuParentesco;
     private $inpuNombreRecomienda;
@@ -423,22 +423,22 @@ class Usuario extends ModeloBase{
     /**
      * @return mixed
      */
-    // public function getInpuNumCasa()
-    // {
-    //     return $this->inpuNumCasa;
-    // }
+    public function getdeleteIdEnfermedad()
+    {
+        return $this->deleteIdEnfermedad;
+    }
 
     /**
-     * @param mixed $inpuNumCasa
+     * @param mixed $deleteIdEnfermedad
      *
      * @return self
      */
-    // public function setInpuNumCasa($inpuNumCasa)
-    // {
-    //     $this->inpuNumCasa = $inpuNumCasa;
+     public function setdeleteIdEnfermedad($deleteIdEnfermedad)
+     {
+         $this->deleteIdEnfermedad = $deleteIdEnfermedad;
 
-    //     return $this;
-    // }
+         return $this;
+     }
 
     /**
      * @return mixed
@@ -804,5 +804,119 @@ class Usuario extends ModeloBase{
         return $controlMedicamento;
     }
 
+    public function updatePersonalModels(){
+        $query = "UPDATE cliente
+        SET
+            nombreCliente='{$this->getIntputname()}',
+            apPatCliente='{$this->getInputAppat()}',
+            apMatCliente='{$this->getInputApmat()}',
+            generoCliente='{$this->getCustomRadioSexo()}',
+            edadCliente='{$this->getInpuEdad()}',
+            fechaNacimientoCliente='{$this->getDateInicio()}',
+            estaturaCliente='{$this->getInpuEstatura()}',
+            ocupacionCliente='{$this->getInpuOcupacion()}',
+            estadoCivilCliente='{$this->getInpuEstadoCivil()}',
+            celCliente='{$this->getInpuCelular()}',
+            correoCliente='{$this->getEmail()}',
+            redSocialCliente='{$this->getInpuRedSocial()}',
+            calleCliente='{$this->getInpuCalle()}',
+            cpCliente='{$this->getInpuCP()}',
+            coliniaCliente='{$this->getInpuColonia()}',
+            idMuncipioCliente='{$this->getInpuMunicipio()}',
+            nombreRecomiendaCliente='{$this->getInpuNombreRecomienda()}',
+            motivoCliente='{$this->getInpuMotivo()}',
+            telefonoEmergencia='{$this->getInpuTelEmergencia()}',
+            parentescoEmergenciaCliente='{$this->getInpuParentesco()}',
+            medicamentoAnteriorCliente='{$this->getInputNombreMedicamento()}',
+            envioCliente='1'
+        WHERE idCliente='{$this->getIdPaciente()}'";
+        // var_dump($query);
+        // die();
+         $Update = $this->db->query($query);
+         $upConMeso = false;
+         if($Update){
+             $upConMeso = true;
+         }
+         return $upConMeso;
+    }
+
+    public function updateEnfermedadesModels(){
+        // eliminamos los lo registros 
+        $eliminar = new ModeloBase();
+        $del = $eliminar->deleteTable($this->getTabla(),$this->getdeleteIdEnfermedad(),$this->getIdPaciente());
+         $eliminar = false;
+         if($del){
+            $result = false;
+            foreach($this->getSelect() as $valor){
+                $insertEnfermedad = "INSERT INTO {$this->getTabla()}
+                VALUES (null,'{$this->getIdPaciente()}', '{$valor[0]}', '{$valor[2]}', '{$valor[1]}')";
+                $guardar = $this->db->query($insertEnfermedad);
+    
+                if($guardar){
+                    $result = true;
+                }
+    
+            }
+            return $result;
+         }else{
+             return $eliminar;
+         }
+    }
+
+    public function updateCirugia(){
+
+        // eliminamos los lo registros 
+       // $delete = "DELETE FROM {$this->getTabla()} WHERE {$this->getdeleteIdEnfermedad()}='{$this->getidPaciente()}'";
+        $eliminar = new ModeloBase();
+        $del = $eliminar->deleteTable($this->getTabla(),$this->getdeleteIdEnfermedad(),$this->getIdPaciente());
+         $eliminar = false;
+         if($del){
+            $result = false;
+            foreach($this->getCirugia() as $valor){
+                $cirugia = "INSERT INTO {$this->getTabla()}
+                VALUES (null,'{$this->getIdPaciente()}', '{$valor[0]}', '{$valor[1]}')";
+                $guardar = $this->db->query($cirugia);
+   
+              
+                if($guardar){
+                    $result = true;
+                }
+            }
+            return $result;
+         }else{
+             return $eliminar;
+         }
+    }
+
+    public function updateMujer(){        
+        $women = "UPDATE datosmujer
+                    SET		
+                        numEmbarazosDatoMujer='{$this->getEmbarazo()}',
+                        naciTerminoEmbarazoDatoMujer='{$this->getTerminoEmbarazo()}',
+                        abortoDatoMujer='{$this->getAborto()}',
+                        fechaUltimoEmbarazoDatoMujer='{$this->getFechaUltmoEmbarazo()}',
+                        ultimaPeriodoDatoMujer='{$this->getPeriodo()}',
+                        anticonceptivoDatoMujer='{$this->getAnticonceptivo()}'
+                    WHERE idclienteDatoMujer='{$this->getIdPaciente()}'";
+        $UpdateTratameinto = $this->db->query($women);
+        $upConMeso = false;
+        if($UpdateTratameinto){
+            $upConMeso = true;
+        }
+        return $upConMeso;
+    }
+
+    public function updateTratamiento(){
+        $update = "UPDATE tratameintoactual
+                    SET
+                        nombreMedicamento='{$this->getMedicamento()}'
+                    WHERE idClientesConotrol='{$this->getIdPaciente()}'";
+    $UpdateTratameinto = $this->db->query($update);
+         $upConMeso = false;
+         if($UpdateTratameinto){
+             $upConMeso = true;
+         }
+         return $upConMeso;
+    }
 
 }

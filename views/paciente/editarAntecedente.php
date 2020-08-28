@@ -4,7 +4,7 @@
 		require_once 'views/layout/editarNavs.php';
 		require_once 'views/layout/cabeceraLogo.php';
 		$sesion = ""; 
-		 if(isset($_SESSION['formulario'])){$sesion = $_SESSION['formulario']['datos'];} 
+		 if(isset($_SESSION['formulario'])){$sesion = $_SESSION['formulario']['error'];} 
 		 ?>
 		<div class="texcto">
 			<?php if($sesion != "") echo '<p class="alert alert-danger error" role="alert">'.$_SESSION['formulario']["error"]."</p>";
@@ -13,7 +13,7 @@
 			 ?>
 		</div>
 		<div class="tab-content" id="nav-tabContent" style="height: auto">
-			<form id="registro" action="<?=base_url?>Paciente/editarPaciente" method="POST" class="tab-pane fade show active" role="tabpanel" aria-labelledby="nav-home-tab">
+			<form id="registro" action="<?=base_url?>Paciente/updateHeredofamiliar&id=012020080006" method="POST" class="tab-pane fade show active" role="tabpanel" aria-labelledby="nav-home-tab">
 <!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
                 <div class="page-header titulo_padecimiento"><small>ANTECEDENTES HEREDOFAMILIARES (PADRES-ABUELOS-HERMANOS):</small></div>
 				<hr>
@@ -25,7 +25,7 @@
 			                        DIABETES
 			                    </label>
 						</div>
-						<input type="hidden" class="form-control"  name="deabetes[]" aria-label="Small" value="<?php if(in_array('DIABETES',$name)){echo $indique[$diabetes];}?>">
+						<input type="hidden" class="form-control"  name="deabetes[]" aria-label="Small" value="0">
 						<div class="form-group input-group input-group-sm col-md-6">
 							<div class="input-group-prepend">
 			                      <span class="input-group-text" id="inputGroup-sizing-sm">PARENTESCO</span>
@@ -44,7 +44,7 @@
 							<div class="input-group-prepend">
 			                      <span class="input-group-text" id="inputGroup-sizing-sm">PARENTESCO</span>
 			                  </div>
-			                  <input type="hidden" class="form-control"  name="hipertension[]" aria-label="Small"  value="<?php if(in_array('HIPERTENSIÓN',$name)){echo $indique[$hiper];}?>">
+			                  <input type="hidden" class="form-control"  name="hipertension[]" aria-label="Small"  value="0">
 			                  <input type="text" class="form-control" id="checkHipertensionParentesco" name="hipertension[]" aria-label="Small" aria-describedby="inputGroup-sizing-sm" value="<?php if(in_array('HIPERTENSIÓN',$name)){echo $parentesco[$hiper];}?>"<?php if($hiper == '-1')echo ' disabled=disabled '; ?>>
 						</div>
 					</div> 
@@ -59,7 +59,7 @@
 							<div class="input-group-prepend">
 			                      <span class="input-group-text" id="inputGroup-sizing-sm">PARENTESCO</span>
 			                  </div>
-			                  <input type="hidden" class="form-control"  name="Asma[]" aria-label="Small"  value="<?php if(in_array('Asma',$name)){echo $indique[$asma];}?>">
+			                  <input type="hidden" class="form-control"  name="Asma[]" aria-label="Small"  value="0">
 			                  <input type="text" class="form-control" id="checkAsmaParntesco" name="Asma[]" aria-label="Small" aria-describedby="inputGroup-sizing-sm" value="<?php if(in_array('Asma',$name)){echo $parentesco[$asma];}?>"<?php if($asma == '-1')echo ' disabled=disabled '; ?>>
 						</div>
 					</div> 
@@ -74,14 +74,14 @@
 							<div class="input-group-prepend">
 			                      <span class="input-group-text" id="inputGroup-sizing-sm">PARENTESCO</span>
 			                  </div>
-			                  <input type="hidden" class="form-control"  name="cancer[]" aria-label="Small"  value="<?php if(in_array('CÁNCER',$name)){echo $indique[$cancer];}?>">
+			                  <input type="hidden" class="form-control"  name="cancer[]" aria-label="Small"  value="0">
 			                  <input type="text" class="form-control" id="checkCancerParntesco" name="cancer[]" aria-label="Small" aria-describedby="inputGroup-sizing-sm" value="<?php if(in_array('CÁNCER',$name)){echo $parentesco[$cancer];}?>"<?php if($cancer == '-1')echo ' disabled=disabled '; ?>>
 						</div>
 					</div> 
 					<div class="form-row col-md-12">
 						<div class="form-group form-check col-md-6">
 							<input class="form-check-input parentesco" type="checkbox" value="ALERGIAS" id="checkAlergias" name="alergias[]" <?php if(in_array('ALERGIAS',$name)){echo 'checked="checked"';$aler=array_search('ALERGIAS',$name);}?>>
-			                    <label class="form-check-label" for="checkalergias">
+			                    <label class="form-check-label" for="checkAlergias">
 			                        ALERGIAS
 			                    </label>
 						</div>
@@ -89,7 +89,7 @@
 							<div class="input-group-prepend">
 			                      <span class="input-group-text" id="inputGroup-sizing-sm">PARENTESCO</span>
 			                  </div>
-			                  <input type="hidden" class="form-control"  name="alergias[]" aria-label="Small"  value="<?php if(in_array('ALERGIAS',$name)){echo $indique[$aler];}?>">
+			                  <input type="hidden" class="form-control"  name="alergias[]" aria-label="Small"  value="0">
 			                  <input type="text" class="form-control" id="checkAlergiasParntesco" name="alergias[]" aria-label="Small" aria-describedby="inputGroup-sizing-sm" value="<?php if(in_array('ALERGIAS',$name)){echo $parentesco[$aler];}?>"<?php if($aler == '-1')echo ' disabled=disabled '; ?>>
 						</div>
 					</div>
@@ -104,7 +104,7 @@
 								<div class="input-group-prepend hide">
 				                    <span class="input-group-text" id="inputGroup-sizing-sm">INDIQUE</span>
 				                </div>
-				                <input type="text" class="form-control hide" name="otros[]" aria-label="Small" aria-describedby="inputGroup-sizing-sm" value="<?php if(in_array('OTROS',$name)){echo $indique[$otro];}?>">      
+				                <input type="text" class="form-control hide" id="hide" name="otros[]" aria-label="Small" aria-describedby="inputGroup-sizing-sm" value="<?php if(in_array('OTROS',$name)){echo $indique[$otro];}?>">      
 			             </div>
 						<div class="form-group input-group input-group-sm col-md-6">
 							<div class="input-group-prepend">

@@ -11,9 +11,10 @@
 			<?php if($sesion != "") echo '<p class="alert alert-danger error" role="alert">'.$_SESSION['formulario']["error"]."</p>";?>
 			<?php if(isset($_SESSION['statusSave'])) echo '<p class="alert alert-success error" role="alert">'.$_SESSION['statusSave']."</p>";?>
 			<?php Utls::deleteSession('statusSave') ?>
+			<?php Utls::deleteSession('formulario') ?>
 		</div>
 		<div class="tab-content" id="nav-tabContent" style="height: auto">
-			<form id="registro" action="<?=base_url?>Paciente/editarPaciente" method="POST" class="tab-pane fade show active" role="tabpanel" aria-labelledby="nav-home-tab">
+			<form id="registro" action="<?=base_url?>Paciente/updatePersonal" method="POST" class="tab-pane fade show active" role="tabpanel" aria-labelledby="nav-home-tab">
 				<div class="idPaciente">
 				<input type="text" class="form-control" id="idPaciente" value="<?php echo $imprimir->idCliente;?>" readonly="true" name="idPaciente">	
 				</div>	
@@ -171,7 +172,7 @@
 						<input type="text" class="form-control" id="inputNombreMedicamento" name="inputNombreMedicamento" value="<?php  if($sesion != ""){echo $sesion["medicamento"];}else{ echo SED::decryption($imprimir->medicamentoAnteriorCliente);}?>">
 					</div>
 				</div>
-				<input type="submit" class="btn btn-primary" id="btn-env" values="enviar" name="enviar">
+				<input type="submit" class="btn btn-primary" id="btn-env" value="EDITAR" name="editarP">
 			</form>
 		</div>
 	</div>
