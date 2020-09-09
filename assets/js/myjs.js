@@ -98,6 +98,17 @@ $(document).ready(function(){
 			}
 		}
 	})
+	$("#unputEmbarazos").on('change',function(){
+		var valor = $(this).val();
+		if(valor == 0){
+			$("#inputNacidosTermino").val(0);
+			$("#inputNacidosPre").val(0);
+			$("#inputultimoEmbarazo").val('0001-01-01');
+		}else if(valor > 0){
+			$("#inputNacidosTermino").val(valor);
+			$("#inputNacidosPre").val(valor);
+		}
+	})
 /*:::::::::::::::::::::::::::::::::::::::::::::::validar si ah tenido cirugia::::::::::::::::::::::::::::::::::::::::::::::::::::*/
 	$("input:radio[name=cirugia]").on('change',function(){
 		if($(this).is(':checked')){

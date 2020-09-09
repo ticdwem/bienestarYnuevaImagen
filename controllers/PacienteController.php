@@ -34,7 +34,7 @@ class PacienteController{
             $estado_civil = (Validacion::pregmatchletras($_POST["inpuEstadoCivil"]) == '0') ? false : $_POST["inpuEstadoCivil"] ;
             $celular = (Validacion::validarTelefono($_POST["inpuCelular"]) == '0') ? false : $_POST["inpuCelular"] ;
             $correo = (Validacion::validarEmail($_POST["inpuCorreo"]) == '0') ? false : $_POST["inpuCorreo"] ;
-            $red_social = (Validacion::pregmatchletras($_POST["inpuRedSocial"]) == '0') ? false : $_POST["inpuRedSocial"] ;
+            $red_social = (Validacion::textoLargo($_POST["inpuRedSocial"]) == '0') ? false : $_POST["inpuRedSocial"] ;
             $estado = (Validacion::validarSelect($_POST["inpuEstado"]) == '-1') ? false : $_POST["inpuEstado"] ;
             $municipio = (!isset($_POST["inpuMunicipio"]) || Validacion::validarSelect($_POST["inpuMunicipio"]) == '-1') ? false : $_POST["inpuMunicipio"] ;
             $codigo_postal = (Validacion::validarNumero($_POST["inpuCP"]) == '-1' || Validacion::validarLArgo($_POST["inpuCP"],5) == '-1' ) ? false : $_POST["inpuCP"] ;
@@ -1360,9 +1360,6 @@ class PacienteController{
     }
 
     public function editarAnterior(){
-        echo '<pre>';
-        var_dump($_POST);
-        echo '</pre>';
         /* ::::::::::::::::::::::::::::::::::::::::seccion MEDICAMENTO ANTERIOR:::::::::::::::::::::::::::::::::::::::::: */          
         if(isset($_POST["radioTratamiento"]) &&  $_POST["radioTratamiento"] == "1"){
                                 

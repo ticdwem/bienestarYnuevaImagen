@@ -31,12 +31,12 @@
 					<div class="form-control col-md-4 genero">
 					    <label for="intputSexo" id="intputSexo">SEXO</label>
 						<div class="custom-control custom-radio custom-control-inline radio-Sexo">
-						  <input type="radio" id="customRadioInline1" name="customRadioSexo" class="custom-control-input"  value="hombre">
-						  <label class="custom-control-label" for="customRadioInline1">hombre</label>
+						  <input type="radio" id="customRadioInline1" name="customRadioSexo"  value="hombre">
+						  <label  for="customRadioInline1">hombre</label>
 						</div>
 						<div class="custom-control custom-radio custom-control-inline radio-Sexo">
-						  <input type="radio" id="customRadioInline2" name="customRadioSexo" class="custom-control-input" value="mujer" >
-						  <label class="custom-control-label" for="customRadioInline2">mujer</label>
+						  <input type="radio" id="customRadioInline2" name="customRadioSexo"  value="mujer" >
+						  <label  for="customRadioInline2">mujer</label>
                         </div>                        
                     </div>
                     <div class="form-group col-md-4">

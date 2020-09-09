@@ -47,10 +47,11 @@ figure figcaption h2 p{
 }
 
 /* genero */
+form .form-row .tratamiento,
 form .form-row .genero{
 	border: 1px solid #CED4DA;
 	/* border: 1px solid red; */
-	width: 0%;
+	width: 0px;
 	position: relative;
 	height: 38px;
 	top: 32px;
@@ -62,12 +63,14 @@ form .form-row #intputSexo{
 	top: -100%;
 	left: 0%;
 }
+form .form-row .tratamiento .radio-Sexo,
 form .form-row .genero .radio-Sexo{
 	position: relative;
 	/* top: 15%; */
 	left: 15%;
 	vertical-align: middle;
 }
+form .form-row .tratamiento .radio-Sexo label,
 form .form-row .genero .radio-Sexo label{
 	position: relative;
 	margin-left: 5px;

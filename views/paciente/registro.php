@@ -10,7 +10,7 @@
 			<?php Utls::deleteSession('statusSave') ?>
 		</div>
 		<div style="height: auto">
-			<form id="registro" action="<?=base_url?>Paciente/save" method="POST">
+			<form id="registro" action="<?=base_url?>Paciente/save" method="POST" novalidate>
 				<div class="idPaciente">
 				<input type="text" class="form-control" id="idPaciente" value="<?=Utls::createId(Consultorio,$id['id'])?>" readonly="true" name="idPaciente">	
 				</div>	
@@ -20,48 +20,56 @@
 					<div class="form-group col-md-4">
 						<label for="intputname">Nombre</label>
 						<input type="text" class="form-control" id="intputname" name="intputname" value="<?php if($sesion != "") echo $sesion["Nombre"];?>">
+						<div class="" id="alertaName"></div>
 					</div>
 					<div class="form-group col-md-4">
 						<label for="inputAppat">Apellido Paterno</label>
 						<input type="text" class="form-control" id="inputAppat" name="inputAppat" value="<?php  if($sesion != "") echo $sesion["Apellido_Pat"];?>">
+						<div class="" id="alertaApp"></div>
 					</div>
 					<div class="form-group col-md-4">
 						<label for="inputApmat">Apellido Materno</label>
 						<input type="text" class="form-control" id="inputApmat" name="inputApmat" value="<?php  if($sesion != "") echo $sesion["Apellido_Mat"];?>">
+						<div class="" id="alertaApm"></div>
 					</div>
 				</div>
 				<div class="form-row ">
 					<div class="form-control col-md-4 genero">
-					<label for="intputSexo" id="intputSexo">SEXO</label>
+						<label for="intputSexo" id="intputSexo">SEXO</label>
 						<div class="custom-control custom-radio custom-control-inline radio-Sexo">
-						  <input type="radio" id="customRadioInline1" name="customRadioSexo" class="custom-control-input"  value="hombre">
-						  <label class="custom-control-label" for="customRadioInline1">hombre</label>
+						  <input type="radio" id="customRadioInline1" name="customRadioSexo"   value="hombre">
+						  <label for="customRadioInline1">hombre</label>
 						</div>
 						<div class="custom-control custom-radio custom-control-inline radio-Sexo">
-						  <input type="radio" id="customRadioInline2" name="customRadioSexo" class="custom-control-input" value="mujer" >
-						  <label class="custom-control-label" for="customRadioInline2">mujer</label>
+							<input type="radio" id="customRadioInline2" name="customRadioSexo"  value="mujer" >
+							<label  for="customRadioInline2">mujer</label>
 						</div>
+						<div class="" id="alertRadio"></div>
 					</div>
 					<div class="form-group col-md-4">
 						<label for="inpuFechaNac">Fecha Nacimiento</label>
 						<input type="text" onchange="javascript:calcularEdad()" class="form-control" id="dateInicio" name="dateInicio" placeholder="dd/mm/yyyy">
 						<!-- <span class="input-group-addon" >
                         	<input type="button"  value="Calcular"  onclick="javascript:calcularEdad();" />
-                        </span> -->
+						</span> alertaDate-->
+						<div class="" id="alertaDate"></div>
 					</div>
 					<div class="form-group col-md-4">
 						<label for="inpuEdad">Edad</label>
 						<input type="text" class="form-control" id="inpuEdad" name="inpuEdad" readonly>
+						<div class="" id="alertaEdad"></div>
 					</div>
 				</div>
 				<div class="form-row">
 					<div class="form-group col-md-4">
 						<label for="inpuEstatura">Estatura Aprox.</label>
 						<input type="text" class="form-control" id="inpuEstatura" name="inpuEstatura" value="<?php  if($sesion != "") echo $sesion["estatura"];?>">
+						<div class="" id="alertaEstatura"></div>
 					</div>
 					<div class="form-group col-md-4">
 						<label for="inpuOcupacion">Ocupacion</label>
 						<input type="text" class="form-control" id="inpuOcupacion" name="inpuOcupacion" value="<?php  if($sesion != "") echo $sesion["ocupacion"];?>">
+						<div class="" id="alertOcupacion"></div>
 					</div>
 					<div class="form-group col-md-4">
 						<label for="inpuEstadoCivil">Estado Civil</label>
@@ -74,6 +82,7 @@
 							<option value="SEPARADO">SEPARADO</option> 	
 							<option value="UNIÓN LIBRE">UNIÓN LIBRE</option> 	
 						</select>
+						<div class="" id="alertSelect"></div>
 					</div>
 				</div>
 				<div class="page-header"><small>DATOS CONTACTO</small></div>
@@ -81,7 +90,8 @@
 				<div class="form-row ">
 					<div class="form-group col-md-4">
 						<label for="inpuCelular">Celular</label>
-						<input type="text" class="form-control" id="inpuCelular" name="inpuCelular" value="<?php  if($sesion != "") echo $sesion["celular"];?>">
+						<input type="text" class="form-control" placeholder="no uses guines (-) ni diagonales (/)" id="inpuCelular" name="inpuCelular" value="<?php  if($sesion != "") echo $sesion["celular"];?>">
+						<div class="" id="alertTel"></div>
 					</div>
 					<div class="form-group col-md-4">
 						<label for="inpuCorreo">Correo</label>
@@ -91,6 +101,7 @@
 					<div class="form-group col-md-4">
 						<label for="inpuRedSocial">Red Social</label>
 						<input type="text" class="form-control" id="inpuRedSocial" name="inpuRedSocial" value="<?php  if($sesion != "") echo $sesion["red_social"];?>">
+						<div class="" id="alertRS"></div>
 					</div>
 				</div>
 				<div class="page-header"><small>DATOS DOMICILIO</small></div>
@@ -99,29 +110,36 @@
 					<div class="form-group col-md-4">
 						<label for="inpuEstado">Estado</label>
 						<select class="form-control inpuEstado" id="inpuEstado" name="inpuEstado">
+							<option value="">Escoge un estado</option> 							
 						<?php while ($estado = $nombreE->fetch_object()):?>							
 							<option value="<?= $estado->idEstado?>"><?= $estado->estado?></option> 							
 						<?php endwhile; ?>
 						</select>
+						<div class="" id="alertSelectEdo"></div>
 					</div>
 					<div class="form-group col-md-4">
 						<label for="inpuMunicipio">Municipio</label>
 					    <select class="form-control" id="inpuMunicipio" name="inpuMunicipio">
-					    </select>
+							<option value="">Escoge un municipio</option>
+						</select>
+						<div class="" id="alertSelectMun"></div>
 					</div>
 					<div class="form-group col-md-4">
 						<label for="inpuCP">CP.</label>
 						<input type="text" class="form-control" id="inpuCP" name="inpuCP" value="<?php  if($sesion != "") echo $sesion["codigo_postal"];?>">
+						<div class="" id="alertCp"></div>
 					</div>
 				</div>
 				<div class="form-row">
 					<div class="form-group col-md-4">
 						<label for="inpuColonia">Colonia</label>
 						<input type="text" class="form-control" id="inpuColonia" name="inpuColonia" value="<?php  if($sesion != "") echo $sesion["colonia"];?>">
+						<div class="" id="alertColonia"></div>
 					</div>
 					<div class="form-group col-md-4">
 						<label for="inpuCalle">Calle</label>
 						<input type="text" class="form-control" id="inpuCalle" name="inpuCalle" value="<?php  if($sesion != "") echo $sesion["calle"];?>">
+						<div class="" id="alertCalle"></div>
 					</div>
 					<div class="form-group col-md-4">
 						
@@ -133,10 +151,12 @@
 					<div class="form-group col-md-4">
 						<label for="inpuTelEmergencia">Tel. Emergencia</label>
 						<input type="text" class="form-control" id="inpuTelEmergencia" name="inpuTelEmergencia" value="<?php  if($sesion != "") echo $sesion["tetefono_emergencia"];?>">
+						<div class="" id="alertEmergencia"></div>
 					</div>
 					<div class="form-group col-md-4">
 						<label for="inpuParentesco">Parentesco</label>
 						<input type="text" class="form-control" id="inpuParentesco" name="inpuParentesco" value="<?php  if($sesion != "") echo $sesion["parentesco"];?>">
+						<div class="" id="alertParentesco"></div>
 					</div>
 				</div>
 				<div class="page-header"><small>DATOS EXTRA</small></div>
@@ -145,10 +165,12 @@
 					<div class="form-group col-md-4">
 						<label for="inpuTelNombreRecomienda">Nombre Recomienda</label>
 						<input type="text" class="form-control" id="inpuNombreRecomienda" name="inpuNombreRecomienda" value="<?php  if($sesion != "") echo $sesion["nombre_Recomienda"];?>">
+						<div class="" id="alertrecomienda"></div>
 					</div>
 					<div class="form-group col-md-8">
 						<label for="inpuMotivo">Motivo de Consulta</label>
 						<input type="text" class="form-control" id="inpuMotivo" name="inpuMotivo" value="<?php  if($sesion != "") echo $sesion["motivo"];?>">
+						<div class="" id="alertMotivo"></div>
 					</div>
 				</div>
 				<div class="page-header"><small>DATOS MEDICACION</small></div>
@@ -165,6 +187,7 @@
 					<div class="form-group col-md-4" id="medicamento">
 						<label for="inputNombreMedicamento">Nombre Medicamento</label>
 						<input type="text" class="form-control" id="inputNombreMedicamento" name="inputNombreMedicamento">
+						<div class="" id="alertMedicamneto"></div>
 					</div>
 				</div>
 <!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
@@ -184,7 +207,8 @@
 			                      <span class="input-group-text" id="inputGroup-sizing-sm">PARENTESCO</span>
 			                  </div>
 			                  <input type="text" class="form-control" id="checkDeabetesParentesco" name="deabetes[]" aria-label="Small" aria-describedby="inputGroup-sizing-sm" disabled>
-						</div>
+							  <div class="" id="alertDiabetesAntecedente"></div>
+							</div>
 					</div> 
 					<div class="form-row col-md-12">
 						<div class="form-group form-check col-md-6">
@@ -199,7 +223,8 @@
 			                  </div>
 			                  <input type="hidden" class="form-control"  name="hipertension[]" aria-label="Small"  value = "0">
 			                  <input type="text" class="form-control" id="checkHipertensionParentesco" name="hipertension[]" aria-label="Small" aria-describedby="inputGroup-sizing-sm" disabled>
-						</div>
+							  <div class="" id="alertHipertensionAntecedente"></div>
+							</div>
 					</div> 
 					<div class="form-row col-md-12">
 						<div class="form-group form-check col-md-6">
@@ -214,6 +239,7 @@
 			                  </div>
 			                  <input type="hidden" class="form-control"  name="Asma[]" aria-label="Small"  value = "0">
 			                  <input type="text" class="form-control" id="checkAsmaParntesco" name="Asma[]" aria-label="Small" aria-describedby="inputGroup-sizing-sm" disabled>
+							  <div class="" id="alertAsmaAntecedente"></div>
 						</div>
 					</div> 
 					<div class="form-row col-md-12">
@@ -229,7 +255,8 @@
 			                  </div>
 			                  <input type="hidden" class="form-control"  name="cancer[]" aria-label="Small"  value = "0">
 			                  <input type="text" class="form-control" id="checkCancerParntesco" name="cancer[]" aria-label="Small" aria-describedby="inputGroup-sizing-sm" disabled>
-						</div>
+							  <div class="" id="alertCancerAntecedente"></div>
+							</div>
 					</div> 
 					<div class="form-row col-md-12">
 						<div class="form-group form-check col-md-6">
@@ -244,7 +271,8 @@
 			                  </div>
 			                  <input type="hidden" class="form-control"  name="alergias[]" aria-label="Small"  value = "0">
 			                  <input type="text" class="form-control" id="checkAlergiasParntesco" name="alergias[]" aria-label="Small" aria-describedby="inputGroup-sizing-sm" disabled>
-						</div>
+							  <div class="" id="alertAlergiasAntecedente"></div>
+							</div>
 					</div>
 					<div class="form-row col-md-12">
 						<div class="form-group form-check  col-md-2">
@@ -257,18 +285,20 @@
 								<div class="input-group-prepend hide">
 				                    <span class="input-group-text" id="inputGroup-sizing-sm">INDIQUE</span>
 				                </div>
-				                <input type="text" class="form-control hide" name="otros[]" aria-label="Small" aria-describedby="inputGroup-sizing-sm">       
-			             </div>
+				                <input type="text" class="form-control hide" name="otros[]" id="otroIndiquetxtHide" aria-label="Small" aria-describedby="inputGroup-sizing-sm">       
+								<div class="" id="alertOtrosIndiqueAntecedente"></div>
+							</div>
 						<div class="form-group input-group input-group-sm col-md-6">
 							<div class="input-group-prepend">
 			                      <span class="input-group-text" id="inputGroup-sizing-sm">PARENTESCO</span>
 			                  </div>
-			                  <input type="text" class="form-control otroIndique" aria-label="Small" name="otros[]" aria-describedby="inputGroup-sizing-sm" disabled>
-						</div>
+			                  <input type="text" class="form-control otroIndique" id="otroIndiquetxtParentesco" aria-label="Small" name="otros[]" aria-describedby="inputGroup-sizing-sm" disabled>
+							  <div class="" id="alertOtrosParentescoAntecedente"></div>
+							</div>
 					</div> 
 					<div class="form-row col-md-12">
 						<div class="form-group form-check  col-md-6">
-							<input class="form-check-input" type="checkbox" value="NINGUNO" id="checkNinguno" name="ninguno[]">
+							<input class="form-check-input" type="checkbox" value="NINGUNO" id="checkNinguno" name="ninguno[]" checked>
 							<input type="hidden" class="form-control"  name="ninguno[]" aria-label="Small"  value = "0">
 							<input type="hidden" class="form-control"  name="ninguno[]" aria-label="Small"  value = "0">
 							<input type="hidden" class="form-control"  name="ninguno[]" aria-label="Small"  value = "0">
@@ -294,8 +324,9 @@
 						<div class="form-group input-group input-group-sm col-md-6">
 							<div class="input-group-prepend">
 			                      <span class="input-group-text" id="inputGroup-sizing-sm">TRATAMIENTO</span>
-			                  </div>
+			                </div>
 			                  <input type="text" class="form-control" id="checkDeabetesActualParentesco" name="actualDeabetes[]" aria-label="Small" aria-describedby="inputGroup-sizing-sm" disabled>
+							  <div class="" id="alertDiabetesPersonal"></div>
 						</div>
 					</div> 
 					<div class="form-row col-md-12">
@@ -309,6 +340,7 @@
 			                      <span class="input-group-text" id="inputGroup-sizing-sm">TRATAMIENTO</span>
 			                  </div>
 			                  <input type="text" class="form-control" id="checkHipertensionActualParentesco" name="actualHipertension[]" aria-label="Small" aria-describedby="inputGroup-sizing-sm" disabled>
+							  <div class="" id="alertHiperPersonal"></div>
 						</div>
 					</div> 
 					<div class="form-row col-md-12">
@@ -322,6 +354,7 @@
 			                      <span class="input-group-text" id="inputGroup-sizing-sm">TRATAMIENTO</span>
 			                  </div>
 			                  <input type="text" class="form-control" id="checkAsmaActualParentesco" name="actualAsma[]" aria-label="Small" aria-describedby="inputGroup-sizing-sm" disabled>
+							  <div class="" id="alertAsmPersonal"></div>
 						</div>
 					</div>
 					<div class="form-row col-md-12">
@@ -335,6 +368,7 @@
 			                      <span class="input-group-text" id="inputGroup-sizing-sm">TRATAMIENTO</span>
 			                  </div>
 			                  <input type="text" class="form-control" id="checkCancerActualParentesco" name="actualCancer[]" aria-label="Small" aria-describedby="inputGroup-sizing-sm" disabled>
+							  <div class="" id="alertCanPersonal"></div>
 						</div>
 					</div>
 					<div class="form-row col-md-12">
@@ -348,6 +382,7 @@
 			                      <span class="input-group-text" id="inputGroup-sizing-sm">TRATAMIENTO</span>
 			                  </div>
 			                  <input type="text" class="form-control" id="checkAlergiasActualParentesco" name="actualAlergias[]" aria-label="Small" aria-describedby="inputGroup-sizing-sm" disabled>
+							  <div class="" id="alertAlergPersonal"></div>
 						</div>
 					</div>
 					<div class="form-row col-md-12">
@@ -361,6 +396,7 @@
 			                      <span class="input-group-text" id="inputGroup-sizing-sm">TRATAMIENTO</span>
 			                  </div>
 			                  <input type="text" class="form-control" id="checkDislipidemiasActualParentesco" name="actualDislipidemias[]" aria-label="Small" aria-describedby="inputGroup-sizing-sm" disabled>
+							  <div class="" id="alertDisliPersonal"></div>
 						</div>
 					</div>
 					<div class="form-row col-md-12">
@@ -374,6 +410,7 @@
 			                      <span class="input-group-text" id="inputGroup-sizing-sm">TRATAMIENTO</span>
 			                  </div>
 			                  <input type="text" class="form-control" id="checkHepaticosActualParentesco" name="actualHepaticos[]" aria-label="Small" aria-describedby="inputGroup-sizing-sm" disabled>
+							  <div class="" id="alertHepatiPersonal"></div>
 						</div>
 					</div> 
 					<div class="form-row col-md-12">
@@ -387,6 +424,7 @@
 			                      <span class="input-group-text" id="inputGroup-sizing-sm">TRATAMIENTO</span>
 			                  </div>
 			                  <input type="text" class="form-control" id="checkRenalesActualParentesco" name="actualRenales[]" aria-label="Small" aria-describedby="inputGroup-sizing-sm" disabled>
+							  <div class="" id="alertRenalesPersonal"></div>
 						</div>
 					</div>
 					<div class="form-row col-md-12">
@@ -400,7 +438,8 @@
 			                      <span class="input-group-text" id="inputGroup-sizing-sm">TRATAMIENTO</span>
 			                  </div>
 			                  <input type="text" class="form-control" id="checkUrinariosActualParentesco" name="actualUrinarios[]" aria-label="Small" aria-describedby="inputGroup-sizing-sm" disabled>
-						</div>
+							  <div class="" id="alertUrinariosPersonal"></div>
+							</div>
 					</div>
 					<div class="form-row col-md-12">
 						<div class="form-group form-check  col-md-6">
@@ -413,6 +452,7 @@
 			                      <span class="input-group-text" id="inputGroup-sizing-sm">TRATAMIENTO</span>
 			                  </div>
 			                  <input type="text" class="form-control" id="checkProstataActualParentesco" name="actualProstata[]" aria-label="Small" aria-describedby="inputGroup-sizing-sm" disabled>
+							  <div class="" id="alertProstataPersonal"></div>
 						</div>
 					</div>
 					<div class="form-row col-md-12">
@@ -426,6 +466,7 @@
 			                      <span class="input-group-text" id="inputGroup-sizing-sm">TRATAMIENTO</span>
 			                  </div>
 			                  <input type="text" class="form-control" id="checkDisfusionActualParentesco" name="actualDisfusion[]" aria-label="Small" aria-describedby="inputGroup-sizing-sm" disabled>
+							  <div class="" id="alertDisfuncionPersonal"></div>
 						</div>
 					</div>
 					<div class="form-row col-md-12">
@@ -439,6 +480,7 @@
 			                      <span class="input-group-text" id="inputGroup-sizing-sm">TRATAMIENTO</span>
 			                  </div>
 			                  <input type="text" class="form-control" id="checkHipotiroidismoParentesco" name="actualHipotiroidismo[]" aria-label="Small" aria-describedby="inputGroup-sizing-sm" disabled>
+							  <div class="" id="alertHipoPersonal"></div>
 						</div>
 					</div>
 					<div class="form-row col-md-12">
@@ -452,6 +494,7 @@
 			                      <span class="input-group-text" id="inputGroup-sizing-sm">TRATAMIENTO</span>
 			                  </div>
 			                  <input type="text" class="form-control" id="checkHipertiroidismoParentesco" name="actualHipertiroidismo[]" aria-label="Small" aria-describedby="inputGroup-sizing-sm" disabled>
+							  <div class="" id="alertHipertiroidismoPersonal"></div>
 						</div>
 					</div>
 					<div class="form-row col-md-12">
@@ -465,6 +508,7 @@
 			                      <span class="input-group-text" id="inputGroup-sizing-sm">TRATAMIENTO</span>
 			                  </div>
 			                  <input type="text" class="form-control" id="checkSindromeParentesco" name="actualSindrome[]" aria-label="Small" aria-describedby="inputGroup-sizing-sm" disabled>
+							  <div class="" id="alertSindromePersonal"></div>
 						</div>
 					</div>
 					<div class="form-row col-md-12">
@@ -476,18 +520,20 @@
 								<div class="input-group-prepend hide">
 				                    <span class="input-group-text" id="inputGroup-sizing-sm">INDIQUE</span>
 				                </div>
-				                <input type="text" class="form-control hide" aria-label="Small" aria-describedby="inputGroup-sizing-sm" name="actualOtro[]">       
-			             </div>
+				                <input type="text" class="form-control hide" id="hideOtroActual" aria-label="Small" aria-describedby="inputGroup-sizing-sm" name="actualOtro[]">       
+								<div class="" id="alertotroHidePersonal"></div> 
+						</div>
 						<div class="form-group input-group input-group-sm   col-md-6">
 							<div class="input-group-prepend">
 			                      <span class="input-group-text" id="inputGroup-sizing-sm">TRATAMIENTO</span>
 			                  </div>
-			                  <input type="text" class="form-control otroIndiqueActual" name="actualOtro[]" aria-label="Small" aria-describedby="inputGroup-sizing-sm" disabled>
+			                  <input type="text" class="form-control otroIndiqueActual" id="otrotratamientoActual" name="actualOtro[]" aria-label="Small" aria-describedby="inputGroup-sizing-sm" disabled>
+							  <div class="" id="alertTratamientoPersonal"></div> 
 						</div>
 					</div> 
 					<div class="form-row col-md-12">
 						<div class="form-group form-check  col-md-6">
-							<input class="form-check-input" type="checkbox" value="NINGUNO" id="checkNingunoActual" name="actualNinguno[]">
+							<input class="form-check-input" type="checkbox" value="NINGUNO" id="checkNingunoActual" name="actualNinguno[]" checked>
 							<input type="hidden" class="form-control"  name="actualNinguno[]" aria-label="Small"  value = "0">
 							<input type="hidden" class="form-control"  name="actualNinguno[]" aria-label="Small"  value = "0">
 							<input type="hidden" class="form-control"  name="actualNinguno[]" aria-label="Small"  value = "0">
@@ -516,13 +562,15 @@
 							<div class="input-group-prepend">
 								<span class="input-group-text" id="inputGroup-sizing-sm">NOMBRE</span>
 							</div>
-							<input type="text" class="form-control disableoff" aria-label="Small" name="operacionUno[]" aria-describedby="inputGroup-sizing-sm" disabled>
+							<input type="text" class="form-control disableoff" id="idNameOperacionuno" aria-label="Small" name="operacionUno[]" aria-describedby="inputGroup-sizing-sm" disabled>
+							<div class="" id="alertOperacionNameUno"></div> 
 						</div>
 						<div class="form-group input-group input-group-sm col-md-6">
 							<div class="input-group-prepend">
 								<span class="input-group-text" id="inputGroup-sizing-sm">Fecha</span>
 							</div>
-								<input type="date" class="form-control disableoff" aria-label="Small" name="operacionUno[]" aria-describedby="inputGroup-sizing-sm" disabled>
+								<input type="date" class="form-control disableoff" id="idFechaOperacionuno" aria-label="Small" name="operacionUno[]" aria-describedby="inputGroup-sizing-sm" disabled>
+								<div class="" id="alertOperacionFechaUno"></div> 
 						</div>
 					</div>
 					<div class="form-row col-md-12">
@@ -530,13 +578,15 @@
 							<div class="input-group-prepend">
 								<span class="input-group-text" id="inputGroup-sizing-sm">NOMBRE</span>
 							</div>
-							<input type="text" class="form-control disableoff" aria-label="Small" name="operacionDos[]" aria-describedby="inputGroup-sizing-sm" disabled>
+							<input type="text" class="form-control disableoff" id="idNameOperacionDos" aria-label="Small" name="operacionDos[]" aria-describedby="inputGroup-sizing-sm" disabled>
+							<div class="" id="alertOperacionNameDos"></div> 
 						</div>
 						<div class="form-group input-group input-group-sm   col-md-6">
 							<div class="input-group-prepend">
 								<span class="input-group-text " id="inputGroup-sizing-sm">Fecha</span>
 							</div>
-							<input type="date" class="form-control disableoff" aria-label="Small" name="operacionDos[]" aria-describedby="inputGroup-sizing-sm" disabled>
+							<input type="date" class="form-control disableoff" id="idFechaOperacionDos" aria-label="Small" name="operacionDos[]" aria-describedby="inputGroup-sizing-sm" disabled>
+							<div class="" id="alertOperacionFechaDos"></div> 
 						</div>
 					</div>
 					<div class="form-row col-md-12">
@@ -544,13 +594,15 @@
 							<div class="input-group-prepend">
 								<span class="input-group-text " id="inputGroup-sizing-sm">NOMBRE</span>
 							</div>
-							<input type="text" class="form-control disableoff" aria-label="Small" name="operacionTres[]" aria-describedby="inputGroup-sizing-sm" disabled>
+							<input type="text" class="form-control disableoff" id="idNameOperacionTres" aria-label="Small" name="operacionTres[]" aria-describedby="inputGroup-sizing-sm" disabled>
+							<div class="" id="alertOperacionNameTres"></div>
 						</div>
 						<div class="form-group input-group input-group-sm   col-md-6">
 							<div class="input-group-prepend">
 								<span class="input-group-text " id="inputGroup-sizing-sm">Fecha</span>
 							</div>
-							<input type="date" class="form-control disableoff" aria-label="Small" name="operacionTres[]" aria-describedby="inputGroup-sizing-sm" disabled>
+							<input type="date" class="form-control disableoff" id="idFechaOperacionTres" aria-label="Small" name="operacionTres[]" aria-describedby="inputGroup-sizing-sm" disabled>
+							<div class="" id="alertOperacionFechaTres"></div> 
 						</div>
 					</div>
 				</div>
@@ -561,28 +613,34 @@
 					<div class="form-group col-md-3">
 						<label for="unputEmbarazos">Numero de Embarazos</label>
 						<input type="number" class="form-control hideOn" name="embarazos" id="unputEmbarazos" max="10">
+						<div class="" id="alertEmbarazo"></div> 
 					</div>
 					<div class="form-group col-md-3">
 						<label for="inputNacidosTermino">Nacidos al termino</label>
 						<input type="number" class="form-control hideOn" name="namcidosTermino" id="inputNacidosTermino">
+						<div class="" id="alertTermino"></div> 
 					</div>
 					<div class="form-group col-md-3">
 						<label for="inputNacidosPre">Nacidos al pretermino</label>
 						<input type="number" class="form-control hideOn" name="nacidosPretermino" id="inputNacidosPre">
+						<div class="" id="alertPreTermino"></div> 
 					</div>
 					<div class="form-group col-md-3">
 						<label for="inputultimoEmbarazo">Fecha del ultimo parto</label>
 						<input type="date" class="form-control hideOn" name="ultimoEmbarazo" id="inputultimoEmbarazo">
+						<div class="" id="alertpartoLast"></div> 
 					</div>
 				</div>
 				<div class="form-row col-md-12" id="mujeres">
 					<div class="form-group col-md-4">
 						<label for="unputregla">Fecha de ultima regla</label>
-						<input type="date" class="form-control hideOn" name="regla" id="unputregla" max="10">
+						<input type="date" class="form-control hideOn" name="regla" id="unputregla">
+						<div class="" id="alertRegla"></div> 
 					</div>
 					<div class="form-group col-md-4">
 						<label for="inputMedotoAnticonceptivo">Metodo Anticonceptivo actual</label>
 						<input type="text" class="form-control hideOn" name="MedotoAnticonceptivo" id="MedotoAnticonceptivo">
+						<div class="" id="alertAnticonceptivo"></div> 
 					</div>
 					<div class="form-group col-md-4">
 						
@@ -592,24 +650,25 @@
 				<div class="page-header titulo_anterior"><small>CONTROL DE PESO ANTERIOR</small></div>
 				<hr>
 				<div class="form-row col-md-12" id="anterior">
-					<div class="form-control col-md-5 genero">
-					<label for="intputSexo" id="intputSexo">Tratamientos de control de peso anteriormente</label>
+					<div class="form-control col-md-5 tratamiento">
+						<label for="intputSexo" id="intputSexo">Tratamientos de control de peso anteriormente</label>
 						<div class="custom-control custom-radio custom-control-inline radio-Sexo">
-						  <input type="radio" id="customRadioControl" name="radioTratamiento" class="custom-control-input" value="1">
-						  <label class="custom-control-label" for="customRadioControl">SI</label>
+						  <input type="radio" id="customRadioControl" name="radioTratamiento" value="1">
+						  <label  for="customRadioControl">SI</label>
 						</div>
 						<div class="custom-control custom-radio custom-control-inline radio-Sexo">
-						  <input type="radio" id="customRadioControl2" name="radioTratamiento" class="custom-control-input" value="2" checked>
-						  <label class="custom-control-label" for="customRadioControl2">NO</label>
+						  <input type="radio" id="customRadioControl2" name="radioTratamiento"  value="2" checked>
+						  <label  for="customRadioControl2">NO</label>
 						</div>
 					</div>
 					<div class="form-group col-md-7">
 						
+						</div>
 					</div>
-				</div>
-				<div class="form-row col-md-12" id="anteriorMedicamento">
-					<label for="medicamentoAnterior">¿Que medicamentos consumio durante el tratamiento de control de peso anterior?</label>
-					<input type="text" class="form-control anteriorMedicamento" name="medicamentoAnterior" id="medicamentoAnterior" placeholder="si es mas de un medicamento separalo por una coma (,)" disabled>
+					<div class="form-row col-md-12" id="anteriorMedicamento">
+						<label for="medicamentoAnterior">¿Que medicamentos consumio durante el tratamiento de control de peso anterior?</label>
+						<input type="text" class="form-control anteriorMedicamento" name="medicamentoAnterior" id="medicamentoAnterior" placeholder="si es mas de un medicamento separalo por una coma (,)" disabled>
+						<div class="" id="alertTratamientoControl"></div> 
 				</div>
 				<!-- <button class="btn btn-primary" type="submit">Submit form</button> -->
 				<input type="submit" class="btn btn-primary" id="btn-env" values="enviar" name="enviar">

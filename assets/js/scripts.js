@@ -126,20 +126,29 @@ function calcularEdad()
 
 /*validacion*/
 function expRegular(texto,contenido){
-
+// console.log(texto);
+// console.log(contenido);
+// return false;
   var letras_latinas;
+  var letras_Frm;
   var ercorreo;
   var phonearray;   
   var mesaje;
   var pass;
   var varif;
   var decimal;  
+  var fecha;
 
   switch (texto) {
     case "nombre":
      letras_latinas = /^[a-zA-ZáéíóúàèìòùÀÈÌÒÙÁÉÍÓÚñÑüÜ/-_-\s]+$/;
      varif = letras_latinas;
     break;
+
+    case "frm":
+      letras_Frm = /^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+$/;
+      varif = letras_Frm;
+     break;
     
     case "email":
      ercorreo=/^[^@\s]+@[^@\.\s]+(\.[^@\.\s]+)+$/;
@@ -161,6 +170,16 @@ function expRegular(texto,contenido){
      mesaje = /^[0-9a-zA-ZáéíóúàèìòùÀÈÌÒÙÁÉÍÓÚñÑüÜ_;,.()¿$?\s]+$/;
      varif= mesaje; 
     break;
+
+    case "date":
+     fecha = /^\d{1,2}\-\d{1,2}\-\d{2,4}$/;
+     varif = fecha;
+    break; 
+
+    case "dateSlash":
+     fecha = /^\d{2,4}\-\d{1,2}\-\d{1,2}$/;
+     varif = fecha;
+    break; 
     
     case "pass":
     pass = /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/;
@@ -179,8 +198,6 @@ w3Unpocodet0d0 */
     }
 
 }
-console.log(window.location);
-console.log(location.pathname);
 
 function getAbsolutePath() {
     var loc = window.location;
@@ -266,5 +283,4 @@ function getParameterByName(name) {
   return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 
-var prodId = getParameterByName('gen');
-console.log(prodId)
+

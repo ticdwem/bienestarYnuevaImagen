@@ -12,7 +12,12 @@
             <tr>
             <th scope="row"><?=$nuevo->idCliente?></th>
             <td><?=SED::decryption($nuevo->nombreCliente).' '.SED::decryption($nuevo->apPatCliente).' '.SED::decryption($nuevo->apMatCliente)?></td>
-            <td><a href="<?=base_url?>Consulta/index&id=<?=$nuevo->idCliente?>" class="btn btn-primary">DAR CONSULTA</a></td>
+            <td>
+              <div class="btn-group" role="group" aria-label="Basic example">
+                  <a href="<?=base_url?>Consulta/index&id=<?=$nuevo->idCliente?>" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="DAR CONSULTA"><i class="fa fa-user-md" aria-hidden="true"></i></a>
+                  <a href="<?=base_url?>Paciente/editar&id=<?=$nuevo->idCliente?>&tittle=" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Hoja Clinica"><i class="fa fa-file-text" aria-hidden="true"></i></a>
+              </div>
+            </td>
             </tr>
     <?php endwhile;?>
   </tbody>
