@@ -86,11 +86,8 @@ class ConsultorioController {
              echo '<script>window.location="'.base_url.'Consultorio/control"</script>';
          }else{
              echo "nopo";
-         }
-
-
-
-        
+         }        
     }
+
 }
 

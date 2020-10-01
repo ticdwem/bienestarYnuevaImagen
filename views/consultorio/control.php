@@ -24,7 +24,7 @@
                 </div>
                 <div class="form-group inputNumero">
                     <label for="inputMesotrolSumaResta" class="sr-only">Password</label>
-                    <input type="text" class="form-control" id="inputMesotrolSumaResta" placeholder="Password">
+                    <input type="text" class="form-control" id="inputMesotrolSumaResta" placeholder="ingreso numero">
                     <div class="errorSumResta"></div>
                 </div>
                 <div class="botones">
@@ -45,7 +45,7 @@
                 </div>
                 <div class="form-group inputNumero">
                     <label for="inputControlSumaResta" class="sr-only">Password</label>
-                    <input type="text" class="form-control" id="inputControlSumaResta" placeholder="Password">
+                    <input type="text" class="form-control" id="inputControlSumaResta" placeholder="ingrese numero">
                     <div class="errorSumResta"></div>
                 </div>
                 <div class="botones">

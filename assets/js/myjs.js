@@ -533,4 +533,150 @@ $('#otroActual').on('change', function() {
 
 		})
 	});
+
+	/* modals de mesoterapia */
+	$('#saveMesoterapia').on('click',function(e){
+		e.preventDefault();
+		var usarMEso = $("#mesoUsarTotal").val();
+		var existecia = parseInt($(".totalMesoNumero").text());
+		 
+		if(existecia>=usarMEso){
+			$("#mesoterapia").val(usarMEso);
+			$('#mesoterapiaModal').modal('hide');
+			if ($('.modal-backdrop').is(':visible')) {
+				$('body').removeClass('modal-open'); 
+				$('.modal-backdrop').remove(); 
+			};
+		}else{
+			$("#verificaer").html('NO HAY CANTIDAD SUFICIENTE PARA TU PEDIDO<br>')
+			return false;
+		}
+		
+	})
+	/* modals de consetrados */
+	$('#saveconcentrado').on('click',function(e){
+		e.preventDefault();
+		var usarMEso = $("#concentradoUsarTotal").val();
+		var existecia = parseInt($(".totalConcetradoNumero").text());
+		if(existecia>=usarMEso){
+			$("#concentrado").val(usarMEso);
+			$('#concentradopiaModal').modal('hide');
+			if ($('.modal-backdrop').is(':visible')) {
+				$('body').removeClass('modal-open'); 
+				$('.modal-backdrop').remove(); 
+				};
+		}else{
+			$("#verificarConcentrado").html('NO HAY CANTIDAD SUFICIENTE PARA TU PEDIDO<br>')
+			return false;
+		}
+		
+	})
+
+	/* calcular la perdida de peso */
+
+	$("#peso").on("change",function(){
+		var pesoActual = parseFloat($(this).val());
+		var ultimoPeso = parseFloat($("#ultimoPeso").val());
+		var totalPesoPerdido;
+		if(ultimoPeso == 0){
+			$("#lostWeight").val(pesoActual);
+			$("#arrowupdown").removeClass('far fa-arrow-alt-circle-up');
+			$("#arrowupdown").removeClass('far fa-arrow-alt-circle-down');
+			$("#arrowupdown").addClass('fa fa-arrows-h');
+			$("#lostWeight").css({'border':'1px solid  #f39c12','color':'#7f8c8d'});
+			$("#arrowupdown").css('color',' #f39c12');
+			$("#tittleWeightLost").val('3');
+		}else if(ultimoPeso >= pesoActual){
+			  totalPesoPerdido = restar(ultimoPeso,pesoActual);
+			  $("#lostWeight").val(dosDecimales(totalPesoPerdido.toFixed(2)));
+			  $("#lostWeight").css({'border':'1px solid rgba(30, 180, 30, 0.781)','color':'rgba(30, 180, 30, 0.781)'});
+			  $("#arrowupdown").css('color','rgba(30, 180, 30, 0.781)');
+			  $("#arrowupdown").removeClass('far fa-arrow-alt-circle-up');
+			  $("#arrowupdown").addClass('far fa-arrow-alt-circle-down');
+			  $("#titleWeight").html('Perdido');
+			  $("#tittleWeightLost").val('1');
+			  
+			}else{
+				totalPesoPerdido = restar(pesoActual,ultimoPeso);
+				$("#lostWeight").val(dosDecimales(totalPesoPerdido));
+				$("#lostWeight").css({'border':'1px solid rgba(241, 31, 31, 0.822)','color':'rgba(241, 31, 31, 0.822)'});
+				$("#arrowupdown").css('color','rgba(241, 31, 31, 0.822)');
+				$("#arrowupdown").removeClass('far fa-arrow-alt-circle-down');
+				$("#arrowupdown").addClass('far fa-arrow-alt-circle-up');
+				$("#titleWeight").html('Ganado');
+				$("#tittleWeightLost").val('2');
+		};
+	});
+
+	// Mostrar div de pagos
+
+	$("#btnPagoToggle").click(function(){
+		  $("#seccionPagos").toggle('slow',function(){
+			$("#btnPagoToggle").animate({
+				left: '-20%',
+      			opacity: '0'
+			}),
+			$("#btnUpdateRegistro").animate({
+				marginLeft: "0in",				
+				height: 'toggle'
+			  });
+		  });
+		  $("#cobro").toggle('slow');
+	})
+	$("#observ").on('keyup',function(){
+		var letras;
+		letras = $(this).val().length;
+		if(letras >= 500){
+			var hola = $("#observ").val( $("#observ").val().substring(0, 500));
+			return false;
+		}else{
+			$("#sumaTextoObser").text(letras);
+		}
+	})
+
+	/* sumar las dos cantidades de dinero en efectivo y de tarjeta */
+	$("#inputefectivo").on('keyup',function(){
+		
+		var efectivo = $(this).val();
+		var tarjeta = $("#inputTarjeta").val();
+		var cobro = parseInt($("#cobroConsultaDato").val());
+		var faltante;
+
+		var suma = sumar(parseInt(efectivo),parseInt(tarjeta));
+		if(suma < cobro){
+			faltante = restar(cobro,suma);
+			$("#btnUpdateRegistro").attr('disabled','disabled');
+			$(".alertEfectivo").css('color','red');
+			$(".alertEfectivo").text('RESTA $'+faltante+' PESOS');
+		}else if(suma == cobro){
+			$(".alertEfectivo").text('RESTA $0 PESOS');
+			$("#btnUpdateRegistro").removeAttr('disabled');
+		}else if(suma > cobro){
+			$("#btnUpdateRegistro").attr('disabled','disabled');
+			$(".alertEfectivo").text('LA SUMA DE EFECTIVO Y TARJETA ES MAYOR AL COBRO');
+		}
+	});
+	$("#inputTarjeta").on('keyup',function(){
+		
+		var efectivo = $(this).val();
+		var tarjeta = $("#inputefectivo").val();
+		var cobro = parseInt($("#cobroConsultaDato").val());
+		var faltante;
+
+		var suma = sumar(parseInt(efectivo),parseInt(tarjeta));
+		if(suma < cobro){
+			var tarjetaEfectivo = sumar(parseInt(efectivo),parseInt(tarjeta));			
+			faltante = restar(cobro,tarjetaEfectivo);
+			$("#btnUpdateRegistro").attr('disabled','disabled');
+			$(".alertEfectivo").css('color','red');
+			$(".alertEfectivo").text('RESTA $'+faltante+' PESOS');
+			
+		}else if(suma == cobro){
+			$(".alertEfectivo").text('RESTA $0 PESOS');
+			$("#btnUpdateRegistro").removeAttr('disabled');
+		}else if(suma > cobro){
+			$("#btnUpdateRegistro").attr('disabled','disabled');
+			$(".alertEfectivo").text('LA SUMA DE EFECTIVO Y TARJETA ES MAYOR AL COBRO');
+		}
+	});
 });

@@ -186,20 +186,14 @@ class Validacion
 			return 0;
 		}
 	}
-	public function textoPeque($texto)
+	public static function textoPeque($texto)
 	{
-		if($texto != "")
-		{
 		$contar = strlen($texto);
 			if (preg_match("/^[0-9a-zA-ZáéíóúàèìòùÀÈÌÒÙÁÉÍÓÚñÑüÜ_.+\s]+$/",$texto) && $contar <= 30) {
 				return $texto;
 			} else {
 				return 1;
 			}
-			
-		}else{
-			return 0;
-		}
 	}
 
 	public static function textLong($texto)

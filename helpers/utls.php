@@ -102,6 +102,8 @@ class Utls{
                     $getTirulo = "Datos" ;
                 }else if($_GET['action'] == "lista"){
                     $getTirulo = "Pacientes";
+                }else if($_GET['action'] == "consultaDiaria"){
+                    $getTirulo = "Consulta";
                 }
                 break;
             $getTirulo = "Bienestar Nueva Imagen";

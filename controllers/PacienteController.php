@@ -60,7 +60,7 @@ class PacienteController{
                         "datos"=>$datos
                     );
                 break;
-            }
+                }
         }
         
         /* ::::::::::::::::::::::::::::::::::::::::seccion FAMILIARES QUE PADESCAN O HAYAN PADECIDO:::::::::::::::::::::::::::::::::::::::::: */          

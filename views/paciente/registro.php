@@ -48,7 +48,7 @@
 					</div>
 					<div class="form-group col-md-4">
 						<label for="inpuFechaNac">Fecha Nacimiento</label>
-						<input type="text" onchange="javascript:calcularEdad()" class="form-control" id="dateInicio" name="dateInicio" placeholder="dd/mm/yyyy">
+						<input type="text" onchange="javascript:calcularEdad()" class="form-control" id="dateInicio" name="dateInicio" placeholder="dd-mm-yyyy">
 						<!-- <span class="input-group-addon" >
                         	<input type="button"  value="Calcular"  onclick="javascript:calcularEdad();" />
 						</span> alertaDate-->

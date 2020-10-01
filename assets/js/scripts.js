@@ -234,6 +234,12 @@ function emptyInput(input){
   }
 }
 
+function dosDecimales(n) {
+  let t=n.toString();
+  let regex=/(\d*.\d{0,2})/;
+  return t.match(regex)[0];
+}
+
 function enviarAjax(control,totalNow,updateNow){
   var suma,resta,btnSuma,btnResta,ptintSuma,printResta;
   var datos = Array();

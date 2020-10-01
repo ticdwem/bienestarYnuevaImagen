@@ -39,10 +39,11 @@
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
     <!-- fontawensome -->
-    <!-- <script src="https://use.fontawesome.com/4971b11564.js"></script> -->
     <script src="https://kit.fontawesome.com/1849e1867b.js" crossorigin="anonymous"></script>
+    <!-- swet alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
-    
+
     <script src="<?=base_url?>assets/js/myjs.js"></script>
     <script src="<?=base_url?>assets/js/validar-campos.js"></script>
 <!--     <script src="<?=base_url?>assets/demo/chart-area-demo.js"></script>

@@ -10,7 +10,7 @@
 			<?php Utls::deleteSession('statusSave') ?>
 		</div>
 		<div style="height: auto">
-			<form id="registro" action="<?=base_url?>Doctor/save" method="POST">	
+			<form id="registroDoctor" action="<?=base_url?>Doctor/save" method="POST">	
                 <div class="page-header"><small>DATOS PERSONALES</small></div>
                 <hr>			
 				<div class="form-row">
@@ -54,7 +54,7 @@
                     </div>
 				</div>
 				<!-- <button class="btn btn-primary" type="submit">Submit form</button> -->
-				<input type="submit" class="btn btn-primary" id="btn-env" values="enviar" name="enviar">
+				<input type="submit" class="btn btn-primary" id="btn-envDoctor" values="enviar" name="enviar">
 			</form>
 		</div>
 	</div>

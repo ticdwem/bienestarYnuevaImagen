@@ -13,6 +13,7 @@ class Consultorio extends ModeloBase{
     private $calle;
     private $numero;
     private $mesoCons;
+    private $datos;
     
     public function __construct() {
         parent::__construct();
@@ -175,6 +176,25 @@ class Consultorio extends ModeloBase{
 
         return $this;
     }
+        /**
+     * Get the value of datos
+     */ 
+    public function getDatos()
+    {
+        return $this->datos;
+    }
+
+    /**
+     * Set the value of datos
+     *
+     * @return  self
+     */ 
+    public function setDatos($datos)
+    {
+        $this->datos = $datos;
+
+        return $this;
+    }
 
     public function insertConsultorio(){
         $insert = "INSERT INTO consultorio
@@ -210,6 +230,18 @@ class Consultorio extends ModeloBase{
         }
     }
 
+    public function getDatosConsultorio(){
+        $consultorio = "SELECT id_consultorio,meso_Consultorio,consentrado_Consultorio FROM consultorio WHERE id_consultorio = '{$this->getIdConsultorio()}'";
+        $conMeso = $this->db->query($consultorio);
+        if($conMeso && $conMeso->num_rows == 1){
+            $mesoCon = $conMeso->fetch_object();
+            return $mesoCon;
+        }
+
+    }
+
     
+
+
 
 }

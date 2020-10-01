@@ -232,10 +232,15 @@ form .selectH .hideSelect{
 
 }
 .pagos .control{
-	width: 12%;
+	width: 15%;
 	position: absolute;
 	left: 82%;
 	top: 40px;
+}
+.pagos .control .noPaciente{
+	color: rgba(56,79,89,0.72);
+	margin-right: 2px;
+	font-size: 0.9em;
 }
 
 .pagos .datosPaciente{
@@ -254,3 +259,94 @@ form .selectH .hideSelect{
 	position: relative;
 	left: 25%;
 }
+/* tabla de consulta */
+#frmConsultaDiaria .consultaTblaScroll{
+	border-bottom: 1px solid rgb(100, 105, 107);
+	position: relative;
+	width: 100%;
+	/* min-width: 100%; */
+	max-height: 18%;
+	/* overflow: hidden; */
+}
+#frmConsultaDiaria .consultaTblaScroll .form-group{
+	position: relative;
+	display: inline-block;
+	/* border: 1px solid green; */
+}
+
+/* inputs de la consulta  */
+.consultaTblaScroll .form-group .controlConsulta{
+	/* border: 1px solid black; */
+	position:relative;
+	padding:2px;
+	font-size:small;
+}
+
+/* modals mesoterapia */
+.modal-body .mesoUsar,
+.modal-body .contenedorTitulo{
+	position: relative;
+	width: 100%;	
+}
+.modal-body small{
+	color: red;
+	position: relative;
+	font-size: x-small;
+	top: 10px;
+}
+.mesoUsar label,
+.contenedorTitulo label{
+	position: relative;
+	font-size: x-large;	
+	width: 40%;
+	text-align: right;
+}
+.mesoUsar input,
+.contenedorTitulo h3{
+	text-align: center;
+	position: absolute;
+	width: 50%;
+	left: 50%;
+	top:2px;
+	border-bottom:1px solid blue ;
+	
+}
+
+.modal-body .mesoUsar{
+	margin-top: 10px;
+}
+
+.mesoUsar input{
+	font-size: x-large;
+}
+.observacion{
+	margin-bottom: 15%;
+}
+.observacion #observ{
+	overflow: auto;
+	resize: none;
+}
+
+/* pagos */
+ #frmConsultaDiaria .pagos{
+	margin-top: 15px;
+	min-width: 100%;
+	position: relative;
+	display: none;
+}
+
+#frmConsultaDiaria .pagos .tarjeta{
+	position: absolute;
+	left: 50%;
+	top: -1%;
+}
+
+#frmConsultaDiaria .pagos .tarjeta label,
+#frmConsultaDiaria .pagos .efectivo label{
+	position: relative;
+	width: 100%;
+	text-align: center;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	font-weight: bolder;
+	text-shadow: 2px 2px 4px lightslategrey;
+} 

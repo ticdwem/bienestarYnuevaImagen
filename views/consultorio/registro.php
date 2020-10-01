@@ -13,15 +13,15 @@
 			<?php if(isset($_SESSION['statusSave'])) echo '<p class="alert alert-success error" role="alert">'.$_SESSION['statusSave']."</p>";?>
 		</div>
 		<div style="height: auto">
-			<form id="registro" action="<?=base_url?>Consultorio/save" method="POST">
+			<form id="registroConsultorio" action="<?=base_url?>Consultorio/save" method="POST">
             
 				<div class="form-row ">
 					<div class="form-group col-md-4">
                         <label for="inpuEstado">Estado</label>
                         <select class="form-control inpuEstado" id="inpuEstadoConsultorio" name="inpuEstadoConsultorio">
                             <option value="">SELECCIONE UN ESTADO</option>
-                            <?php while ($estado = $nombreE->fetch_object()):?>							
-							<option value="<?= $estado->id?>"><?= $estado->estado?></option> 							
+							<?php while ($estado = $nombreE->fetch_object()):?>															
+							<option value="<?=$estado->idEstado?>"><?=$estado->estado?></option> 							
 						<?php endwhile; ?>
 						</select>
 					</div>
@@ -58,7 +58,7 @@
 				</div>
 				
 				<!-- <button class="btn btn-primary" type="submit">Submit form</button> -->
-				<input type="submit" id="btn-env" values="enviar" name="saveConsultorio">
+				<input type="submit" id="btn-Consultorio" values="enviar" name="saveConsultorio">
 			</form>
 		</div>
 	</div>
