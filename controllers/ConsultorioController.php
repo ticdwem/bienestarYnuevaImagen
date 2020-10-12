@@ -89,5 +89,26 @@ class ConsultorioController {
          }        
     }
 
+    public function corteDiario(){
+        $fecha = date("Ym06");
+
+        $regisro = new Consultorio();
+        $regisro->setIdConsultorio(Consultorio);
+        $regisro->setFechaConsulta($fecha);
+        $historia = $regisro->getRegistroDatos();
+            $paciente = (is_object($historia)) ? $historia->totalPaciente : 0 ;
+            $efectivo = (is_object($historia)) ? $historia->sumaEfectivo : 0 ;
+            $tarjeta = (is_object($historia)) ? $historia->sumaTarjeta : 0 ;
+            $meso = (is_object($historia)) ? $historia->meso : 0 ;
+            $con = (is_object($historia)) ? $historia->concentrado : 0 ;
+
+
+        $completo = new Consultorio();
+        $completo->setIdConsultorio(Consultorio);
+        $completo->setFechaConsulta($fecha);
+        $datosCompletos = $completo->getDatosConsulta();
+        require_once 'views/consultorio/datosXconsultorio.php';
+    }
+
 }
 

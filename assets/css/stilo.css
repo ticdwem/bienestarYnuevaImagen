@@ -350,3 +350,23 @@ form .selectH .hideSelect{
 	font-weight: bolder;
 	text-shadow: 2px 2px 4px lightslategrey;
 } 
+/* desglose */
+.des{
+	border-bottom: 1px solid rgb(99, 92, 92);
+	margin-bottom: 15px;
+	width: 100%;
+}
+.des h2{
+	position: relative;
+	left: 35%;
+	top: 0px;
+	text-transform: uppercase;
+	font-weight: bolder;
+	font-size: xx-large;
+	text-shadow: 1px 4px 5px rgb(110, 110, 110);
+}
+
+/* hacer pequeño el texto */
+.col h6{
+	font-size: smaller;
+}

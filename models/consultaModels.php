@@ -451,6 +451,8 @@ class Consulta extends ModeloBase{
 
         if($historia && $historia->num_rows >= 1){
             return($historia);
+        }else{
+            return "sin Datos";
         }
     }
 

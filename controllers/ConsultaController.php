@@ -42,7 +42,7 @@ class ConsultaController {
                 $update = $actualizar->updatePaciente();
 
                 if($update){
-                    echo '<script>window.location="'.base_url.'Consulta/diario"</script>';
+                    echo '<script>window.location="'.base_url.'Consulta/consultaDiaria&id='.$idPaciente.'"</script>';
                 die(); 
                 }else{
                     $error = new ErrorController();
@@ -110,6 +110,7 @@ class ConsultaController {
                         "error"=> 'El campo '.$dato." es Incorrecto, Llena los campos faltantes",
                         "datos"=>$consulta
                     );
+                    echo '<script>window.location="'.base_url.'Consulta/consultaDiaria&id='.$idPaciente.'"</script>';
                 break;
                 }
             }

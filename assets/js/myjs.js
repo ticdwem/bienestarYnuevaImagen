@@ -1,4 +1,8 @@
 $(document).ready(function(){
+
+	$('.dropdown-toggle').on("click",function(){
+		$('.dropdown-menu').toggleClass('show');
+	  });
 /* dat picker al campo fecha*/
 	$('#dateInicio').datepicker({
 		uiLibrary: 'bootstrap4',
@@ -578,7 +582,16 @@ $('#otroActual').on('change', function() {
 		var pesoActual = parseFloat($(this).val());
 		var ultimoPeso = parseFloat($("#ultimoPeso").val());
 		var totalPesoPerdido;
+		console.log('ultimo peso = '+ultimoPeso+'--> peso actual ='+pesoActual);
 		if(ultimoPeso == 0){
+			$("#lostWeight").val(pesoActual);
+			$("#arrowupdown").removeClass('far fa-arrow-alt-circle-up');
+			$("#arrowupdown").removeClass('far fa-arrow-alt-circle-down');
+			$("#arrowupdown").addClass('fa fa-arrows');
+			$("#lostWeight").css({'border':'1px solid  #f39c12','color':'#7f8c8d'});
+			$("#arrowupdown").css('color',' #f39c12');
+			$("#tittleWeightLost").val('0');
+		}else if(ultimoPeso == pesoActual){
 			$("#lostWeight").val(pesoActual);
 			$("#arrowupdown").removeClass('far fa-arrow-alt-circle-up');
 			$("#arrowupdown").removeClass('far fa-arrow-alt-circle-down');

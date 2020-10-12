@@ -63,13 +63,15 @@ class Utls{
 
     public static function titleCabecera($titleGet){
         $controlador = $titleGet['controller'];
-        
+
         switch ($controlador) {
             case 'Consultorio':
                 if($_GET['action'] == "nuevo"){
                     $getTirulo = "Nuevo Ingreso";
-                }else if('control'){
+                }elseif($_GET['action'] == 'control'){
                     $getTirulo = "Control";
+                }elseif($_GET['action'] == 'corteDiario'){
+                    $getTirulo = "Registro Diario";
                 }
                 break;
             case 'Paciente':

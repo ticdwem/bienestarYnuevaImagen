@@ -13,6 +13,10 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                ALTA CONSULTORIO
                             </a>
+                            <a class="nav-link" href="<?=base_url?>Consultorio/corteDiario">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                               REGISTRO DIARIO
+                            </a>
                             <div class="sb-sidenav-menu-heading">SUCURSALES</div>
                             <a class="nav-link" href="<?=base_url?>Consultorio/nuevo">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>

@@ -63,25 +63,16 @@
             </div>
         <!-- Navbar-->
                 <ul class="navbar-nav ml-auto ml-md-0">
-                    <!-- <li class="nav-item dropdown">
+                    <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                        <div id="menuDesplegable" class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                             <a class="dropdown-item" href="#">Herramientas</a>
                               <a class="dropdown-item" href="#">Activity Log</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="<?=base_url?>Loggin/logout">Salir</a>
                         </div>
-                    </li> -->
-                    <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-    <div class="dropdown-menu">
-      <a class="dropdown-item" href="#">Action</a>
-      <a class="dropdown-item" href="#">Another action</a>
-      <a class="dropdown-item" href="#">Something else here</a>
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="#">Separated link</a>
-    </div>
-  </li>
+                    </li>
+  
                 </ul>
             </nav>

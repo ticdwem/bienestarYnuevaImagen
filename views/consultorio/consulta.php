@@ -37,7 +37,7 @@ $valorPesoPerdido = 0;
             </div>
             <div class="form-group col-md-1">
                 <label for="peso">Peso:</label>
-                <input type="number" class="form-control controlConsulta" id="peso" name="txtPeso" value="<?php if($datosSEssion != ''){echo $datosSEssion['peso'];}else{echo 0;} ?>" style="">
+                <input type="number" class="form-control controlConsulta" id="peso" name="txtPeso" value="<?php if($datosSEssion != ''){echo $datosSEssion['tituloPeso'];}else{echo 0;} ?>" style="">
                 <div class="" id="alertaPeso"></div>
             </div>
             <div class="form-group col-md-1">
@@ -62,7 +62,7 @@ $valorPesoPerdido = 0;
             </div>
             <div class="form-group col-md-1">
                 <label for="aparato">Aparatología</label>
-                <input type="text" class="form-control controlConsulta" id="aparato" name="aparato" value="<?php if($datosSEssion != ''){echo $datosSEssion['aparato'];}else{echo '';} ?>">
+                <input type="text" class="form-control controlConsulta" id="aparato" name="aparato" value="<?php if($datosSEssion != ''){echo $datosSEssion['Aparatologia'];}else{echo 0;} ?>">
                 <div class="" id="alertaAparato"></div>
             </div>
             <div class="form-group col-md-1">
@@ -71,13 +71,13 @@ $valorPesoPerdido = 0;
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="inputGroupPrepend2"><i class="" id="arrowupdown"></i></span>
                     </div>
-                    <input type="number" class="form-control controlConsulta" id="lostWeight" name="lostWeight" value="<?php if($datosSEssion != ''){echo $datosSEssion['lostWeight'];}else{echo 0;} ?>">
+                    <input type="number" class="form-control controlConsulta" id="lostWeight" name="lostWeight" value="<?php if($datosSEssion != ''){echo $datosSEssion['pesoPerGan'];}else{echo 0;} ?>">
                 </div>
                 <div class="" id="alertaLost"></div>
             </div>
             <div class="form-group col-md-1">
                 <label for="medicina">Medicamento</label>
-                <input type="text" class="form-control controlConsulta" id="medicina" name="medicina" value="<?php if($datosSEssion != ''){echo $datosSEssion['medicina'];}else{echo '';} ?>">
+                <input type="text" class="form-control controlConsulta" id="medicina" name="medicina" value="<?php if($datosSEssion != ''){echo $datosSEssion['Medicina'];}else{echo 0;} ?>">
                 <div class="" id="alertaMedicamento"></div>
             </div>
             <div class="form-group col-md-1">
@@ -167,45 +167,78 @@ $valorPesoPerdido = 0;
                 </tr>
             </thead>
             <tbody>
-                <?php while ($hisPac = $historia->fetch_object()):?>
-                  <?php 
-                  $fecha=date_create($hisPac->fechaConsulta,timezone_open("America/Mexico_City"));
-                  switch ($hisPac->titlepesoConsulta) {
-                      case '1':
-                        $valorPesoPerdido = '<i class="fas fa-arrow-alt-circle-down" style="color:green;"></i>';
-                        break;
-                      case '2':
-                        $valorPesoPerdido = '<i class="far fa-arrow-alt-circle-up" style="color:red;"></i>';
-                        break; 
-                      case '3':
-                        $valorPesoPerdido = '<i class="fa fa-arrows-h" style="color:#f39c12;"></i>';
-                        break;
-                      
-                      default:
-                      $valorPesoPerdido = '<i class="fa fa-arrows-h" style="color:#f39c12;"></i>';
-                          break;
-                  }?>
+                <?php if($historia == "sin Datos"):?>
                     <tr>
-                        <th style="font-size:smaller;min-width: 98px;"><?=date_format($fecha,"d-m-Y");?></th>
-                        <th style="font-size:smaller;min-width: 98px;"><?=$hisPac->pesoClienteConsulta;?></th> 
-                        <th style="font-size:smaller;min-width: 98px;"><?=$hisPac->medida1Consulta;?></th> 
-                        <th style="font-size:smaller;min-width: 98px;"><?=$hisPac->medida2Consulta;?></th> 
-                        <th style="font-size:smaller;min-width: 98px;"><?=$hisPac->medida3Consulta;?></th> 
-                        <th style="font-size:smaller;min-width: 98px;"><?=$hisPac->medida4Consulta;?></th> 
-                        <th style="font-size:smaller;min-width: 98px;"><?=$hisPac->aparotoConsulta;?></th> 
-                        <th style="font-size:smaller;min-width: 98px;"><?=$valorPesoPerdido.$hisPac->pesoPerConsulta;?></th> 
-                        <th style="font-size:smaller;min-width: 98px;"><?=$hisPac->medicamentoConsulta;?></th> 
-                        <th style="font-size:smaller;min-width: 98px;"><?=$hisPac->mesopiaConsulta;?></th> 
-                        <th style="font-size:smaller;min-width: 98px;"><?=$hisPac->conConsulta;?></th> 
-                        <th style="font-size:smaller;min-width: 98px;"><?=$hisPac->promConsulta;?></th> 
-                        <th style="font-size:smaller;min-width: 98px;"><?=$hisPac->montoEfectivoConsulta;?></th> 
-                        <th style="font-size:smaller;min-width: 98px;"><?=$hisPac->tarjetaConsutla;?></th> 
+                        <th colspan="14" style="text-align: center;text-transform:uppercase; font-size:xx-large"><?=$historia;?></th>
                     </tr>
-                <?php endwhile;?>
+                <?php 
+                else:
+                    while ($hisPac = $historia->fetch_object()):?>
+                    
+                    <?php 
+                    
+                    $fecha=date_create($hisPac->fechaConsulta,timezone_open("America/Mexico_City"));
+                    switch ($hisPac->titlepesoConsulta) {
+                        case '1':
+                            $valorPesoPerdido = '<i class="fas fa-arrow-alt-circle-down" style="color:green;"></i>';
+                            break;
+                        case '2':
+                            $valorPesoPerdido = '<i class="far fa-arrow-alt-circle-up" style="color:red;"></i>';
+                            break; 
+                        case '3':
+                            $valorPesoPerdido = '<i class="fa fa-arrows-h" style="color:#f39c12;"></i>';
+                            break;
+                        
+                        default:
+                        $valorPesoPerdido = '<i class="fa fa-arrows" style="color:#f39c12;"></i>';
+                            break;
+                    }?>
+                        <tr>
+                            <th style="font-size:smaller;min-width: 98px;"><?=date_format($fecha,"d-m-Y");?></th>
+                            <th style="font-size:smaller;min-width: 98px;"><?=$hisPac->pesoClienteConsulta;?></th> 
+                            <th style="font-size:smaller;min-width: 98px;"><?=$hisPac->medida1Consulta;?></th> 
+                            <th style="font-size:smaller;min-width: 98px;"><?=$hisPac->medida2Consulta;?></th> 
+                            <th style="font-size:smaller;min-width: 98px;"><?=$hisPac->medida3Consulta;?></th> 
+                            <th style="font-size:smaller;min-width: 98px;"><?=$hisPac->medida4Consulta;?></th> 
+                            <th style="font-size:smaller;min-width: 98px;"><?=$hisPac->aparotoConsulta;?></th> 
+                            <th style="font-size:smaller;min-width: 98px;"><?=$valorPesoPerdido.$hisPac->pesoPerConsulta;?></th> 
+                            <th style="font-size:smaller;min-width: 98px;"><?=$hisPac->medicamentoConsulta;?></th> 
+                            <th style="font-size:smaller;min-width: 98px;"><?=$hisPac->mesopiaConsulta;?></th> 
+                            <th style="font-size:smaller;min-width: 98px;"><?=$hisPac->conConsulta;?></th> 
+                            <th style="font-size:smaller;min-width: 98px;"><?=$hisPac->promConsulta;?></th> 
+                            <th style="font-size:smaller;min-width: 98px;"><?=$hisPac->montoEfectivoConsulta;?></th> 
+                            <th style="font-size:smaller;min-width: 98px;"><?=$hisPac->tarjetaConsutla;?></th> 
+                        </tr>
+                    <?php endwhile;?>
+                <?php endif;?>
             </tbody>
             
             </table>
         </div>
+
+
+
+
+
+
+        <div class="form-row">
+					<div class="form-group col-md-1">
+                    <i class="fas fa-arrow-alt-circle-down" style="color:green;"></i>
+					<label>BAJA</label>
+					</div>
+					<div class="form-group col-md-1">
+                    <i class="far fa-arrow-alt-circle-up" style="color:red;"></i>
+                    <label>SUBIR</label>
+					</div>
+					<div class="form-group col-md-1">
+                    <i class="fa fa-arrows-h" style="color:#f39c12;"></i>
+                    <label>IGUAL</label>
+                    </div>
+                    <div class="form-group col-md-1">
+                    <i class="fa fa-arrows" style="color:#f39c12;"></i>
+                    <label>INICIO</label>
+					</div>
+				</div>
     </div>
 </div>
 
@@ -268,5 +301,3 @@ $valorPesoPerdido = 0;
     </div>
   </div>
 </div>
-
-

@@ -14,6 +14,7 @@ class Consultorio extends ModeloBase{
     private $numero;
     private $mesoCons;
     private $datos;
+    private $fechaConsulta;
     
     public function __construct() {
         parent::__construct();
@@ -196,6 +197,26 @@ class Consultorio extends ModeloBase{
         return $this;
     }
 
+        /**
+     * Get the value of fechaConsulta
+     */ 
+    public function getFechaConsulta()
+    {
+        return $this->fechaConsulta;
+    }
+
+    /**
+     * Set the value of fechaConsulta
+     *
+     * @return  self
+     */ 
+    public function setFechaConsulta($fechaConsulta)
+    {
+        $this->fechaConsulta = $fechaConsulta;
+
+        return $this;
+    }
+
     public function insertConsultorio(){
         $insert = "INSERT INTO consultorio
         (id_consultorio, nombreConsultorio, municipioConsultorio, cpConsultorio, calleConsultorio, numeroConsultorio, statusConsultorio)
@@ -240,7 +261,29 @@ class Consultorio extends ModeloBase{
 
     }
 
-    
+    public function getRegistroDatos(){
+        $datos = "CALL datosConsultorio('{$this->getIdConsultorio()}','{$this->getFechaConsulta()}')";
+        $query = $this->db->query($datos);
+        if($query && $query->num_rows==1){
+            $dtos = $query->fetch_object();
+            return $dtos;
+        }else{
+            return 0;
+        }
+    }
+
+    public function getDatosConsulta(){
+        $consulta = "SELECT * FROM consultaPaciente WHERE  idConsultorio = '{$this->getIdConsultorio()}' AND  fechaConsulta = '{$this->getFechaConsulta()}'";
+        $quertyConsulta = $this->db->query($consulta);
+
+        if($quertyConsulta && $quertyConsulta->num_rows >= 1){
+            return $quertyConsulta;
+        }else{
+            return 0;
+        }
+    }
+
+
 
 
 
