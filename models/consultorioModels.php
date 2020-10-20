@@ -283,7 +283,18 @@ class Consultorio extends ModeloBase{
         }
     }
 
+    public function getMoneyTotal(){
+        $consulta = "
+        CALL cajaIO('{$this->getIdConsultorio()}','{$this->getFechaConsulta()}')";
+        $quertyConsulta = $this->db->query($consulta);
+        $dtos = $quertyConsulta->fetch_object();
 
+        if($quertyConsulta && $quertyConsulta->num_rows >= 1){
+            return $dtos;
+        }else{
+            return 0;
+        }
+    }
 
 
 

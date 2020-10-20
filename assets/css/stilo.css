@@ -360,6 +360,7 @@ form .selectH .hideSelect{
 	position: relative;
 	left: 35%;
 	top: 0px;
+	width: 25%;
 	text-transform: uppercase;
 	font-weight: bolder;
 	font-size: xx-large;

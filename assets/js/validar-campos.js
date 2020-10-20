@@ -1322,4 +1322,65 @@ $(document).ready(function(){
 
         })
     });
+
+     $("#enviarDatos").on('click',function(){
+     
+         $("#restaDinero").submit(function(e){    
+                 var gasto = emptyInput($("#dineroAtomar").val());
+                 var fisico = parseInt($("#quedaDinero").val());
+                 var motivo = emptyInput($("#motivoGasto").val());
+              
+                 if(gasto == 'empty'){
+                     if(isNaN(gasto)){
+                         $("#dineroAtomar").addClass('is-invalid');
+                         $("#alertadineroAtomar").addClass('invalid-feedback');
+                         $("#alertadineroAtomar").html('INGRESA UN NUMERO VALIDO');		
+                         return false;
+                     }
+                     e.preventDefault();
+                 }else{
+                     if(isNaN(gasto)){
+                         $("#dineroAtomar").addClass('is-invalid');
+                         $("#alertadineroAtomar").addClass('invalid-feedback');
+                         $("#alertadineroAtomar").html('INGRESA UN NUMERO VALIDO');	
+                         return false;
+                     }
+          
+                     if(gasto > fisico){
+                         $("#dineroAtomar").addClass('is-invalid');
+                         $("#alertadineroAtomar").addClass('invalid-feedback');
+                         $("#alertadineroAtomar").html('NO PUEDES TOMAR MAS DINERO DEL QUE HAY EN CAJA');
+                         e.preventDefault();
+                     }else{
+                         $("#dineroAtomar").removeClass('is-invalid');
+                         $("#alertadineroAtomar").removeClass('invalid-feedback');
+                         $("#dineroAtomar").addClass('is-valid');
+                         $("#alertadineroAtomar").addClass('valid-feedback');
+                         $("#alertadineroAtomar").html('correcto');
+                     }
+                    }
+                 if(motivo == 'empty'){
+                     $("#motivoGasto").addClass('is-invalid');
+                     $("#alertaMotivo").addClass('invalid-feedback');
+                     $("#alertaMotivo").html('ESTE CAMPO ES OBLIGATORIO');
+                     e.preventDefault();
+                 }else{
+                     var verifMotivo =  expRegular('messagge',motivo);
+          
+                     if(verifMotivo == 0){
+                         $("#motivoGasto").addClass('is-invalid');
+                         $("#alertaMotivo").addClass('invalid-feedback');
+                         $("#alertaMotivo").html('NO SE PUEDEN USAR CARACTERES ESPECIALES');
+                         e.preventDefault();
+                     }else{
+                         $("#motivoGasto").removeClass('is-invalid');
+                         $("#alertaMotivo").removeClass('invalid-feedback');
+                         $("#motivoGasto").addClass('is-valid');
+                         $("#alertaMotivo").addClass('valid-feedback');
+                         $("#alertaMotivo").html('correcto');
+                     }
+                 }
+        
+         });
+     });
 });

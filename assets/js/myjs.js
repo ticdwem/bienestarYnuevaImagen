@@ -692,4 +692,56 @@ $('#otroActual').on('change', function() {
 			$(".alertEfectivo").text('LA SUMA DE EFECTIVO Y TARJETA ES MAYOR AL COBRO');
 		}
 	});
+
+	/* validar que no se tome mas dinero del que hay en la pantalla de registrar gastos */
+	 $("#dineroAtomar").on("keyup",function(){
+	 	var gasto = parseInt($(this).val());
+	 	var fisico = parseInt($("#quedaDinero").val());
+
+	 	if(isNaN(gasto)){
+	 		$("#dineroAtomar").addClass('is-invalid');
+	 		$("#alertadineroAtomar").addClass('invalid-feedback');
+	 		$("#alertadineroAtomar").html('INGRESA UN NUMERO VALIDO');
+	 		$("#enviarDatos").attr("disabled","disabled");
+	 		$("#enviarDatos").css("cursor","no-drop");			
+	 		return false;
+	 	}
+
+	 	if(gasto > fisico){
+	 		$("#dineroAtomar").addClass('is-invalid');
+	 		$("#alertadineroAtomar").addClass('invalid-feedback');
+	 		$("#alertadineroAtomar").html('NO PUEDES TOMAR MAS DINERO DEL QUE HAY EN CAJA');
+	 		$("#enviarDatos").attr("disabled","disabled");
+	 		$("#enviarDatos").css("cursor","no-drop");
+	 	}else{
+	 		$("#dineroAtomar").removeClass('is-invalid');
+	 		$("#alertadineroAtomar").removeClass('invalid-feedback');
+	 		$("#dineroAtomar").addClass('is-valid');
+	 		$("#alertadineroAtomar").addClass('valid-feedback');
+	 		$("#alertadineroAtomar").html('correcto!!');
+	 		$("#enviarDatos").removeAttr("disabled");
+	 		$("#enviarDatos").css("cursor","default");
+	 	}
+	 });
+
+	 $("#motivoGasto").on("keyup",function(){
+	 	var motivo = $(this).val();
+	 	var verifMotivo =  expRegular('messagge',motivo);
+
+	 	if(verifMotivo == 0){
+	 		$("#motivoGasto").addClass('is-invalid');
+	 		$("#alertaMotivo").addClass('invalid-feedback');
+	 		$("#alertaMotivo").html('NO SE PUEDEN USAR CARACTERES ESPECIALES');
+	 		$("#enviarDatos").attr("disabled","disabled");
+	 		$("#enviarDatos").css("cursor","no-drop");
+	 	}else{
+	 		$("#motivoGasto").removeClass('is-invalid');
+	 		$("#alertaMotivo").removeClass('invalid-feedback');
+	 		$("#motivoGasto").addClass('is-valid');
+	 		$("#alertaMotivo").addClass('valid-feedback');
+	 		$("#alertaMotivo").html('correcto');
+	 		$("#enviarDatos").removeAttr("disabled");
+	 		$("#enviarDatos").css("cursor","default");
+	 	}
+	 })
 });

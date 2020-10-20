@@ -72,6 +72,8 @@ class Utls{
                     $getTirulo = "Control";
                 }elseif($_GET['action'] == 'corteDiario'){
                     $getTirulo = "Registro Diario";
+                }elseif($_GET['action'] == 'gastos'){
+                    $getTirulo = "Registrar Gastos";
                 }
                 break;
             case 'Paciente':

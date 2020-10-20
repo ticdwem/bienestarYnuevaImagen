@@ -24,6 +24,8 @@ class Consulta extends ModeloBase{
     private $promocion;
     private $efectivo;
     private $tarjeta;
+    private $valorPago;
+    private $motivo;
 
     public function __construct()
     {
@@ -445,10 +447,53 @@ class Consulta extends ModeloBase{
         return $this;
     }
 
-    public function getHistorialPaciente(){
-        $query = "SELECT * FROM consultaPacientes WHERE idClienteConsulta = '{$this->getId()}' ORDER BY fechaConsulta desc";
-        $historia = $this->db->query($query);
+    /**
+     * Get the value of motivo
+     */ 
+    public function getMotivo()
+    {
+        return $this->motivo;
+    }
 
+    /**
+     * Set the value of motivo
+     *
+     * @return  self
+     */ 
+    public function setMotivo($motivo)
+    {
+        $this->motivo = $motivo;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of valorPago
+     */ 
+    public function getValorPago()
+    {
+        return $this->valorPago;
+    }
+
+    /**
+     * Set the value of valorPago
+     *
+     * @return  self
+     */ 
+    public function setValorPago($valorPago)
+    {
+        $this->valorPago = $valorPago;
+
+        return $this;
+    }
+
+
+
+
+    public function getHistorialPaciente(){
+        $query = "SELECT * FROM historialPacientes WHERE idClienteConsulta = '{$this->getId()}' ORDER BY fechaConsulta desc";
+        $historia = $this->db->query($query);
+        
         if($historia && $historia->num_rows >= 1){
             return($historia);
         }else{
@@ -501,12 +546,16 @@ class Consulta extends ModeloBase{
         return $Consluta;
     }
 
+    public function insertGasto(){
+        $gasto = "INSERT INTO gastos
+        (idUsuarioGastos, idConsultorioGastos, cantidadGastos, descripcionGastos, fechaGasto)
+        VALUES ('{$this->getId()}', '{$this->getConsultorio()}', '{$this->getValorPago()}', '{$this->getMotivo()}', '{$this->getFechaConsulta()}')";
+        $insert = $this->db->query($gasto);
+        $gastoBool = false;
+        if($insert){
+            $gastoBool = true;
+        }
 
-
-
- 
-
-
-
-
+        return $gastoBool;
+    }
 }

@@ -103,7 +103,7 @@
     </div>
 </div>
 <div class="des">
-    <h2 class="">desgolose</h2>    
+    <h2 id="golose">desgolose</h2>    
 </div>
 <div class="table-responsive">
 <!-- <table class="table table-hover display newPaciente " id="newPaciente"> -->
@@ -143,7 +143,7 @@
                     <td><?=$consulta->medicamentoConsulta?></td>
                     <td><?=$consulta->montoEfectivoConsulta?></td>
                     <td><?=$consulta->tarjetaConsutla?></td>
-                    <td><?=$consulta->obseConsulta?></td>
+                    <td data-toggle="tooltip" data-placement="top" title="<?=$consulta->obseConsulta?>"><?=Validacion::recotarPuntos($consulta->obseConsulta);?></td>
                 </tr>
             <?php endwhile;?>
         <?php endif?>

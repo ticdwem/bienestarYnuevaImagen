@@ -170,7 +170,7 @@ class Validacion
 			return 1;
 		}
 	}
-
+	
 	public static function textoLargo($texto)
 	{
 		if($texto != "")
@@ -228,11 +228,11 @@ class Validacion
 		}
 	}
 
-	public function recotarPuntos($texto){
+	public static function recotarPuntos($texto){
 		$puntos = "...";
 		$contar = strlen($texto);
 		if($contar>10){
-			$textoCortado = substr($texto, 0,10).$puntos;
+			$textoCortado = substr($texto, 0,20).$puntos;
 		}else{
 			$textoCortado = $texto;
 		}

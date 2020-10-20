@@ -164,6 +164,7 @@ $valorPesoPerdido = 0;
                 <th scope="col">Promocion</th>
                 <th scope="col">Efectivo</th>
                 <th scope="col">tarjeta</th>
+                <th scope="col">Observación</th>
                 </tr>
             </thead>
             <tbody>
@@ -208,6 +209,7 @@ $valorPesoPerdido = 0;
                             <th style="font-size:smaller;min-width: 98px;"><?=$hisPac->promConsulta;?></th> 
                             <th style="font-size:smaller;min-width: 98px;"><?=$hisPac->montoEfectivoConsulta;?></th> 
                             <th style="font-size:smaller;min-width: 98px;"><?=$hisPac->tarjetaConsutla;?></th> 
+                            <th style="font-size:smaller;min-width: 98px;" data-toggle="tooltip" data-placement="top" title="<?=$hisPac->obser?>"><?=Validacion::recotarPuntos($hisPac->obser);?></th> 
                         </tr>
                     <?php endwhile;?>
                 <?php endif;?>

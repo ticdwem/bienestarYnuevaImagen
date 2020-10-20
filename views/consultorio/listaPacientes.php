@@ -5,7 +5,7 @@
     <tr>
       <th scope="col">#</th>
       <th scope="col">NOMBRE </th>
-      <th scope="col">ACCIONññññ</th>
+      <th scope="col">ACCION</th>
     </tr>
   </thead>
   <tbody>
