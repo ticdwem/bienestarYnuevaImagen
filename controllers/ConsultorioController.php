@@ -91,9 +91,10 @@ class ConsultorioController {
 
     public function corteDiario(){
         $fecha = date("Ymd");
+        $consultorio = (isset($_GET["idCorte"])) ? $_GET["idCorte"] : Consultorio ;
 
         $regisro = new Consultorio();
-        $regisro->setIdConsultorio(Consultorio);
+        $regisro->setIdConsultorio($consultorio);
         $regisro->setFechaConsulta($fecha);
         $historia = $regisro->getRegistroDatos();
             $paciente = (is_object($historia)) ? $historia->totalPaciente : 0 ;
@@ -104,7 +105,7 @@ class ConsultorioController {
 
 
         $completo = new Consultorio();
-        $completo->setIdConsultorio(Consultorio);
+        $completo->setIdConsultorio($consultorio);
         $completo->setFechaConsulta($fecha);
         $datosCompletos = $completo->getDatosConsulta();
         require_once 'views/consultorio/datosXconsultorio.php';
@@ -112,14 +113,19 @@ class ConsultorioController {
 
     public function gastos(){
         $fecha = date("Ymd");
+        $consultorio = (isset($_GET["idGastos"])) ? $_GET["idGastos"] : Consultorio ;
 
         $regisro = new Consultorio();
-        $regisro->setIdConsultorio(Consultorio);
+        $regisro->setIdConsultorio($consultorio);
         $regisro->setFechaConsulta($fecha);
         $dineroQueda = $regisro->getMoneyTotal();
             $totalDinero = (is_object($dineroQueda) && !is_null($dineroQueda->suma)) ? $dineroQueda->suma : 0 ;
             $totalGasto = (is_object($dineroQueda) && !is_null($dineroQueda->gastos)) ? $dineroQueda->gastos : 0 ;
             $totalQuedaDinero = (is_object($dineroQueda) && !is_null($dineroQueda->restaGastos)) ? $dineroQueda->restaGastos : 0 ;
+
+        $listaGsto = new Consultorio();
+        $listaGsto->setIdConsultorio($consultorio);
+        $lista = $listaGsto->getListaPagos();
         require_once 'views/consultorio/gastosCosnutorio.php';
     }
 

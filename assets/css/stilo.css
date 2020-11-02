@@ -2,10 +2,21 @@
 @import url('loggin.css');
 @import url('util.css');
 
+/* datattable */
+@import url('//cdn.datatables.net/1.10.2/css/jquery.dataTables.css');
+ td.details-control {
+    background: url('http://www.datatables.net/examples/resources/details_open.png') no-repeat center center;
+    cursor: pointer;
+}
+tr.shown td.details-control {
+    background: url('http://www.datatables.net/examples/resources/details_close.png') no-repeat center center;
+}
+
 figure{
 	top: -45px;
 	left: 0px;
 	height: 130px;
+	
 }
 
 figure img{
@@ -370,4 +381,46 @@ form .selectH .hideSelect{
 /* hacer pequeño el texto */
 .col h6{
 	font-size: smaller;
+}
+
+/* TITULO DE ENTRADAS REGISTRO/MOVIMIENTOS*/
+.tituloEntradas{
+	margin-bottom: 2%;
+	width: 100%;
+
+}
+.tituloEntradas .textoTituloEntradas{
+	position: relative;
+	top: 0px;
+	left: 40%;
+	width: 15%;
+	font-size: 1.5em;
+	font-weight: bolder;
+}
+
+/* card avanzado index */
+#contenedorConsultorio{
+	width: 100%;
+}
+#contenedorConsultorio .contenedorMenuConsultrorios{
+	border: 1px solid green;
+	width: 16rem;
+	display: inline-block;
+}
+
+/* titulo reporte global */
+#tituloReporte{
+	width: 100%;
+	position: relative;
+}
+#tituloReporte p{
+	font-weight: 200;
+	font-size: xx-large;
+	
+}
+#tituloReporte p small{
+	font-weight: bolder;
+	font-size: xx-large;
+	text-decoration: underline;
+	text-transform: uppercase;
 }

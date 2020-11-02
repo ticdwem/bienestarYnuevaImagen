@@ -48,4 +48,10 @@ class ModeloBase{
         return $query;
     }
 
+    // public function getAllCustom(){
+    //     $query = "SELECT * FROM ";
+    //     $custom = $this->db->query($query);
+    //     return $custom;
+    // }
+
 }

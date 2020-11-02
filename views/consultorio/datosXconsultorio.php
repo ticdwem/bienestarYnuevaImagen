@@ -143,7 +143,7 @@
                     <td><?=$consulta->medicamentoConsulta?></td>
                     <td><?=$consulta->montoEfectivoConsulta?></td>
                     <td><?=$consulta->tarjetaConsutla?></td>
-                    <td data-toggle="tooltip" data-placement="top" title="<?=$consulta->obseConsulta?>"><?=Validacion::recotarPuntos($consulta->obseConsulta);?></td>
+                    <td style="font-size:smaller;min-width: 98px;" data-toggle="tooltip" data-placement="bottom" title="<?=$consulta->obseConsulta?>"><?=Validacion::recotarPuntos($consulta->obseConsulta,15,10);?></td>
                 </tr>
             <?php endwhile;?>
         <?php endif?>

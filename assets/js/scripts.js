@@ -289,4 +289,13 @@ function getParameterByName(name) {
   return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 
+function hoy(){
+        var hoy = new Date();
+        var hoyAno = hoy.getFullYear();
+        var hoyMes = hoy.getMonth()+1;
+        var hoyDia = hoy.getDate();
+
+        return hoyDia+"-"+hoyMes+"-"+hoyAno;
+}
+
 

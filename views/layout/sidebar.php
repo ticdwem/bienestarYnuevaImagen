@@ -21,8 +21,12 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                REGISTRO GASTOS
                             </a>
+                            <a class="nav-link" href="<?=base_url?>Avanzado/index">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                               BUSQUEDA AVANZADA
+                            </a>
                             <div class="sb-sidenav-menu-heading">SUCURSALES</div>
-                            <a class="nav-link" href="<?=base_url?>Consultorio/nuevo">
+                            <a class="nav-link" href="<?=base_url?>">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                PACIENTES NUEVOS
                             </a>

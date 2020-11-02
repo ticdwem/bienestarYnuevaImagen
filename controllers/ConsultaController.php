@@ -75,9 +75,6 @@ class ConsultaController {
     }
 
     public function saveConsulta(){
-        // echo '<pre>';
-        // var_dump($_POST);
-        // echo '</pre>';
         if(isset($_POST["btnRegistro"])){
             Utls::deleteSession('frmConsulta');
             $consultorio =(Validacion::validarNumero($_POST["Con"]) == '-1') ? false : $_POST["Con"] ;

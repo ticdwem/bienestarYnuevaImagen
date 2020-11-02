@@ -493,7 +493,7 @@ class Consulta extends ModeloBase{
     public function getHistorialPaciente(){
         $query = "SELECT * FROM historialPacientes WHERE idClienteConsulta = '{$this->getId()}' ORDER BY fechaConsulta desc";
         $historia = $this->db->query($query);
-        
+  
         if($historia && $historia->num_rows >= 1){
             return($historia);
         }else{

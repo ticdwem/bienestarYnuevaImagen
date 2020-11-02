@@ -296,6 +296,17 @@ class Consultorio extends ModeloBase{
         }
     }
 
+    public function getListaPagos(){
+        $query = "SELECT * FROM listaGastos WHERE idConsultorioGastos = '{$this->getIdConsultorio()}' AND  CAST(fechaGasto AS DATE) = date_format(now(),'%Y%m%d')";
+        $gastosCheck = $this->db->query($query);
+
+        if($gastosCheck && $gastosCheck->num_rows >= 1){
+            return($gastosCheck);
+        }else{
+            return "sin Datos";
+        }
+    }
+
 
 
 }

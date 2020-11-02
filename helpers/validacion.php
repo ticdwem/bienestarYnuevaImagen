@@ -228,11 +228,11 @@ class Validacion
 		}
 	}
 
-	public static function recotarPuntos($texto){
+	public static function recotarPuntos($texto,$lengthTexto,$maximosShow){
 		$puntos = "...";
 		$contar = strlen($texto);
-		if($contar>10){
-			$textoCortado = substr($texto, 0,20).$puntos;
+		if($contar>$maximosShow){
+			$textoCortado = substr($texto, 0,$lengthTexto).$puntos;
 		}else{
 			$textoCortado = $texto;
 		}

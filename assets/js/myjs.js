@@ -8,12 +8,62 @@ $(document).ready(function(){
 		uiLibrary: 'bootstrap4',
 		format: 'dd-mm-yyyy'
 	})
+/* datepiker rango de fechas */
+ 	var today, config,datepicker;
+	 today = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
+	 config = {
+		locale: 'de-de',
+		uiLibrary: 'bootstrap4'
+	};
+ $('#datepicker').datepicker({
+ 	uiLibrary: 'bootstrap4',
+ 	format: 'dd-mm-yyyy',
+ 	value: hoy(),
+ 	maxDate: today
+ });
+ $('#datepickerInicio').datepicker({
+ 	uiLibrary: 'bootstrap4',
+ 	format: 'dd-mm-yyyy',
+ 	value: hoy(),
+	 maxDate: today,
+	 config
+ });
 /* data table paciente nuevo */
-	$(".newPaciente").DataTable({
-		"language": {
-            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
-        }
-	});
+var groupColumn = 0;
+var table = $('#listAllPaciente').DataTable({
+	"columnDefs": [
+		{ "visible": false, "targets": groupColumn }
+	],
+	"order": [[ groupColumn, 'asc' ]],
+	"displayLength": 25,
+	"drawCallback": function ( settings ) {
+		var api = this.api();
+		var rows = api.rows( {page:'current'} ).nodes();
+		var last=null;
+
+		api.column(groupColumn, {page:'current'} ).data().each( function ( group, i ) {
+			if ( last !== group ) {
+				$(rows).eq( i ).before(
+					'<tr class="group text-center" style="background-color: #E1E6E8;font-size: larger;text-transform: uppercase;"><td colspan="5">'+group+'</td></tr>'
+				);
+
+				last = group;
+			}
+		} );
+	}
+} );
+
+// Order by the grouping
+$('#listAllPaciente tbody').on( 'click', 'tr.group', function () {
+	var currentOrder = table.order()[0];
+	if ( currentOrder[0] === groupColumn && currentOrder[1] === 'asc' ) {
+		table.order( [ groupColumn, 'desc' ] ).draw();
+	}
+	else {
+		table.order( [ groupColumn, 'asc' ] ).draw();
+	}
+} );
+
 /* para mostrar tip en lo sbotones */
 	$('[data-toggle="tooltip"]').tooltip();   
 /*detectamos el select seleccionado*/
@@ -744,4 +794,25 @@ $('#otroActual').on('change', function() {
 	 		$("#enviarDatos").css("cursor","default");
 	 	}
 	 })
+
+	 $("#btnReporteFEchas").on("click", function(e){
+		 e.preventDefault();
+		 var fecha1 = $("#datepickerInicio").val();
+		 var fecha2 = $("#datepicker").val();
+		 var validar1 = expRegular('date',fecha1);
+		 var validar2 = expRegular('date',fecha2);
+
+		 if(validar1 == 0 || validar2 == 0){			  
+				Swal.fire({
+					icon: 'error',
+					title: 'Oops...',
+					text: 'Tienes una fecha incorrecta verifica'
+				})
+		 }else{
+			 $(location).attr('href',getAbsolutePath()+'Avanzado/reporte&dOne='+fecha1+'&Dtwo='+fecha2);
+			 
+		 }
+
+		 
+	 });
 });
