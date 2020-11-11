@@ -2,14 +2,21 @@
 require_once $_SERVER['DOCUMENT_ROOT']."/bienestarYnuevaImagen/models/doctorModels.php";
 // require_once $_SERVER['DOCUMENT_ROOT']."/models/consultorioModels.php";
 class DoctorController{
+    public function __construct()
+    {
+        /* validamos si extiste a sesison */
+        if(!isset($_SESSION['usuario'])){Utls::sinSession();}
+    }
     /*este es una clase de prueba para saber que todo esta bien relacionado */
     public function index(){
         require_once 'views/doctor/altaDoctor.php';
     }
     
     /*vista de registro del usuario*/
-    public function registro(){
-        require_once 'views/usuario/registro.php';
+    public function listar(){
+        $lista = new ModeloBase();
+        $doctores = $lista->getAll("usuarioDoctor");
+        require_once 'views/doctor/listarDoctor.php';
     }
     /*funcion para guardar el usuario*/
     public function save() {
@@ -56,5 +63,30 @@ class DoctorController{
                 }
             }
         } 
+    }
+
+    public function editar(){
+        $id = "";$idDoctor = "";
+        if(isset($_GET['id'])){
+            $id = SED::decryption($_GET["id"]);
+            $idDoctor = (Validacion::validarNumero($id) == -1) ? false : $id ;
+            if($idDoctor){
+                $especifico = new ModeloBase();
+                $doctor = $especifico->getAllWhere("usuarioDoctor","WHERE idUsuarioDoctor =". $idDoctor);
+                $datos = $doctor->fetch_object();
+                var_dump($datos);
+                require_once 'views/doctor/editarDoctor.php';
+            }else{
+                require_once 'views/error/error404.php';
+            }
+            
+        }else{
+            require_once 'views/error/error404.php';
+
+        }
+    }
+
+    public function permisos(){
+        var_dump($_POST);
     }
 }

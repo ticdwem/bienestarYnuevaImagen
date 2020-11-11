@@ -1,5 +1,31 @@
 $(document).ready(function(){
-
+	
+	var path = window.location.href;
+	var login = sessionStorage.getItem("logguin");
+	var prevurl = sessionStorage.getItem("lasTUrl");
+	// obtener el url
+      if(path == getAbsolutePath() && login == "logueado"){
+	 	var session = document.getElementById("frmLogginVerif");
+	 	var attr = session.getAttribute("data-id");
+	 	if(attr == 1){
+	 		Swal.fire({
+	 		title: '¿Quieres salir de la aplicación?',
+	 		showDenyButton: true,
+	 		confirmButtonText: `Si Salir`,
+	 		denyButtonText: `NO Quedarme`,
+	 		}).then((result) => {
+	 		/* Read more about isConfirmed, isDenied below */
+	 		if (result.isConfirmed) {
+				 sessionStorage.removeItem("logguin");
+	 			$(location).attr('href',getAbsolutePath()+'Loggin/logout');
+	 		} else if (result.isDenied) {
+				sessionStorage.removeItem("lasTUrl");
+	 			$(location).attr('href',prevurl);
+	 		}
+	 		})
+	 	}
+	 }
+	
 	$('.dropdown-toggle').on("click",function(){
 		$('.dropdown-menu').toggleClass('show');
 	  });
@@ -449,7 +475,6 @@ $('#otroActual').on('change', function() {
 		var validarInputMeso = emptyInput($("#inputMesotrolSumaResta").val());
 		
 		if(validarInputMeso == "empty"){
-			console.log(validarInputMeso);
 			$("#inputMesotrolSumaResta").css("border","1px solid red");
 			$(".errorSumResta").css("color","red");
 			$(".errorSumResta").html("DEBES INGRESAR NUMERO A SUMAR O A RESTAR");
@@ -475,7 +500,7 @@ $('#otroActual').on('change', function() {
 				beforeSend:function(){
 				$('.spinnerWhite').html('<i class="fas fa-sync fa-spin"></i>');
 						},
-				success:function(emaillog){					
+				success:function(emaillog){				
 					if(emaillog){
 						$("#tipoUser").val(emaillog.tipo);
 						if(emaillog.tipo == 2 || emaillog.tipo == 3){
@@ -516,6 +541,7 @@ $('#otroActual').on('change', function() {
 				}
 			}
 
+			
 		})
 	})
 /* :::::::::::::::::::::::::::::::::::::::::::::::::::::::CobroEstaturaObservacion::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
@@ -632,7 +658,6 @@ $('#otroActual').on('change', function() {
 		var pesoActual = parseFloat($(this).val());
 		var ultimoPeso = parseFloat($("#ultimoPeso").val());
 		var totalPesoPerdido;
-		console.log('ultimo peso = '+ultimoPeso+'--> peso actual ='+pesoActual);
 		if(ultimoPeso == 0){
 			$("#lostWeight").val(pesoActual);
 			$("#arrowupdown").removeClass('far fa-arrow-alt-circle-up');
@@ -815,4 +840,100 @@ $('#otroActual').on('change', function() {
 
 		 
 	 });
+	 /* seleccionar todos los pacientes */
+	 $("#Paciente").click(function(){
+		 $(".pacientesChecks").prop('checked',this.checked);
+	 });
+	 $(".pacientesChecks").click(function(){
+		 if ($(".pacientesChecks").length==$(".pacientesChecks:checked").length) {
+			 $("#Paciente").prop("checked", true);
+		}else{
+			$("#Paciente").prop("checked",false);			
+	  }
+	});
+	 /* seleccionar todos los consultorios */
+	 $("#Consultorio").click(function(){
+		$(".consultorioCheck").prop('checked',$(this).prop("checked"));
+	});
+	$(".consultorioCheck").click(function(){
+		if ($(".consultorioCheck").length==$(".consultorioCheck:checked").length) {
+			$("#Consultorio").prop("checked", true);
+	   }else{
+		   $("#Consultorio").prop("checked",false);			
+	 }
+   });
+	/* seleccionar todos los consultorios */
+	 $("#Doctor").click(function(){
+		$(".doctorCheck").prop('checked',$(this).prop("checked"));
+	});
+
+	$(".doctorCheck").click(function(){
+		if ($(".doctorCheck").length==$(".doctorCheck:checked").length) {
+			$("#Doctor").prop("checked", true);
+	   }else{
+		   $("#Doctor").prop("checked",false);			
+	 }
+   });
+	/* seleccionar todos los consultorios */
+	 $("#Avanzado").click(function(){
+		$(".avanzadoChecks").prop('checked',$(this).prop("checked"));
+	});
+	$(".avanzadoChecks").click(function(){
+		if ($(".avanzadoChecks").length==$(".avanzadoChecks:checked").length) {
+			$("#Avanzado").prop("checked", true);
+	   }else{
+		   $("#Avanzado").prop("checked",false);			
+	 }
+   });
+   /* TENER CHECKBOX PREDETERMINADOS */
+   $("select#tipoUser").on("change",function(){
+	   /* obtenemos el valor del select */
+	   var valor  = $(this).val();
+		/* si el valor es doctor */
+	   if(valor == 2){
+		   /* deshabiliamos los checkbox que esten activos */
+		   if(".pacientesChecks:checked"){
+			$(".pacientesChecks").prop('checked',false);
+			$("#Paciente").prop("checked", false);
+		   }
+		   if(".consultorioCheck:checked"){
+			$(".consultorioCheck").prop('checked',false);
+			$("#Consultorio").prop("checked", false);
+		   }
+		   if(".doctorCheck:checked"){
+			$(".doctorCheck").prop('checked',false);
+			$("#Doctor").prop("checked", false);
+		   }
+		   if(".avanzadoChecks:checked"){
+			$(".avanzadoChecks").prop('checked',false);
+			$("#Avanzado").prop("checked", false);
+		   }
+		   /* habilitamos los checkbos de los doctores */
+			$(".pacientesChecks").prop('checked',true);
+			$("#Paciente").prop("checked", true);
+			$("#consultorioCD").prop("checked",true);
+			$("#consultorioLista").prop("checked",true);
+			$("#consultorioNuevos").prop("checked",true);
+			$("#cosnsultorioGastos").prop("checked",true);
+			$("#consultrioCorte").prop("checked",true);
+	   }else if(valor == 3){
+		   /* si el valor del select es de administrador habilitamos todos los checkbox */
+			$("#Paciente").prop('checked',true)
+			$(".pacientesChecks").prop('checked',true);
+			$("#Consultorio").prop('checked',true)
+			$(".consultorioCheck").prop('checked',true);
+			$("#Doctor").prop('checked',true)
+			$(".doctorCheck").prop('checked',true);
+			$("#Avanzado").prop('checked',true)
+			$(".avanzadoChecks").prop('checked',true);
+	   }
+   });
+   $("#pacienteDatos").on("click",function(e){
+	Swal.fire(
+		'DEHABLILITAR?',
+		'ESTE CAMPO NO SE RECOMIENDA DEHABILITAR',
+		'warning'
+	  )
+	  $("#pacienteDatos").prop('checked',true);
+   });
 });

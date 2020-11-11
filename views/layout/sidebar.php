@@ -1,6 +1,5 @@
-
 <div id="layoutSidenav">
-            <div id="layoutSidenav_nav">
+    <div id="layoutSidenav_nav">
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
@@ -26,7 +25,7 @@
                                BUSQUEDA AVANZADA
                             </a>
                             <div class="sb-sidenav-menu-heading">SUCURSALES</div>
-                            <a class="nav-link" href="<?=base_url?>">
+                            <a class="nav-link" href="<?=base_url?>Consultorio/nuevo">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                PACIENTES NUEVOS
                             </a>
@@ -86,18 +85,16 @@
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
-                    <?php if(isset($_SESSION['usuario'])){ ?>
-                        <div class="small">Hola Dr:</div>
+                        <div class="small" id="saludoDoctor" data-id="<?=$_SESSION['usuario']['status']?>">Hola Dr:</div>
                         <?php
                         echo ucwords(SED::decryption($_SESSION['usuario']['nombre'])).' '.Utls::getApellido($_SESSION['usuario']['apeliidos']);                       
                         //echo ucwords(SED::decryption($_SESSION['usuario']['nombre']));  
-                    }                     
-                       ?>
+                        ?>
                         
                     </div>
                 </nav>
             </div>
-
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid">
+             

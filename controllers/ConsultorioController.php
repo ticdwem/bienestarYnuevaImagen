@@ -2,6 +2,11 @@
 require_once $_SERVER['DOCUMENT_ROOT']."/bienestarYnuevaImagen/models/consultorioModels.php";
 /* require_once $_SERVER['DOCUMENT_ROOT']."/models/consultorioModels.php"; */
 class ConsultorioController {
+    public function __construct()
+    {
+        /* validamos si extiste a sesison */
+        if(!isset($_SESSION['usuario'])){Utls::sinSession();}
+    }
     /*este es una clase de prueba para saber que todo esta bien relacionado */
     public function index(){
         $estado = new Consultorio();
@@ -55,7 +60,7 @@ class ConsultorioController {
     public function nuevo(){
         $nuevo = new Consultorio();
         $listar = $nuevo->getAllStatus(Consultorio,1);
-       require_once 'views/consultorio/nuevo.php'; 
+    require_once 'views/consultorio/nuevo.php'; 
 
     }
 
@@ -82,11 +87,11 @@ class ConsultorioController {
         $updateControl->setIdConsultorio(Consultorio);
         $updateControl->setMesoCons($numeroSuma);
         $update = $updateControl->updaControl($dato);
-         if($update){
-             echo '<script>window.location="'.base_url.'Consultorio/control"</script>';
-         }else{
-             echo "nopo";
-         }        
+        if($update){
+            echo '<script>window.location="'.base_url.'Consultorio/control"</script>';
+        }else{
+            echo "nopo";
+        }        
     }
 
     public function corteDiario(){
@@ -171,23 +176,23 @@ class ConsultorioController {
                     );
                     echo '<script>window.location="'.base_url.'Consultorio/gastos"</script>';
                 }else{
-                   $gastoInsert = new Consulta();
-                   $gastoInsert -> setId($_SESSION["usuario"]['id']);
-                   $gastoInsert -> setConsultorio(Consultorio);
-                   $gastoInsert -> setValorPago($gasto);
-                   $gastoInsert -> setMotivo($motivo);
-                   $gastoInsert -> setFechaConsulta($fecha_Actual);
-                   $verif = $gastoInsert -> insertGasto();
-                   if($verif){
-                       $_SESSION["success"] = "SE HA REGISTRADO CON EXITO ";
-                       echo '<script>window.location="'.base_url.'Consultorio/gastos"</script>';
-                   }else{
+                $gastoInsert = new Consulta();
+                $gastoInsert -> setId($_SESSION["usuario"]['id']);
+                $gastoInsert -> setConsultorio(Consultorio);
+                $gastoInsert -> setValorPago($gasto);
+                $gastoInsert -> setMotivo($motivo);
+                $gastoInsert -> setFechaConsulta($fecha_Actual);
+                $verif = $gastoInsert -> insertGasto();
+                if($verif){
+                    $_SESSION["success"] = "SE HA REGISTRADO CON EXITO ";
+                    echo '<script>window.location="'.base_url.'Consultorio/gastos"</script>';
+                }else{
                         $_SESSION['gastoRegistro'] = array(
                             "error" => "HUBO UN ERROR AL INTENTAR REGISTRAR, INTENTE MAS TARDE",
                             "datos" => array('Cantidad' =>$valGasto,'motivo' =>$_POST["motivo"])
                         );
                         echo '<script>window.location="'.base_url.'Consultorio/gastos"</script>';
-                   }
+                }
                 }
             }
 

@@ -1,15 +1,16 @@
 /*!
-    * Start Bootstrap - SB Admin v6.0.0 (https://startbootstrap.com/templates/sb-admin)
-    * Copyright 2013-2020 Start Bootstrap
-    * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-sb-admin/blob/master/LICENSE)
-    */
-    (function($) {
-    "use strict";
-
-    // Add active state to sidbar nav links
-    var path = window.location.href; // because the 'href' property of the DOM element is the absolute path
-        $("#layoutSidenav_nav .sb-sidenav a.nav-link").each(function() {
-            if (this.href === path) {
+* Start Bootstrap - SB Admin v6.0.0 (https://startbootstrap.com/templates/sb-admin)
+* Copyright 2013-2020 Start Bootstrap
+* Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-sb-admin/blob/master/LICENSE)
+*/
+(function($) {
+  "use strict";
+  
+  // Add active state to sidbar nav links
+  var path = window.location.href; // because the 'href' property of the DOM element is the absolute path
+  $("#layoutSidenav_nav .sb-sidenav a.nav-link").each(function() {
+    if (this.href === path) {
+                sessionStorage.setItem("lasTUrl",path);
                 $(this).addClass("active");
             }
         });
@@ -19,8 +20,14 @@
          e.preventDefault();
          $("body").toggleClass("sb-sidenav-toggled");
     });
-})(jQuery);
 
+    
+})(jQuery);
+// function verificarRecarga(){
+//   var sessionListar = document.getElementById("saludoDoctor");
+//   var attrListar = sessionListar.getAttribute("data-id");
+//   return attrListar;
+//   }
 /*funcion de calcular edad*/
 function calcularEdad()
     {
@@ -297,5 +304,25 @@ function hoy(){
 
         return hoyDia+"-"+hoyMes+"-"+hoyAno;
 }
+
+/* boton regresar una pantalla atras en la historia */
+ document.getElementById('botondiv').onclick = function(e){
+   sessionStorage.setItem("logguin","logueado");
+   if(e.target == document.getElementById('backHisotry')){
+     window.history.back();
+   }
+ }
+
+
+// document.getElementById('botondiv').onclick = btnreturn;
+  // function btnreturn(e){
+  //   var hola = $(this).attr('id');
+  //   console.log(hola);
+  //   sessionStorage.setItem("logguin","logueado");
+  //   if(e.target == document.getElementById('backHisotry')){
+  //     window.history.back();
+  //   }
+  // }
+  
 
 

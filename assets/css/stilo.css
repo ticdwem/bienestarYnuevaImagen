@@ -45,6 +45,12 @@ figure figcaption h2 p{
 	text-shadow: 2px 3px 8px rgba(56,79,89,0.72);
 	width: 60%;
 }
+.boton{
+	position: absolute;
+	top:2%;
+	left: 85%;
+	width: min-content;	
+}
 
 .card-body .texcto{
 	position: absolute;

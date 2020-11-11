@@ -14,9 +14,9 @@ function show_error(){
 }
 
 if(isset($_GET['controller'])){
-    require_once 'views/layout/sidebar.php';
-    require_once 'views/layout/header.php';
     $nombreControlador = $_GET['controller'].'Controller';
+    require_once 'views/layout/header.php'; 
+    require_once 'views/layout/sidebar.php';
 }elseif(!isset($_GET['controller'])  && !isset($_GET['action'])){
     $nombreControlador = controller_default;    
 }else{

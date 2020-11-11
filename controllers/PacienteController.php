@@ -4,6 +4,11 @@ require_once $_SERVER['DOCUMENT_ROOT']."/bienestarYnuevaImagen/models/pacienteMo
 // require_once $_SERVER['DOCUMENT_ROOT']."/models/pacienteModels.php";
 
 class PacienteController{
+    public function __construct()
+    {
+        /* validamos si extiste a sesison */
+        if(!isset($_SESSION['usuario'])){Utls::sinSession();}
+    }
     /*este es una clase de prueba para saber que todo esta bien relacionado */
     public function index(){
     	 $estado = new Usuario();
@@ -624,48 +629,6 @@ class PacienteController{
         }else{
             echo 'no existe';
             die();
-        }
-    }
-
-    public function getMunicipio($id){
-        $idMun = Validacion::validarNumero($id);
-
-        if($idMun != -1){           
-            $estado = new Usuario();
-            $estado->setIdEstado($idMun);
-            $verMun = $estado->getMunModels();
-            if($verMun->num_rows>0){
-                $whileJson = array();
-                while ($muni = $verMun->fetch_object()){
-                    $data = array(
-                    'id'=>$muni->idMunicipio,
-                    'name'=>$muni->municipio  
-                );
-                    array_push($whileJson,$data);                       
-                }
-                header('Content-type: application/json; charset=utf-8');
-                echo json_encode($whileJson, JSON_FORCE_OBJECT);
-                exit();
-
-            }
-
-        }
-    }
-
-    public function getCorreoExistent($email){
-        $correo = Validacion::validarEmail($email);
-
-        if($correo != '0'){
-            $mail = new Usuario();
-            $resultado = $mail->getEmailExis($correo);
-            if($resultado->num_rows>0){
-                echo 1;
-            }else{
-                echo 0;
-            }
-
-        }else{
-            echo 2;
         }
     }
 

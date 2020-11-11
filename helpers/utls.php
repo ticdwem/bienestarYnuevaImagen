@@ -93,6 +93,8 @@ class Utls{
                     $getTirulo = "Registro Diario";
                 }elseif($_GET['action'] == 'gastos'){
                     $getTirulo = "Registrar Gastos";
+                }elseif($_GET['action'] == 'index'){
+                    $getTirulo = "Alta Consultorio";
                 }
                 break;
             case 'Paciente':
@@ -115,6 +117,10 @@ class Utls{
             case 'Doctor':
                 if($_GET['action'] == 'index'){
                     $getTirulo = "Alta Doctor";
+                }elseif($_GET['action'] == 'listar'){
+                    $getTirulo = "Lista Doctores";
+                }elseif($_GET['action'] == 'editar'){
+                    $getTirulo = "Editar Doctor";
                 }
                 break;
             default:
@@ -171,5 +177,10 @@ class Utls{
         }else{
             return "-300";
         }
+    }
+
+    public static function sinSession(){
+        $_SESSION['errorLoguin'] = "NECESITAS CREDENCIALES PARA INGRESAR";
+                    echo '<script>window.location="'.base_url.'"</script>';
     }
 }

@@ -1,11 +1,6 @@
 <div class="card border-0 shadow my-2">
 	<div class="card-body p-5">
-		<figure>    
-			<img src="<?=base_url?>assets/img/logo.png" class="text-center" alt="logo salud y bienestar">
-			<figcaption>
-				<h2 class="font-weight-light"><p>ALTA CONSULTORIO</p></h2> 
-			</figcaption> 
-		</figure>
+	<?php require_once 'views/layout/cabeceraLogo.php';?>
 		<?php $sesion = ""; 
 		 if(isset($_SESSION['formulario'])){$sesion = $_SESSION['formulario']['datos'];} ?>
 		<div class="texcto">

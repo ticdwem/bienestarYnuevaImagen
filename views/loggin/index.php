@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
+<meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" /> -->
     <meta name="viewport" content="width=device-width, user-scalable=no, shrink-to-fit=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -34,24 +34,28 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <!-- datepicker -->
-    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>       
+    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script> 
+    <script src="https://unpkg.com/gijgo@1.9.13/js/messages/messages.es-es.js" type="text/javascript">   </script>    
   <!-- datatables -->
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
     <!-- fontawensome -->
-    <!-- <script src="https://use.fontawesome.com/4971b11564.js"></script> -->
     <script src="https://kit.fontawesome.com/1849e1867b.js" crossorigin="anonymous"></script>
+    <!-- swet alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
-    
+
     <script src="<?=base_url?>assets/js/myjs.js"></script>
-    <!-- <script src="<?=base_url?>assets/js/validar-campos.js"></script> -->
+    <script src="<?=base_url?>assets/js/validar-campos.js"></script>
 <!--     <script src="<?=base_url?>assets/demo/chart-area-demo.js"></script>
     <script src="<?=base_url?>assets/demo/chart-bar-demo.js"></script>
     <script src="<?=base_url?>assets/demo/datatables-demo.js"></script> -->
 
 </head>
 <body>
-<div class="limiter">
+    <?php
+    $status = 0; if (isset($_SESSION['usuario'])){$status = $_SESSION['usuario']['status'];} ?>
+<div class="limiter" data-status="<?=$status;?>">
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<div class="login100-form-title" style="background-image: url(<?=base_url?>assets/img/inicio.jpg);"><!-- http://www.freepik.com -->
@@ -61,7 +65,7 @@
 				</div>
 				 <?php if(isset($_SESSION['loggin'])){echo '<p class="alert alert-danger errorLoggin" role="alert"><strong>'.$_SESSION['loggin']."</strong></p>";}?>
 				 <?php Utls::deleteSession('loggin')?>
-				<form action="<?=base_url?>Loggin/verificar" method="POST" class="login100-form validate-form" id="frmLogginVerif">
+				<form action="<?=base_url?>Loggin/verificar" method="POST" class="login100-form validate-form" id="frmLogginVerif" data-id="<?=$status?>">
 					<div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
 						<span class="label-input100">Correo</span>
 						<input class="input100" type="text" name="username" placeholder="Enter Email" id="emailLoggin">
@@ -85,18 +89,16 @@
 							<option value="<?=$estado->id_consultorio?>"><?=$estado->nombreConsultorio?></option> 							
 						<?php endwhile; ?>
 						</select>
-						<div class="errorSelect"></div>					
+						<div class="errorSelect" id="errorSelectInicio"></div>					
 					</div>
 
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn btnstart">
+						<button type="submit" class="login100-form-btn btnstart">
 							Login
 						</button>
-					</div>
+                    </div>
+                    <?php if(isset($_SESSION['errorLoguin'])){echo '<p class="alert alert-danger text-black-50 small mt-3" role="alert"><strong>'.$_SESSION['errorLoguin']."</strong></p>";}?>
+                    <?php Utls::deleteSession('errorLoguin')?>
 				</form>
 			</div>
-		</div>
-	</div>
-
-    </body>
-</html>
+		

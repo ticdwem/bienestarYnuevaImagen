@@ -1,7 +1,13 @@
 <?php
+
 require_once $_SERVER['DOCUMENT_ROOT']."/bienestarYnuevaImagen/models/consultaModels.php";
 /* require_once $_SERVER['DOCUMENT_ROOT']."/models/consultorioModels.php"; */
 class ConsultaController {
+    public function __construct()
+    {
+        /* validamos si extiste a sesison */
+        if(!isset($_SESSION['usuario'])){Utls::sinSession();}
+    }
     /*este es una clase de prueba para saber que todo esta bien relacionado */
     public function index(){
         $paciente = new Consulta();
@@ -60,9 +66,9 @@ class ConsultaController {
 
     public function consultaDiaria(){
         require_once $_SERVER['DOCUMENT_ROOT']."/bienestarYnuevaImagen/models/consultorioModels.php";
-         $concentrado = new Consultorio();
-         $concentrado->setIdConsultorio($_SESSION["usuario"]['datos']->id_consultorio);
-         $con = $concentrado->getDatosConsultorio();
+        $concentrado = new Consultorio();
+        $concentrado->setIdConsultorio($_SESSION["usuario"]['datos']->id_consultorio);
+        $con = $concentrado->getDatosConsultorio();
 
         $paciente = new Consulta();
         $data = $paciente->getAllWhere('cliente','WHERE idCliente = '.$_GET['id']);
@@ -71,7 +77,7 @@ class ConsultaController {
         $consultas = new Consulta();
         $consultas->setId($_GET['id']);
         $historia = $consultas->getHistorialPaciente();
-       require 'views/consultorio/consulta.php';
+    require 'views/consultorio/consulta.php';
     }
 
     public function saveConsulta(){
@@ -132,7 +138,7 @@ class ConsultaController {
                 $sesionConsulta->setObser($observaciones);
                 $sesionConsulta->setEfectivo($efectivo);
                 $sesionConsulta->setTarjeta($tarjeta);
-               $registro =  $sesionConsulta->insertConsulta();
+            $registro =  $sesionConsulta->insertConsulta();
                 if($registro){
                     echo '<script> 
                     Swal.fire({
@@ -141,11 +147,11 @@ class ConsultaController {
                         title: "SE INSERTO EXITOSAMENTE",
                         showConfirmButton: false,
                         timer: 1500
-                      }).then((result) => {
-                           window.location="'.base_url.'Consulta/lista"
-                      })
+                    }).then((result) => {
+                        window.location="'.base_url.'Consulta/lista"
+                    })
                     </script>';
-                       
+                    
                 }else{
                     echo '<script> 
                     Swal.fire({
@@ -155,11 +161,11 @@ class ConsultaController {
                         showCancelButton: false,
                         confirmButtonColor: "#3085d6",
                         confirmButtonText: "REGRESAR"
-                      }).then((result) => {
+                    }).then((result) => {
                         if (result.isConfirmed) {                            
                             window.location="'.base_url.'Consulta/lista"
                         }
-                      })
+                    })
                     </script>';
                 }
             }

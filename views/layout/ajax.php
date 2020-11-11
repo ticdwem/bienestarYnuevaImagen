@@ -1,5 +1,4 @@
 <?php 
-require_once "../../controllers/PacienteController.php";
 require_once "../../models/pacienteModels.php";
 require_once "../../helpers/validacion.php";
 require_once "../../helpers/crypt.php";
@@ -26,13 +25,13 @@ public function setDato($archivo)
 
 	public function selectMun(){
 		$query = $this->getDato();
-		$sent = new PacienteController();
+		$sent = new LogginController();
 		$sent->getMunicipio($query);
 	}
 
 	public function verifCorreo(){
 		$query = $this->getDato();
-		$sent = new PacienteController();
+		$sent = new LogginController();
 		$sent->getCorreoExistent($query);
 	}
 	
@@ -61,10 +60,10 @@ public function setDato($archivo)
 
 
 }
-//   echo "<pre>";
-//   var_dump($_POST);
-//   echo "</pre>";
-//   exit();
+//     echo "<pre>";
+//     var_dump($_POST);
+//    echo "</pre>";
+//     exit();
 
 if(isset($_POST["idEstado"])){
 	$sent = new Ajax();
