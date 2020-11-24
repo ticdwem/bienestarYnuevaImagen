@@ -430,3 +430,8 @@ form .selectH .hideSelect{
 	text-decoration: underline;
 	text-transform: uppercase;
 }
+
+#permisoDoctor2, 
+#permisoDoctor{
+	 display: none;
+} 

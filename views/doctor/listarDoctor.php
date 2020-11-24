@@ -12,11 +12,11 @@
   </thead>
   <tbody>
   <?php 
-  $tipo = 0;$stats = 0;$id = "";
+  $tipo = 0;$stats = 0;$id = "";$consucutivo = 1;
   while($nuevo = $doctores->fetch_object()):
-    $id = SED::encryption($nuevo->idUsuarioDoctor);
-    if($nuevo->tipoUsuarioDoctor == 2){$tipo = "Usuario";}elseif($nuevo->tipoUsuarioDoctor == 3){$tipo = "Administrador";}
-    switch ($nuevo->statusUsuarioDoctor) {
+    $id = SED::encryption($nuevo->idUsuario);
+    if($nuevo->tipoUsuario == 2){$tipo = "Usuario";}elseif($nuevo->tipoUsuario == 3){$tipo = "Administrador";}
+    switch ($nuevo->statusUusario) {
         case '1':
             $stats = "Activo";
             break;
@@ -32,8 +32,8 @@
     }
   ?>
             <tr>
-              <th scope="row"><?=$nuevo->idUsuarioDoctor?></th>
-              <td><?=SED::decryption($nuevo->nombreUsuarioDoctor).' '.SED::decryption($nuevo->apPUsuarioDoctor).' '.SED::decryption($nuevo->apMUsuarioDoctor)?></td>
+              <th scope="row"><?=$consucutivo?></th>
+              <td><?=SED::decryption($nuevo->nombreUsuario).' '.Utls::getApellido($nuevo->apellidoUsuario)?></td>
               <td><?=$tipo?></td>
               <td><?=$stats?></td>
               <td>
@@ -42,6 +42,7 @@
                 </div>
               </td>
             </tr>
-    <?php endwhile;?>
+            
+    <?php $consucutivo ++; endwhile;?>
   </tbody>
 </table>

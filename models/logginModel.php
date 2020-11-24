@@ -5,6 +5,7 @@ require_once $_SERVER['DOCUMENT_ROOT']."/bienestarYnuevaImagen/config/modeloBase
 
 class Login extends ModeloBase{
     private $id;
+    private $idUsuario;
     private $email;
     private $pass;
 
@@ -68,6 +69,25 @@ class Login extends ModeloBase{
 
         return $this;
     }
+        /**
+     * Get the value of idUsuario
+     */ 
+    public function getIdUsuario()
+    {
+        return $this->idUsuario;
+    }
+
+    /**
+     * Set the value of idUsuario
+     *
+     * @return  self
+     */ 
+    public function setIdUsuario($idUsuario)
+    {
+        $this->idUsuario = $idUsuario;
+
+        return $this;
+    }
     public function __construct() {
         parent::__construct();
     }
@@ -100,8 +120,21 @@ class Login extends ModeloBase{
         }
     }
 
+    // public function getMenUsuario(){
+    //     $menu = "SELECT * FROM menuUsuarioDoctor WHERE idUsuario = '{$this->getIdUsuario()}'";
+    //     $getMEnu = $this->db->query($menu);
+
+    //     $showMenu = false;
+    //     if($getMEnu){
+    //         $showMenu = $getMEnu;
+    //     }
+    //     return $showMenu;
+    // }
+
 
     
+
+
 
 
 

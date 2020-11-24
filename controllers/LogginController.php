@@ -55,20 +55,37 @@
                         $consulName = new Login();
                         $consulName->setId($consul);
                         $cosnultorio = $consulName->getConsultorio();
-                        // creamos una session para mostrar titulos y para validaciones
-                        $_SESSION['usuario'] = array(
-                            'id' => $resupuesta->idUsuario,
-                            'consultorio' =>$consul,
-                            'nombre'=>$resupuesta->nombreUsuario,
-                            'apeliidos'=>$resupuesta->apellidoUsuario,
-                            'tipo'=>$resupuesta->tipoUsuario,
-                            'status'=>$resupuesta->statusUusario,
-                            'datos'=>$cosnultorio
-                        );  
-                        // redireccionamos
-                        echo '<script>window.location="'.base_url.'Consultorio/nuevo"</script>';
+                        if($cosnultorio){
+                            $getMnu = new ModeloBase();
+                            $mostrarMEnu = $getMnu->getMenUsuario($resupuesta->idUsuario);
+                            if($mostrarMEnu){
+
+                            
+                                // creamos una session para mostrar titulos y para validaciones
+                                $_SESSION['usuario'] = array(
+                                    'id' => $resupuesta->idUsuario,
+                                    'consultorio' =>$consul,
+                                    'nombre'=>$resupuesta->nombreUsuario,
+                                    'apeliidos'=>$resupuesta->apellidoUsuario,
+                                    'tipo'=>$resupuesta->tipoUsuario,
+                                    'status'=>$resupuesta->statusUusario,
+                                    'datos'=>$cosnultorio,
+                                    'menu'=>$mostrarMEnu
+                                );  
+                                // redireccionamos
+                                echo '<script>window.location="'.base_url.'Consultorio/nuevo"</script>';
+                            }else{
+                                $_SESSION['loggin'] = 'ALGO SALIO MAL NO SE RECUPERARON TODOS LOS DATOS, INTENTE DE NUEVO O LLAME A SU ADMINISTRADOR';
+                                echo '<script>window.location="'.base_url.'"</script>';
+                            }
+                            
+                        }else{
+                            $_SESSION['loggin'] = 'ALGO SALIO MAL NO SE RECUPERARON TODOS LOS DATOS,LLAME A SU ADMINISTRADOR';
+                            echo '<script>window.location="'.base_url.'"</script>';
+                        }
                     }else{
-                        echo 'no encontramos algo';
+                        $_SESSION['loggin'] = 'USUARIO O CONTRASEÑA SON INCORRECTOS';
+                        echo '<script>window.location="'.base_url.'"</script>';
                     }
                 }
                 
@@ -124,4 +141,6 @@
                 echo 2;
             }
         }
+
+        
     }

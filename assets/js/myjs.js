@@ -25,7 +25,8 @@ $(document).ready(function(){
 	 		})
 	 	}
 	 }
-	
+	/* disabled div usuario */
+	$(".permisoDoctor").attr('disabled','disabled');
 	$('.dropdown-toggle').on("click",function(){
 		$('.dropdown-menu').toggleClass('show');
 	  });
@@ -889,6 +890,8 @@ $('#otroActual').on('change', function() {
    $("select#tipoUser").on("change",function(){
 	   /* obtenemos el valor del select */
 	   var valor  = $(this).val();
+	   $("#permisoDoctor").css({'display':'inline-flex','width':'100%'});
+	   $("#permisoDoctor2").css('display','block');
 		/* si el valor es doctor */
 	   if(valor == 2){
 		   /* deshabiliamos los checkbox que esten activos */
@@ -911,11 +914,8 @@ $('#otroActual').on('change', function() {
 		   /* habilitamos los checkbos de los doctores */
 			$(".pacientesChecks").prop('checked',true);
 			$("#Paciente").prop("checked", true);
-			$("#consultorioCD").prop("checked",true);
-			$("#consultorioLista").prop("checked",true);
-			$("#consultorioNuevos").prop("checked",true);
-			$("#cosnsultorioGastos").prop("checked",true);
-			$("#consultrioCorte").prop("checked",true);
+			$("#registroDiario").prop("checked",true);
+			$("#registroGastos").prop("checked",true);
 	   }else if(valor == 3){
 		   /* si el valor del select es de administrador habilitamos todos los checkbox */
 			$("#Paciente").prop('checked',true)
@@ -928,12 +928,24 @@ $('#otroActual').on('change', function() {
 			$(".avanzadoChecks").prop('checked',true);
 	   }
    });
-   $("#pacienteDatos").on("click",function(e){
+   $("#pacienteDatos,#pacienteEditar,#pacienteAlta").on("click",function(e){
 	Swal.fire(
-		'DEHABLILITAR?',
+		'DEHABILITAR?',
 		'ESTE CAMPO NO SE RECOMIENDA DEHABILITAR',
 		'warning'
 	  )
-	  $("#pacienteDatos").prop('checked',true);
+	//   $("#pacienteDatos").prop('checked',true);
+	  $(this).prop('checked',true);
+   });
+
+   /* activar o desactivar el motivo del cambio de estatus */
+   $("select#statusUSer").on("change",function(){
+	   var stats = $(this).val();
+	   if(stats == 2 || stats == 3){
+		   $("#MotivoStatus").css('display',"block");
+		}else{
+			$("#MotivoStatus").css('display',"none");
+
+		}
    });
 });

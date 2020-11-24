@@ -48,10 +48,25 @@ class ModeloBase{
         return $query;
     }
 
-    // public function getAllCustom(){
-    //     $query = "SELECT * FROM ";
-    //     $custom = $this->db->query($query);
-    //     return $custom;
-    // }
+
+
+    public function getMenUsuario($getIdUsuario){
+        $menu = "SELECT * FROM menuUsuarioDoctor WHERE idUsuario = $getIdUsuario";
+        $getMEnu = $this->db->query($menu);
+        // //var_dump($menu);
+
+      $menu = array();
+      while($arrayMenu = $getMEnu->fetch_object()){
+        $menu[]= array( 
+                        array($arrayMenu->idMenu,$arrayMenu->nombreSubmenu,$arrayMenu->urlSubmenu,$arrayMenu->iconoMEnu)
+                    );
+      }
+    //   $suMEnu =  json_encode($menu);
+
+return json_encode($menu);
+      
+      
+        
+    }
 
 }

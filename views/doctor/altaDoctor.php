@@ -2,11 +2,11 @@
 	<div class="card-body p-5">
 		<?php require_once 'views/layout/cabeceraLogo.php';?>
 		<?php $sesion = ""; 
-         if(isset($_SESSION['formulario_doctor'])){$sesion = $_SESSION['formulario_doctor']['datos'];} ?>
+		 if(isset($_SESSION['formulario_doctor'])){$sesion = $_SESSION['formulario_doctor']['datos'];}?>
 		<div class="texcto">
-			<?php if($sesion != "") echo '<p class="alert alert-danger error" role="alert">'.$_SESSION['formulario_doctor']["error"]."</p>";?>
-			<?php if(isset($_SESSION['statusSave'])) echo '<p class="alert alert-success error" role="alert">'.$_SESSION['statusSave']."</p>";?>
-			<?php Utls::deleteSession('formulario_doctor') ?>
+			<?php if($sesion != ""){echo '<p class="alert alert-danger error" role="alert">'.$_SESSION['formulario_doctor']["error"]."</p>";}
+			 if(isset($_SESSION['statusSave'])) echo '<p class="alert alert-success error" role="alert">'.$_SESSION['statusSave']."</p>";
+			 Utls::deleteSession('formulario_doctor') ?>
 			<?php Utls::deleteSession('statusSave') ?>
 		</div>
 		<div style="height: auto">
@@ -31,11 +31,11 @@
 					<div class="form-control col-md-4 genero">
 					    <label for="intputSexo" id="intputSexo">SEXO</label>
 						<div class="custom-control custom-radio custom-control-inline radio-Sexo">
-						  <input type="radio" id="customRadioInline1" name="customRadioSexo"  value="hombre">
+						  <input type="radio" id="customRadioInline1" name="customRadioSexo"  value="hombre" <?php if($sesion != "" && $sesion["sexo"] == 'hombre') echo 'checked="checked"';?>>
 						  <label  for="customRadioInline1">hombre</label>
 						</div>
 						<div class="custom-control custom-radio custom-control-inline radio-Sexo">
-						  <input type="radio" id="customRadioInline2" name="customRadioSexo"  value="mujer" >
+						  <input type="radio" id="customRadioInline2" name="customRadioSexo"  value="mujer" <?php if($sesion != "" && $sesion["sexo"] == 'mujer') echo 'checked="checked"';?>>
 						  <label  for="customRadioInline2">mujer</label>
                         </div>                        
                     </div>
@@ -47,19 +47,19 @@
                     <div class="form-group col-md-4">
                         <label for="tipoUser">Tipo Usuario</label>
                         <select class="form-control" id="tipoUser" name="tipoUser">
-                        <option value="">Tipo Usuriario</option>
+                        <option value="" selected>Tipo Usuriario</option>
                         <option value="2">Doctor</option>
                         <option value="3">Administrador</option>
                         </select>
                     </div>
 				</div>
 				<!-- <button class="btn btn-primary" type="submit">Submit form</button> -->
-				<input type="submit" class="btn btn-primary" id="btn-envDoctor" values="enviar" name="enviar">
-			</form>
+				<!-- <input type="submit" class="btn btn-primary" id="btn-envDoctor" values="enviar" name="enviar"> -->
+			<!-- </form> -->
 			<hr>
 			<h4>PERMISOS</h4>
-			<form action="<?=base_url?>Doctor/permisos" method="POST" id="frmPermisos" novalidate>
-				<div class="row">
+			<!-- <form action="<?=base_url?>Doctor/permisos" method="POST" id="frmPermisos" novalidate> -->
+				<div class="row" id="permisoDoctor">
 					<div class="col mb-4 border">
 						<div class="form-check">
 							<input class="form-check-input" type="checkbox" value="" id="Paciente" disabled>
@@ -70,19 +70,19 @@
 						<div class="form-check ml-5">
 							<input class="form-check-input pacientesChecks" type="checkbox" value="1" name="check[]" id="pacienteAlta">
 							<label class="form-check-label" for="pacienteAlta">
-								ALTA PACIENTE
+								ALTA PACIENTES
 							</label>
 						</div>
 						<div class="form-check ml-5">
 							<input class="form-check-input pacientesChecks" type="checkbox" value="2" name="check[]" id="pacienteEditar">
 							<label class="form-check-label" for="pacienteEditar">
-								EDITAR PACIENTE
+								MIS PACIENTES
 							</label>
 						</div>
 						<div class="form-check ml-5">
 							<input class="form-check-input pacientesChecks" type="checkbox" value="3" name="check[]" id="pacienteDatos">
 							<label class="form-check-label" for="pacienteDatos">
-								DATOS COMPLEMENTARIOS
+								NUEVO INGRESO
 							</label>
 						</div>
 					</div>
@@ -94,134 +94,69 @@
 							</label>
 						</div>
 						<div class="form-check ml-5">
-							<input class="form-check-input consultorioCheck" type="checkbox" value="4" name="check[]" id="consultorioCD">
-							<label class="form-check-label" for="consultorioCD">
-								CONSULTA DIARIA
+							<input class="form-check-input consultorioCheck" type="checkbox" value="4" name="check[]" id="registroDiario">
+							<label class="form-check-label" for="registroDiario">
+								REGISTRO DIARIO
 							</label>
 						</div>
 						<div class="form-check ml-5">
-							<input class="form-check-input consultorioCheck" type="checkbox" value="5" name="check[]" id="consultorioLista">
-							<label class="form-check-label" for="consultorioLista">
-								LISTA PACIENTES
+							<input class="form-check-input consultorioCheck" type="checkbox" value="5" name="check[]" id="registroGastos">
+							<label class="form-check-label" for="registroGastos">
+								REGISTRO GASTOS
 							</label>
 						</div>
 						<div class="form-check ml-5">
 							<input class="form-check-input consultorioCheck" type="checkbox" value="6" name="check[]" id="consultorioMedicmento">
 							<label class="form-check-label" for="consultorioMedicmento">
-								CONTROL MEDICAMENTO
+								CONTROL
 							</label>
 						</div>
-						<div class="form-check ml-5">
-							<input class="form-check-input consultorioCheck" type="checkbox" value="7" name="check[]" id="consultorioNuevos">
-							<label class="form-check-label" for="consultorioNuevos">
-								PACIENTES NUEVOS
-							</label>
-						</div>
-						<div class="form-check ml-5">
-							<input class="form-check-input consultorioCheck" type="checkbox" value="8" name="check[]" id="cosnsultorioGastos">
-							<label class="form-check-label" for="cosnsultorioGastos">
-								GASTOS
-							</label>
-						</div>
-						<div class="form-check ml-5">
-							<input class="form-check-input consultorioCheck" type="checkbox" value="9" name="check[]" id="cosnsultorioGastos">
-							<label class="form-check-label" for="cosnsultorioGastos">
-								GASTOS OTROS
-							</label>
-						</div>
-						<div class="form-check ml-5">
-							<input class="form-check-input consultorioCheck" type="checkbox" value="10" name="check[]" id="consultrioCorte">
-							<label class="form-check-label" for="consultrioCorte">
-								CORTE DIARIO
-							</label>
-						</div>
-						<div class="form-check ml-5">
-							<input class="form-check-input consultorioCheck" type="checkbox" value="11" name="check[]" id="consultorioAlta">
-							<label class="form-check-label" for="consultorioAlta">
-								ALTA CONSULTORIO
-							</label>
-						</div>
+						
 					</div>
 					<div class="col mb-4 ml-2 border">
 						<div class="form-check">
 							<input class="form-check-input" type="checkbox" value="" id="Doctor">
 							<label class="form-check-label" for="Doctor">
-								DOCTOR
+								ADMINISTRACION
 							</label>
 						</div>
 						<div class="form-check ml-5">
-							<input class="form-check-input doctorCheck" type="checkbox" value="12" name="check[]" id="doctorAlta">
+							<input class="form-check-input doctorCheck" type="checkbox" value="7" name="check[]" id="doctorAlta">
 							<label class="form-check-label" for="doctorAlta">
-								ALTA DOCTOR
+								TODOS LOS PACIENTES
 							</label>
 						</div>
 						<div class="form-check ml-5">
-							<input class="form-check-input doctorCheck" type="checkbox" value="13" name="check[]" id="doctorLista">
+							<input class="form-check-input doctorCheck" type="checkbox" value="8" name="check[]" id="doctorLista">
 							<label class="form-check-label" for="doctorLista">
-								LISTA DOCTOR
+								ALTA CONSULTORIO
 							</label>
 						</div>
 						<div class="form-check ml-5">
-							<input class="form-check-input doctorCheck" type="checkbox" value="14" name="check[]" id="doctorEditar">
+							<input class="form-check-input doctorCheck" type="checkbox" value="9" name="check[]" id="doctorEditar">
 							<label class="form-check-label" for="doctorEditar">
-								EDITAR DOCTOR
-							</label>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col border">
-						<div class="form-check">
-							<input class="form-check-input" type="checkbox" value="" id="Avanzado">
-							<label class="form-check-label" for="Avanzado">
-								AVANZADO
+								LISTA CONSULTORIO
 							</label>
 						</div>
 						<div class="form-check ml-5">
-							<input class="form-check-input avanzadoChecks" type="checkbox" value="15" name="check[]" id="avanzadoMenu">
-							<label class="form-check-label" for="avanzadoMenu">
-								MENU ADMINISTRATIVO
-							</label>
-						</div>
-						<div class="form-check ml-5">
-							<input class="form-check-input avanzadoChecks" type="checkbox" value="16" name="check[]" id="avanzadoMovimientos">
-							<label class="form-check-label" for="avanzadoMovimientos">
-								MOVIMIENTOS
-							</label>
-						</div>
-						<div class="form-check ml-5">
-							<input class="form-check-input avanzadoChecks" type="checkbox" value="17" name="check[]" id="avanzadoConsultorio">
-							<label class="form-check-label" for="avanzadoConsultorio">
-								LISTADO CONSULTORIO
-							</label>
-						</div>
-						<div class="form-check ml-5">
-							<input class="form-check-input avanzadoChecks" type="checkbox" value="18" name="check[]" id="avanzadoPaciente">
-							<label class="form-check-label" for="avanzadoPaciente">
-								LISTADO PACIENTE
-							</label>
-						</div>
-						<div class="form-check ml-5">
-							<input class="form-check-input avanzadoChecks" type="checkbox" value="19" name="check[]" id="avanzadoHistorial">
-							<label class="form-check-label" for="avanzadoHistorial">
-								HISTORIAL PACIENTE
-							</label>
-						</div>
-						<div class="form-check ml-5">
-							<input class="form-check-input avanzadoChecks" type="checkbox" value="20" name="check[]" id="avanzadoGlobal">
-							<label class="form-check-label" for="avanzadoGlobal">
+							<input class="form-check-input doctorCheck" type="checkbox" value="10" name="check[]" id="doctorEditar">
+							<label class="form-check-label" for="doctorEditar">
 								REPORTE GLOBAL
 							</label>
 						</div>
 						<div class="form-check ml-5">
-							<input class="form-check-input avanzadoChecks" type="checkbox" value="21" name="check[]" id="AvanzadoGlobalEspecifico">
-							<label class="form-check-label" for="AvanzadoGlobalEspecifico">
-								REPORTE GLOBAL ESPECIFICO
+							<input class="form-check-input doctorCheck" type="checkbox" value="11" name="check[]" id="doctorEditar">
+							<label class="form-check-label" for="doctorEditar">
+								LISTA DOCTORES
+							</label>
+						</div>
+						<div class="form-check ml-5">
+							<input class="form-check-input doctorCheck" type="checkbox" value="12" name="check[]" id="doctorEditar">
+							<label class="form-check-label" for="doctorEditar">
+								ALTA DOCTOR
 							</label>
 						</div>
 					</div>
-					<div class="col"></div>
-					<div class="col"></div>
 				</div>
 				<div class="mt-4 text-left botonRegistrar">
 					<button type="submit" class="btn btn-lg btn-outline-success" name="btnPermisos">REGISTRAR</button>
